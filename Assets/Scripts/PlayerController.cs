@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class PlayerController : MonoBehaviour
 {
@@ -99,5 +100,9 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 GetPosition() {
         return rb.position;
+    }
+
+    public List<Vector2> GetUnitsPositions() {
+        return unitList.Select(unit => new Vector2(transform.position.x, transform.position.y)).ToList();
     }
 }
