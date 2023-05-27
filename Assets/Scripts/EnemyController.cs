@@ -33,7 +33,6 @@ public class EnemyController : MonoBehaviour
             Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
             List<Vector2> unitsPositions = player.GetUnitsPositions();
             int minDistance = distance(enemyPosition, unitsPositions[0]);
-            int closestUnit = 0;
             
             for (int i = 1; i < unitsPositions.Count; i++)
             {
