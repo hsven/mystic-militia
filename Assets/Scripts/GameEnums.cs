@@ -1,6 +1,5 @@
- using UnityEngine;
- using System.Collections;
-
+using UnityEngine;
+using System.Collections;
 
 public static class GameEnums {
     public enum CommandTypes
@@ -10,7 +9,9 @@ public static class GameEnums {
         DEFEND,
         PATROL,
     }
-
-
-
+    public enum EnemyTypes
+    {
+        PLAYER,
+        UNIT,
+    }
 }

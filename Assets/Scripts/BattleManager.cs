@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine.Splines;
 using UnityEngine;
 using Unity.Mathematics;
+using System.Linq;
 
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance = null;
 
     public PlayerController player;
-    public List<UnitController> playerUnits;
+    public List<UnitController> playerUnits = new List<UnitController>();
     
     public Spline unitFormation;
     public LineRenderer repr;
@@ -20,13 +21,19 @@ public class BattleManager : MonoBehaviour
         if (unitFormation == null) unitFormation = GetComponentInChildren<Spline>();
     }
 
+    public int RegisterPlayerUnit(UnitController unit) {
+        playerUnits.Add(unit);
+        return playerUnits.Count - 1;
+    }
+
+    public List<Vector2> GetPlayerUnitPositions() {
+        return playerUnits.Select(unit => new Vector2(unit.transform.position.x, unit.transform.position.y)).ToList();
+    }
 
     public Vector2 GetUnitOffset(int unitIndex) {
         if (unitFormation.Count == 0) return Vector2.zero;
 
         float formationPosStep = unitFormation.Count / playerUnits.Count;
-        // BezierCurve curve = unitFormation.GetCurve(0);
-        // var length = CurveUtility.CalculateLength(curve);
         var length = unitFormation.GetCurveLength(0);
         var interval = length / playerUnits.Count;
         
