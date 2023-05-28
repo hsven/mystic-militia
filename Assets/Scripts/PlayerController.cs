@@ -3,23 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-public class PlayerController : MonoBehaviour
-{
-    [SerializeField]
-    private Rigidbody2D rb = null;
-    
-    private Vector2 directionMovement;
-    
+public class PlayerController : EntityController
+{    
     private List<UnitController> unitList = new List<UnitController>();
 
-    public int playerSpeed = 1;
     public GameEnums.CommandTypes selectedCommand = GameEnums.CommandTypes.FOLLOW;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        if (!rb) rb = GetComponent<Rigidbody2D>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -33,7 +21,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement() {
         Vector2 currentPos = rb.position;
-        Vector2 mov = directionMovement * playerSpeed;
+        Vector2 mov = targetPos * movementSpeed;
         Vector2 newPos = currentPos + mov * Time.fixedDeltaTime;
 
         rb.MovePosition(newPos);
@@ -76,7 +64,7 @@ public class PlayerController : MonoBehaviour
     }
     
     void PlayerControls() {
-        directionMovement = Vector2.ClampMagnitude(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 1);
+        targetPos = Vector2.ClampMagnitude(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 1);
 
         if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftAlt)) {
             DrawFormation();

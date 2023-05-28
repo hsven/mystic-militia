@@ -2,24 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour
+public class EnemyController : EntityController
 {
-    [SerializeField]
-    private Rigidbody2D rb;
-
-    private Vector2 targetPos;
-
-    [Range(1, 100)]
-    public int movementSpeed = 50;
-
     public PlayerController player;
 
     [SerializeField]
     public GameEnums.EnemyTypes enemyType = GameEnums.EnemyTypes.UNIT;
 
-    private void Awake()
+    // Start is called before the first frame update
+    void Start()
     {
-        if (!rb) rb = GetComponent<Rigidbody2D>();
         player = FindObjectOfType<PlayerController>(); 
     }
 
@@ -43,15 +35,6 @@ public class EnemyController : MonoBehaviour
                 }
             }
         }
-        EnemyMovement(targetPos);
-    }
-
-    private void EnemyMovement(Vector2 target)
-    {
-        Vector2 currentPos = rb.position;
-        
-        float realSpeed = 100 - movementSpeed;
-        Vector2 newPos = currentPos + (target - currentPos) / realSpeed;
-        rb.MovePosition(newPos);
+        Movement(targetPos);
     }
 }
