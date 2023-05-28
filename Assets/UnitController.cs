@@ -9,6 +9,7 @@ public class UnitController : MonoBehaviour
 
     private Vector2 targetPos;
     private Vector2 commandDirection;
+    private Vector2 posOffset = Vector2.zero;
 
     public PlayerController player;
     [Range(1, 100)]
@@ -16,6 +17,7 @@ public class UnitController : MonoBehaviour
     public int patrolRadius = 5;
     public GameEnums.CommandTypes currentCommand = GameEnums.CommandTypes.FOLLOW;
 
+    public int unitArmyIndex = 0;
 
     void Awake() {
         if (!rb) rb = GetComponent<Rigidbody2D>();    
@@ -24,7 +26,7 @@ public class UnitController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        player.RegisterUnit(this);    
+        unitArmyIndex = player.RegisterUnit(this);    
         targetPos = player.GetPosition();
     }
 
@@ -69,7 +71,7 @@ public class UnitController : MonoBehaviour
         Vector2 currentPos = rb.position;
         
         float realSpeed = 100 - movementSpeed;
-        Vector2 newPos = currentPos + (target - currentPos) / realSpeed;
+        Vector2 newPos = currentPos + (target + posOffset - currentPos) / realSpeed;
         rb.MovePosition(newPos);
 
     }
@@ -77,6 +79,13 @@ public class UnitController : MonoBehaviour
     public void SetCommand(GameEnums.CommandTypes newCommand, Vector2 newTargetPos) {
         currentCommand = newCommand;
         targetPos = newTargetPos;
+
         commandDirection = (targetPos - player.GetPosition()).normalized;
+
+        posOffset = BattleManager.Instance.GetUnitOffset(unitArmyIndex);
+        if (newCommand == GameEnums.CommandTypes.FOLLOW) {
+            posOffset -= player.GetPosition() - targetPos;
+        }
+
     }
 }
