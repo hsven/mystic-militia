@@ -32,11 +32,11 @@ public class EnemyController : MonoBehaviour
         {
             Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
             List<Vector2> unitsPositions = player.GetUnitsPositions();
-            int minDistance = distance(enemyPosition, unitsPositions[0]);
+            float minDistance = Vector2.Distance(enemyPosition, unitsPositions[0]);
             
             for (int i = 1; i < unitsPositions.Count; i++)
             {
-                int newDistance = distance(unitsPositions[i], enemyPosition);
+                float newDistance = Vector2.Distance(unitsPositions[i], enemyPosition);
                 if(newDistance < minDistance){
                     minDistance = newDistance;
                     targetPos = unitsPositions[i];
@@ -53,13 +53,5 @@ public class EnemyController : MonoBehaviour
         float realSpeed = 100 - movementSpeed;
         Vector2 newPos = currentPos + (target - currentPos) / realSpeed;
         rb.MovePosition(newPos);
-    }
-
-    int distance(Vector2 pos1, Vector2 pos2)
-    {
-        return (int)Mathf.Sqrt(
-            Mathf.Pow(pos1.x - pos2.x, 2) + 
-            Mathf.Pow(pos1.y - pos2.y, 2)
-        );
     }
 }
