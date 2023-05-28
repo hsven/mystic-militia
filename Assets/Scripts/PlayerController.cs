@@ -103,6 +103,6 @@ public class PlayerController : MonoBehaviour
     }
 
     public List<Vector2> GetUnitsPositions() {
-        return unitList.Select(unit => new Vector2(transform.position.x, transform.position.y)).ToList();
+        return unitList.Select(unit => new Vector2(unit.transform.position.x, unit.transform.position.y)).ToList();
     }
 }
