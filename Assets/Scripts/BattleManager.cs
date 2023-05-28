@@ -44,6 +44,12 @@ public class BattleManager : MonoBehaviour
     public void SetFormation(List<Vector3> positions) {
         unitFormation.Clear();
         repr.SetPositions(new Vector3[]{});
+
+        // If no formation was set, the units group up
+        if (positions.Count == 0) {
+            positions.Add(Vector3.zero);
+        }
+
         repr.positionCount = positions.Count;
 
         var centerPos = positions[positions.Count / 2];

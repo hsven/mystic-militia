@@ -16,7 +16,8 @@ public class UnitController : EntityController
     // Start is called before the first frame update
     void Start()
     {
-        unitArmyIndex = BattleManager.Instance.RegisterPlayerUnit(this);    
+        unitArmyIndex = BattleManager.Instance.RegisterPlayerUnit(this);   
+        if (!player) player = BattleManager.Instance.player;
         targetPos = player.GetPosition();
     }
 
