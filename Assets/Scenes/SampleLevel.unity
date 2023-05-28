@@ -154,8 +154,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  player: {fileID: 1423339043}
   movementSpeed: 37
+  player: {fileID: 1423339043}
   patrolRadius: 1
   currentCommand: 0
 --- !u!50 &171579724
@@ -232,8 +232,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  player: {fileID: 1423339043}
   movementSpeed: 37
+  player: {fileID: 1423339043}
   patrolRadius: 1
   currentCommand: 0
 --- !u!50 &202956840
@@ -430,8 +430,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  player: {fileID: 1423339043}
   movementSpeed: 37
+  player: {fileID: 1423339043}
   patrolRadius: 1
   currentCommand: 0
 --- !u!50 &381296916
@@ -551,8 +551,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  player: {fileID: 1423339043}
   movementSpeed: 37
+  player: {fileID: 1423339043}
   patrolRadius: 1
   currentCommand: 0
 --- !u!1 &421686002
@@ -12734,8 +12734,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  player: {fileID: 1423339043}
   movementSpeed: 37
+  player: {fileID: 1423339043}
   patrolRadius: 1
   currentCommand: 0
 --- !u!50 &545382986
@@ -12889,8 +12889,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  player: {fileID: 1423339043}
   movementSpeed: 37
+  player: {fileID: 1423339043}
   patrolRadius: 1
   currentCommand: 0
 --- !u!50 &782685982
@@ -13251,7 +13251,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  playerSpeed: 3
+  movementSpeed: 5
   selectedCommand: 0
 --- !u!1 &1430353296
 GameObject:
@@ -15387,8 +15387,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  player: {fileID: 1423339043}
   movementSpeed: 37
+  player: {fileID: 1423339043}
   patrolRadius: 1
   currentCommand: 0
 --- !u!50 &2064116366
@@ -15556,7 +15556,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 2.984375
+  orthographic size: 3.0546875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2

@@ -6,6 +6,7 @@ using System.Linq;
 public class PlayerController : EntityController
 {    
     private List<UnitController> unitList = new List<UnitController>();
+    private Vector2 directionMovement;
 
     public GameEnums.CommandTypes selectedCommand = GameEnums.CommandTypes.FOLLOW;
 
@@ -21,7 +22,7 @@ public class PlayerController : EntityController
 
     void PlayerMovement() {
         Vector2 currentPos = rb.position;
-        Vector2 mov = targetPos * movementSpeed;
+        Vector2 mov = directionMovement * movementSpeed;
         Vector2 newPos = currentPos + mov * Time.fixedDeltaTime;
 
         rb.MovePosition(newPos);
@@ -64,7 +65,7 @@ public class PlayerController : EntityController
     }
     
     void PlayerControls() {
-        targetPos = Vector2.ClampMagnitude(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 1);
+        directionMovement = Vector2.ClampMagnitude(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 1);
 
         if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftAlt)) {
             DrawFormation();
