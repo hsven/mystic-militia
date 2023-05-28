@@ -1,24 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
-public class PlayerController : MonoBehaviour
-{
-    [SerializeField]
-    private Rigidbody2D rb = null;
-    
-    private Vector2 directionMovement;
-    
+public class PlayerController : EntityController
+{    
     private List<UnitController> unitList = new List<UnitController>();
+    private Vector2 directionMovement;
 
-    public int playerSpeed = 1;
     public GameEnums.CommandTypes selectedCommand = GameEnums.CommandTypes.FOLLOW;
-
-    // Start is called before the first frame update
-    void Awake()
-    {
-        if (!rb) rb = GetComponent<Rigidbody2D>();
-    }
 
     // Update is called once per frame
     void Update()
@@ -32,7 +22,7 @@ public class PlayerController : MonoBehaviour
 
     void PlayerMovement() {
         Vector2 currentPos = rb.position;
-        Vector2 mov = directionMovement * playerSpeed;
+        Vector2 mov = directionMovement * movementSpeed;
         Vector2 newPos = currentPos + mov * Time.fixedDeltaTime;
 
         rb.MovePosition(newPos);
@@ -99,5 +89,9 @@ public class PlayerController : MonoBehaviour
 
     public Vector2 GetPosition() {
         return rb.position;
+    }
+
+    public List<Vector2> GetUnitsPositions() {
+        return unitList.Select(unit => new Vector2(unit.transform.position.x, unit.transform.position.y)).ToList();
     }
 }
