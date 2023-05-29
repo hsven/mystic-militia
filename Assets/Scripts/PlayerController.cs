@@ -1,13 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using System.Linq;
 
 public class PlayerController : EntityController
 {    
     private List<UnitController> unitList = new List<UnitController>();
     private Vector2 directionMovement;
+    
+    // private List<UnitController> unitList = new List<UnitController>();
 
+    private List<Vector3> mousePositions = new List<Vector3>();
+    private bool isDrawingFormation = false;
+    public int mousePositionInterval = 100;
+
+    public int playerSpeed = 1;
     public GameEnums.CommandTypes selectedCommand = GameEnums.CommandTypes.FOLLOW;
 
     // Update is called once per frame
@@ -32,7 +38,7 @@ public class PlayerController : EntityController
         Debug.Log("Command");
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        foreach (UnitController unit in unitList)
+        foreach (UnitController unit in BattleManager.Instance.playerUnits)
         {
             unit.SetCommand(selectedCommand, new Vector2(mousePos.x, mousePos.y));
         }
@@ -61,7 +67,24 @@ public class PlayerController : EntityController
     }
 
     void DrawFormation() {
-        Debug.Log("Drawing");
+        if (!isDrawingFormation) {
+            mousePositions.Clear();
+            isDrawingFormation = true;
+        }
+
+        Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) ;
+
+        if (mousePositions.Count == 0) {
+            mousePositions.Add(mousePos);
+            Debug.Log("Added Position in " + mousePos);
+            return;
+        }
+
+        if (Vector2.Distance(mousePos, mousePositions[mousePositions.Count - 1]) > mousePositionInterval) {
+            mousePositions.Add(mousePos);
+            Debug.Log("Added Position in " + mousePos);
+            return;
+        }
     }
     
     void PlayerControls() {
@@ -71,8 +94,13 @@ public class PlayerController : EntityController
             DrawFormation();
         }
         else if (Input.GetMouseButtonDown(0)) {
+            isDrawingFormation = false;
+            BattleManager.Instance.SetFormation(mousePositions);
             SendCommand();
         }
+        else{
+            isDrawingFormation = false;
+        } 
 
         if (Input.GetKeyDown(KeyCode.UpArrow)) {
             ChangeCommand(true);
@@ -83,15 +111,9 @@ public class PlayerController : EntityController
 
     }
 
-    public void RegisterUnit(UnitController unit) {
-        unitList.Add(unit);
-    }
 
     public Vector2 GetPosition() {
         return rb.position;
     }
 
-    public List<Vector2> GetUnitsPositions() {
-        return unitList.Select(unit => new Vector2(unit.transform.position.x, unit.transform.position.y)).ToList();
-    }
 }

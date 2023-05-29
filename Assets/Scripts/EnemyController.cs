@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class EnemyController : EntityController
 {
-    public PlayerController player;
+    private List<Vector2> unitsPositions = new List<Vector2>();
 
     [SerializeField]
-    public GameEnums.EnemyTypes enemyType = GameEnums.EnemyTypes.UNIT;
+    private PlayerController player;
 
+    public GameEnums.EnemyTypes enemyType = GameEnums.EnemyTypes.UNIT;
     // Start is called before the first frame update
     void Start()
     {
-        player = FindObjectOfType<PlayerController>(); 
+        if (!player) player = BattleManager.Instance.player;
+    }
+
+    private void Update() {
+        unitsPositions = BattleManager.Instance.GetPlayerUnitPositions();
     }
 
     private void FixedUpdate()
@@ -22,19 +27,20 @@ public class EnemyController : EntityController
         } 
         else if (enemyType == GameEnums.EnemyTypes.UNIT)
         {
-            Vector2 enemyPosition = new Vector2(transform.position.x, transform.position.y);
-            List<Vector2> unitsPositions = player.GetUnitsPositions();
-            float minDistance = Vector2.Distance(enemyPosition, unitsPositions[0]);
+            if (unitsPositions.Count == 0) return;
             
-            for (int i = 1; i < unitsPositions.Count; i++)
+            Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
+            float minDistance = Mathf.Infinity;
+            
+            for (int i = 0; i < unitsPositions.Count; i++)
             {
-                float newDistance = Vector2.Distance(unitsPositions[i], enemyPosition);
+                float newDistance = Vector2.Distance(unitsPositions[i], ownPosition);
                 if(newDistance < minDistance){
                     minDistance = newDistance;
                     targetPos = unitsPositions[i];
                 }
             }
         }
-        Movement(targetPos);
+        Movement(targetPos, Vector2.zero);
     }
 }

@@ -5,15 +5,19 @@ using UnityEngine;
 public class UnitController : EntityController
 {
     private Vector2 commandDirection;
+    private Vector2 posOffset;
 
     public PlayerController player;
-    public int patrolRadius = 5;
+    public int patrolRadius = 1;
     public GameEnums.CommandTypes currentCommand = GameEnums.CommandTypes.FOLLOW;
+
+    public int unitArmyIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
-        player.RegisterUnit(this);    
+        unitArmyIndex = BattleManager.Instance.RegisterPlayerUnit(this);   
+        if (!player) player = BattleManager.Instance.player;
         targetPos = player.GetPosition();
     }
 
@@ -27,26 +31,25 @@ public class UnitController : EntityController
         switch (currentCommand)
         {
             case GameEnums.CommandTypes.FOLLOW:
-                Movement(player.GetPosition());
+                Movement(player.GetPosition(), posOffset);
                 break;
             case GameEnums.CommandTypes.ATTACK:
                 // TODO: Make this a variable
                 targetPos += commandDirection * 0.01f;
-                Movement(targetPos);
+                Movement(targetPos, posOffset);
                 break;
             case GameEnums.CommandTypes.DEFEND:
-                Movement(targetPos);
+                Movement(targetPos, posOffset);
                 break;
             case GameEnums.CommandTypes.PATROL:
                 float timeDelta = Time.fixedTime / 1000;
                 float angle = 90 * timeDelta;
 
-                Vector2 target = new Vector2(
+                Vector2 newTarget = new Vector2(
                     Mathf.Sin(angle * 10) * patrolRadius,
                     Mathf.Cos(angle * 10) * patrolRadius
                 ) + targetPos;
-
-                Movement(target);
+                Movement(newTarget, posOffset);
                 break;
 
             default:
@@ -57,6 +60,12 @@ public class UnitController : EntityController
     public void SetCommand(GameEnums.CommandTypes newCommand, Vector2 newTargetPos) {
         currentCommand = newCommand;
         targetPos = newTargetPos;
+
         commandDirection = (targetPos - player.GetPosition()).normalized;
+
+        posOffset = BattleManager.Instance.GetUnitOffset(unitArmyIndex);
+        if (newCommand == GameEnums.CommandTypes.FOLLOW) {
+            posOffset -= player.GetPosition() - targetPos;
+        }
     }
 }

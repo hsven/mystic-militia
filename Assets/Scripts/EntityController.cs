@@ -17,12 +17,12 @@ public class EntityController : MonoBehaviour
         if (!rb) rb = GetComponent<Rigidbody2D>();
     }
 
-    protected void Movement(Vector2 target)
+    protected void Movement(Vector2 target, Vector2 offset)
     {
         Vector2 currentPos = rb.position;
         
         float realSpeed = 100 - movementSpeed;
-        Vector2 newPos = currentPos + (target - currentPos) / realSpeed;
+        Vector2 newPos = currentPos + (target + offset - currentPos) / realSpeed;
         rb.MovePosition(newPos);
     }
 }
