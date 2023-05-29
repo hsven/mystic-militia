@@ -153,6 +153,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5498187762117813187, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Name
       value: Unit (4)
@@ -366,6 +378,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5498187762117813187, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Name
       value: Unit (5)
@@ -12546,6 +12570,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5498187762117813187, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Name
       value: Unit (1)
@@ -12780,6 +12816,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5498187762117813187, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Name
       value: Unit (3)
@@ -12889,6 +12937,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5498187762117813187, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Name
       value: Unit (2)
@@ -13373,13 +13433,21 @@ PrefabInstance:
       propertyPath: enemyType
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457578094864112184, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_Name
       value: EnemyUnit (1)
       objectReference: {fileID: 0}
     - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7341031104628887993, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_RootOrder
@@ -13541,8 +13609,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b4d3c583c706f40a64078414722863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useOldMovement: 0
   rb: {fileID: 0}
   movementSpeed: 3
+  maxSpeed: 10
   mousePositionInterval: 1
   playerSpeed: 3
   selectedCommand: 0
@@ -15769,13 +15839,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: movementSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6457578094864112184, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_Name
       value: EnemyUnit
       objectReference: {fileID: 0}
     - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7341031104628887993, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_RootOrder
@@ -15837,6 +15915,18 @@ PrefabInstance:
     - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_LinearDrag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: m_UseAutoMass
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5498187762117813187, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Name

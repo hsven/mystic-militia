@@ -7,6 +7,8 @@ public class UnitController : EntityController
     private Vector2 commandDirection;
     private Vector2 posOffset;
 
+    [Header("Unit specific data")]
+
     public PlayerController player;
     public int patrolRadius = 1;
     public GameEnums.CommandTypes currentCommand = GameEnums.CommandTypes.FOLLOW;
