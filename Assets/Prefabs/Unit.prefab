@@ -79,6 +79,7 @@ MonoBehaviour:
   patrolRadius: 1
   currentCommand: 0
   unitArmyIndex: 0
+  unitSquadIndex: {x: -1, y: -1}
 --- !u!1 &7562421514231985561
 GameObject:
   m_ObjectHideFlags: 0

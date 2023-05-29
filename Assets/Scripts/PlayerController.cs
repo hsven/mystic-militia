@@ -15,6 +15,7 @@ public class PlayerController : EntityController
 
     public int playerSpeed = 1;
     public GameEnums.CommandTypes selectedCommand = GameEnums.CommandTypes.FOLLOW;
+    public int selectedSquad = -1;
 
     // Update is called once per frame
     void Update()
@@ -38,9 +39,17 @@ public class PlayerController : EntityController
         Debug.Log("Command");
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        foreach (UnitController unit in BattleManager.Instance.playerUnits)
-        {
-            unit.SetCommand(selectedCommand, new Vector2(mousePos.x, mousePos.y));
+        if (selectedSquad == -1) {
+            foreach (UnitController unit in BattleManager.Instance.totalPlayerUnits)
+            {
+                unit.SetCommand(selectedCommand, new Vector2(mousePos.x, mousePos.y));
+            }
+        }
+        else {
+            foreach (UnitController unit in BattleManager.Instance.squads[selectedSquad].units)
+            {
+                unit.SetCommand(selectedCommand, new Vector2(mousePos.x, mousePos.y));
+            }
         }
     }
 
@@ -95,7 +104,7 @@ public class PlayerController : EntityController
         }
         else if (Input.GetMouseButtonDown(0)) {
             isDrawingFormation = false;
-            BattleManager.Instance.SetFormation(mousePositions);
+            BattleManager.Instance.SetFormation(mousePositions, selectedSquad);
             SendCommand();
         }
         else{
@@ -107,6 +116,19 @@ public class PlayerController : EntityController
         }
         else if(Input.GetKeyDown(KeyCode.DownArrow)) {
             ChangeCommand(false);
+        }
+
+        if (Input.GetKeyDown(KeyCode.Q)) {
+            selectedSquad--;
+            if (selectedSquad < -1) {
+                selectedSquad = -1;
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.E)) {
+            selectedSquad++;
+            if (selectedSquad > BattleManager.Instance.squads.Count) {
+                selectedSquad = BattleManager.Instance.squads.Count;
+            }
         }
 
     }

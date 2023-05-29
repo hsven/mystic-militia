@@ -12,11 +12,14 @@ public class UnitController : EntityController
     public GameEnums.CommandTypes currentCommand = GameEnums.CommandTypes.FOLLOW;
 
     public int unitArmyIndex = 0;
+    public Vector2Int unitSquadIndex = new Vector2Int(-1, -1);
 
     // Start is called before the first frame update
     void Start()
     {
         unitArmyIndex = BattleManager.Instance.RegisterPlayerUnit(this);   
+        unitSquadIndex = BattleManager.Instance.GetSquadIndex(this);
+
         if (!player) player = BattleManager.Instance.player;
         targetPos = player.GetPosition();
     }
@@ -63,7 +66,7 @@ public class UnitController : EntityController
 
         commandDirection = (targetPos - player.GetPosition()).normalized;
 
-        posOffset = BattleManager.Instance.GetUnitOffset(unitArmyIndex);
+        posOffset = BattleManager.Instance.GetUnitOffset(unitArmyIndex, unitSquadIndex);
         if (newCommand == GameEnums.CommandTypes.FOLLOW) {
             posOffset -= player.GetPosition() - targetPos;
         }

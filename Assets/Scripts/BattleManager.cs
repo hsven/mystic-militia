@@ -4,45 +4,76 @@ using UnityEngine.Splines;
 using UnityEngine;
 using Unity.Mathematics;
 using System.Linq;
+using System;
+
+[Serializable]
+public class PlayerSquad
+{
+    public List<UnitController> units = new List<UnitController>();
+
+    public Spline formation;
+
+}
 
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance = null;
 
     public PlayerController player;
-    public List<UnitController> playerUnits = new List<UnitController>();
-    
-    public Spline unitFormation;
+    public List<UnitController> totalPlayerUnits = new List<UnitController>();
+    public List<PlayerSquad> squads = new List<PlayerSquad>();
+
+    public Spline currentFormation;
+    public int currentSquadSelection = -1;
     public LineRenderer repr;
     
     void Awake() {
         BattleManager.Instance = this;
 
-        if (unitFormation == null) unitFormation = GetComponentInChildren<Spline>();
+        if (currentFormation == null) currentFormation = GetComponentInChildren<Spline>();
     }
 
     public int RegisterPlayerUnit(UnitController unit) {
-        playerUnits.Add(unit);
-        return playerUnits.Count - 1;
+        totalPlayerUnits.Add(unit);
+        return totalPlayerUnits.Count - 1;
+    }
+
+    public Vector2Int GetSquadIndex(UnitController unit) {
+        for (int i = 0; i < squads.Count; i++)
+        {
+            int pos = squads[i].units.FindIndex(0, x => x == unit);
+            if (pos == -1) continue;
+
+            return new Vector2Int(i, pos);
+        }
+        return new Vector2Int(-1, -1);
     }
 
     public List<Vector2> GetPlayerUnitPositions() {
-        return playerUnits.Select(unit => new Vector2(unit.transform.position.x, unit.transform.position.y)).ToList();
+        return totalPlayerUnits.Select(unit => new Vector2(unit.transform.position.x, unit.transform.position.y)).ToList();
     }
 
-    public Vector2 GetUnitOffset(int unitIndex) {
-        if (unitFormation.Count == 0) return Vector2.zero;
+    public Vector2 GetUnitOffset(int unitIndex, Vector2Int squadIndex) {
+        if (currentFormation.Count == 0) return Vector2.zero;
 
-        float formationPosStep = unitFormation.Count / playerUnits.Count;
-        var length = unitFormation.GetCurveLength(0);
-        var interval = length / playerUnits.Count;
+        var unitCount = currentSquadSelection == -1 ? totalPlayerUnits.Count : squads[currentSquadSelection].units.Count;
+        var formation = currentSquadSelection == -1 ? currentFormation : squads[currentSquadSelection].formation;
+
+
+        float formationPosStep = formation.Count / unitCount;
+        var length = formation.GetCurveLength(0);
+        var interval = length / unitCount;
         
-        float3 finalPos = unitFormation.EvaluatePosition(interval * unitIndex);
+        float3 finalPos;
+        if (currentSquadSelection == -1) finalPos = formation.EvaluatePosition(interval * unitIndex);
+        else finalPos = formation.EvaluatePosition(interval * squadIndex.y);
+
         return new Vector3(finalPos.x, finalPos.y, 0);
     }
 
-    public void SetFormation(List<Vector3> positions) {
-        unitFormation.Clear();
+    public void SetFormation(List<Vector3> positions, int selectedSquad) {
+        currentSquadSelection = selectedSquad;
+        currentFormation.Clear();
         repr.SetPositions(new Vector3[]{});
 
         // If no formation was set, the units group up
@@ -57,8 +88,20 @@ public class BattleManager : MonoBehaviour
         foreach (var pos in positions)
         {
             var adjustedPos = pos - centerPos;
-            unitFormation.Add(new BezierKnot(adjustedPos));
+            currentFormation.Add(new BezierKnot(adjustedPos));
             repr.SetPosition(i++, adjustedPos);
         }
+
+        if(selectedSquad == -1) {
+            foreach (var sqd in squads)
+            {
+                sqd.formation.Copy(currentFormation);
+            }
+        }
+        else {
+            squads[selectedSquad].formation.Copy(currentFormation);
+        }
+
+
     }
 }
