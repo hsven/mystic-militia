@@ -18,6 +18,7 @@ public class PlayerSquad
 public class BattleManager : MonoBehaviour
 {
     public static BattleManager Instance = null;
+    public bool isPaused = false;
 
     public PlayerController player;
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
@@ -33,6 +34,16 @@ public class BattleManager : MonoBehaviour
         if (currentFormation == null) currentFormation = GetComponentInChildren<Spline>();
     }
 
+    public void PauseGame() {
+        Time.timeScale = 0;
+        isPaused = true;
+    }
+
+    public void ResumeGame() {
+        Time.timeScale = 1;
+        isPaused = false;
+    }
+    
     public int RegisterPlayerUnit(UnitController unit) {
         totalPlayerUnits.Add(unit);
         return totalPlayerUnits.Count - 1;

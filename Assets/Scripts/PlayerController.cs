@@ -97,6 +97,8 @@ public class PlayerController : EntityController
     }
     
     void PlayerControls() {
+        if (BattleManager.Instance.isPaused) return;
+
         directionMovement = Vector2.ClampMagnitude(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 1);
 
         if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftAlt)) {
@@ -126,8 +128,8 @@ public class PlayerController : EntityController
         }
         else if(Input.GetKeyDown(KeyCode.E)) {
             selectedSquad++;
-            if (selectedSquad > BattleManager.Instance.squads.Count) {
-                selectedSquad = BattleManager.Instance.squads.Count;
+            if (selectedSquad > BattleManager.Instance.squads.Count - 1) {
+                selectedSquad = BattleManager.Instance.squads.Count - 1;
             }
         }
 
