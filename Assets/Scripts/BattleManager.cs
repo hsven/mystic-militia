@@ -38,6 +38,23 @@ public class BattleManager : MonoBehaviour
         return totalPlayerUnits.Count - 1;
     }
 
+    public void DeleteEntity(EntityController entity)
+    {
+        UnitController unit = entity as UnitController;
+        if (unit != null)
+        {
+            if (totalPlayerUnits.Contains(unit)) totalPlayerUnits.Remove(unit);
+            
+            Vector2Int squadIndex = GetSquadIndex(unit);
+            if (squadIndex.x != -1 && squadIndex.y != -1)
+            {
+                PlayerSquad squad = squads[squadIndex.x];
+                squad.units.RemoveAt(squadIndex.y);
+            }
+            return;
+        }
+    }
+
     public Vector2Int GetSquadIndex(UnitController unit) {
         for (int i = 0; i < squads.Count; i++)
         {

@@ -13,6 +13,12 @@ public class EntityController : MonoBehaviour
     [Header("Movement related")]
     [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
     public bool useOldMovement = false;
+    
+    [Range(1, 1000)]
+    public int lifePoint = 100;
+
+    [Range(1, 100)]
+    public int power = 10;
 
     [Range(1, 100)]
     public int movementSpeed = 50;
@@ -40,5 +46,16 @@ public class EntityController : MonoBehaviour
         rb.AddForce((dir.normalized * movementSpeed) / (1 / dir.magnitude));
 
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        lifePoint -= damage;
+
+        if (lifePoint <= 0)
+        {
+            BattleManager.Instance.DeleteEntity(this);
+            Destroy(gameObject);
+        }
     }
 }
