@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EntityController : MonoBehaviour
 {
@@ -19,14 +20,18 @@ public class EntityController : MonoBehaviour
     public int maxSpeed = 10;
     
     [Header("Battle caracteristics")]
-    public int lifePoint = 100;
+    public int maxHealth = 100;
     public int power = 10;
+    protected int currentHealth;
+
+    public Image healthBarGreen;
+    public Image healthBarRed;
 
     protected void Awake()
     {
         if (!rb) rb = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
     }
-
 
     protected void Movement(Vector2 target, Vector2 offset)
     {
@@ -48,12 +53,24 @@ public class EntityController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        lifePoint -= damage;
+        currentHealth -= damage;
+        UpdateHealthBar();
 
-        if (lifePoint <= 0)
+        if (currentHealth <= 0)
         {
             BattleManager.Instance.DeleteEntity(this);
             Destroy(gameObject);
         }
     }
+
+    public void UpdateHealthBar()
+    {
+        float healthRatio = (float)currentHealth / maxHealth;
+
+        healthBarRed.rectTransform.sizeDelta = new Vector2((1 - healthRatio) * healthBarRed.rectTransform.sizeDelta.x, healthBarRed.rectTransform.sizeDelta.y);
+
+        float xOffset = (0.2f - healthBarRed.rectTransform.sizeDelta.x) * 0.5f;
+        healthBarRed.rectTransform.position = new Vector2(healthBarRed.rectTransform.position.x + xOffset, healthBarRed.rectTransform.position.y);
+    }
+
 }
