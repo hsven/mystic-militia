@@ -1,13 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EntityController : MonoBehaviour
 {
     [SerializeField]
     protected Rigidbody2D rb;
 
-    private float triggerDelay = .1f;
+    private float triggerDelay = .5f;
     float timer;
 
     protected Vector2 targetPos;
@@ -19,14 +20,19 @@ public class EntityController : MonoBehaviour
     [Range(1, 100)]
     public int movementSpeed = 50;
     public int maxSpeed = 10;
-
-    [Header("Battle characteristics")]
-    public int lifePoint = 100;
+    
+    [Header("Battle caracteristics")]
+    public int maxHealth = 100;
     public int power = 10;
+    protected int currentHealth;
+
+    public Image healthBarGreen;
+    public Image healthBarRed;
 
     protected void Awake()
     {
         if (!rb) rb = GetComponent<Rigidbody2D>();
+        currentHealth = maxHealth;
     }
 
     protected void Movement(Vector2 target, Vector2 offset)
@@ -49,9 +55,10 @@ public class EntityController : MonoBehaviour
 
     public void TakeDamage(int damage)
     {
-        lifePoint -= damage;
+        currentHealth -= damage;
+        UpdateHealthBar();
 
-        if (lifePoint <= 0)
+        if (currentHealth <= 0)
         {
             BattleManager.Instance.DeleteEntity(this);
             Destroy(gameObject);
@@ -74,5 +81,15 @@ public class EntityController : MonoBehaviour
             other.gameObject.GetComponent<UnitController>().TakeDamage(power);
             Debug.Log("Ally take damages");
         }
+    }
+
+    public void UpdateHealthBar()
+    {
+        float healthRatio = (float)currentHealth / maxHealth;
+
+        healthBarGreen.rectTransform.sizeDelta = new Vector2(healthRatio * healthBarGreen.rectTransform.sizeDelta.x, healthBarGreen.rectTransform.sizeDelta.y);
+
+        float xOffset = healthBarGreen.rectTransform.sizeDelta.x * 0.5f - 0.2f;
+        healthBarGreen.rectTransform.position = new Vector2(healthBarRed.rectTransform.position.x + xOffset, healthBarGreen.rectTransform.position.y);
     }
 }
