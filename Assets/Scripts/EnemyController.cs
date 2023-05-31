@@ -6,7 +6,6 @@ public class EnemyController : EntityController
 {
     private List<Vector2> unitsPositions = new List<Vector2>();
 
-    [SerializeField]
     private PlayerController player;
 
     public GameEnums.EnemyTypes enemyType = GameEnums.EnemyTypes.UNIT;
@@ -43,4 +42,5 @@ public class EnemyController : EntityController
         }
         Movement(targetPos, Vector2.zero);
     }
+
 }

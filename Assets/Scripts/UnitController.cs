@@ -52,7 +52,12 @@ public class UnitController : EntityController
         UnitMovement();
     }
 
-    void UnitMovement() {
+    void UnitMovement()
+    {
+        if (player == null)
+        {
+            player = BattleManager.Instance.player;
+        }
         switch (currentCommand)
         {
             case GameEnums.CommandTypes.FOLLOW:
