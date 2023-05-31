@@ -157,6 +157,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy1
+      value: 
+      objectReference: {fileID: 131938500}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy2
+      value: 
+      objectReference: {fileID: 1745082080}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -325,6 +333,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &131938500 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+  m_PrefabInstance: {fileID: 5940738885793629864}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &133848947
 GameObject:
   m_ObjectHideFlags: 0
@@ -592,6 +605,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy1
+      value: 
+      objectReference: {fileID: 131938500}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy2
+      value: 
+      objectReference: {fileID: 1745082080}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -760,6 +781,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy1
+      value: 
+      objectReference: {fileID: 131938500}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy2
+      value: 
+      objectReference: {fileID: 1745082080}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -6818,7 +6847,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe7a5e275cce3c4f9caafe5072d5e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+  UIObj: {fileID: 0}
   player: {fileID: 1423339043}
+  unitPrefab: {fileID: 0}
   totalPlayerUnits: []
   squads:
   - units:
@@ -6898,6 +6930,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy1
+      value: 
+      objectReference: {fileID: 131938500}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy2
+      value: 
+      objectReference: {fileID: 1745082080}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -8555,7 +8595,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 27, y: 26, z: 0}
+  - first: {x: 28, y: 26, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -8635,7 +8675,7 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
-  - first: {x: 27, y: 27, z: 0}
+  - first: {x: 28, y: 27, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -8706,16 +8746,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741825
   - first: {x: 23, y: 29, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741825
-  - first: {x: 26, y: 29, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -8847,13 +8877,13 @@ Tilemap:
       m_AllTileFlags: 1073741825
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 179
+  - m_RefCount: 178
     m_Data: {fileID: 11400000, guid: 128504547c8088e458050faa0a62ddf7, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 179
+  - m_RefCount: 178
     m_Data: {fileID: -403312065, guid: bb54800ca94c9be4ba96735231b096ad, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 179
+  - m_RefCount: 178
     m_Data:
       e00: 1
       e01: 0
@@ -8872,7 +8902,7 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 179
+  - m_RefCount: 178
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
@@ -8994,6 +9024,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy1
+      value: 
+      objectReference: {fileID: 131938500}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy2
+      value: 
+      objectReference: {fileID: 1745082080}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -10327,6 +10365,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1734605939}
   m_CullTransparentMesh: 1
+--- !u!1 &1745082080 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+  m_PrefabInstance: {fileID: 1276542076}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1812037392
 GameObject:
   m_ObjectHideFlags: 0
@@ -11419,6 +11462,14 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy1
+      value: 
+      objectReference: {fileID: 131938500}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: Enemy2
+      value: 
+      objectReference: {fileID: 1745082080}
     - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: player
       value: 

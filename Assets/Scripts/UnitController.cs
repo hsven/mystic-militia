@@ -16,11 +16,23 @@ public class UnitController : EntityController
     public int unitArmyIndex = 0;
     public Vector2Int unitSquadIndex = new Vector2Int(-1, -1);
 
+    public GameObject Enemy1;
+    public GameObject Enemy2;
+
     // Start is called before the first frame update
     public void Setup(int totalPosIndex, Vector2Int squadIndex)
     {
         unitArmyIndex = totalPosIndex;
         unitSquadIndex = squadIndex;
+        if (!player) player = BattleManager.Instance.player;
+        targetPos = player.GetPosition();
+    }
+
+    
+    private void Start() {
+        unitArmyIndex = BattleManager.Instance.RegisterPlayerUnit(this);
+        unitSquadIndex = BattleManager.Instance.GetSquadIndex(this);
+        
         if (!player) player = BattleManager.Instance.player;
         targetPos = player.GetPosition();
     }
@@ -39,8 +51,21 @@ public class UnitController : EntityController
                 break;
             case GameEnums.CommandTypes.ATTACK:
                 // TODO: Make this a variable
-                targetPos += commandDirection * 0.01f;
-                Movement(targetPos, posOffset);
+                //targetPos += commandDirection * 0.01f;
+                //Movement(targetPos, posOffset);
+
+                float distance1 = Vector2.Distance(transform.position, Enemy1.transform.position);
+                float distance2 = Vector2.Distance(transform.position, Enemy2.transform.position);
+                Vector2 direction = Enemy1.transform.position - transform.position;
+                Vector2 direction2 = Enemy2.transform.position - transform.position;
+                
+                if((distance1<distance2) && distance1<patrolRadius){
+                    Movement(Enemy1.transform.position, direction);
+                }
+
+                if((distance2<distance1) && distance2<patrolRadius){
+                    Movement(Enemy2.transform.position, direction2);
+                }
                 break;
             case GameEnums.CommandTypes.DEFEND:
                 Movement(targetPos, posOffset);
