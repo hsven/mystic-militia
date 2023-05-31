@@ -8,7 +8,7 @@ public class EntityController : MonoBehaviour
     [SerializeField]
     protected Rigidbody2D rb;
 
-    private float triggerDelay = .1f;
+    private float triggerDelay = .5f;
     float timer;
 
     protected Vector2 targetPos;
@@ -87,9 +87,9 @@ public class EntityController : MonoBehaviour
     {
         float healthRatio = (float)currentHealth / maxHealth;
 
-        healthBarRed.rectTransform.sizeDelta = new Vector2((1 - healthRatio) * healthBarRed.rectTransform.sizeDelta.x, healthBarRed.rectTransform.sizeDelta.y);
+        healthBarGreen.rectTransform.sizeDelta = new Vector2(healthRatio * healthBarGreen.rectTransform.sizeDelta.x, healthBarGreen.rectTransform.sizeDelta.y);
 
-        float xOffset = (0.2f - healthBarRed.rectTransform.sizeDelta.x) * 0.5f;
-        healthBarRed.rectTransform.position = new Vector2(healthBarRed.rectTransform.position.x + xOffset, healthBarRed.rectTransform.position.y);
+        float xOffset = healthBarGreen.rectTransform.sizeDelta.x * 0.5f - 0.2f;
+        healthBarGreen.rectTransform.position = new Vector2(healthBarRed.rectTransform.position.x + xOffset, healthBarGreen.rectTransform.position.y);
     }
 }

@@ -182,8 +182,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 6155680989189577169}
   - {fileID: 7347989048390777009}
+  - {fileID: 6155680989189577169}
   m_Father: {fileID: 7341031104628887993}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -306,7 +306,6 @@ MonoBehaviour:
   power: 10
   healthBarGreen: {fileID: 8682386576368078296}
   healthBarRed: {fileID: 6149338807905591931}
-  contactUnit: 1
   enemyType: 1
 --- !u!61 &2953156807656884423
 BoxCollider2D:
