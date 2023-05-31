@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-
     [SerializeField]
     protected Rigidbody2D rb;
+
+    private bool isTriggerEnabled = true;
+    private float triggerDelay = .1f;
+    private float lastTriggerTime;
 
     protected Vector2 targetPos;
 
@@ -17,16 +20,16 @@ public class EntityController : MonoBehaviour
     [Range(1, 100)]
     public int movementSpeed = 50;
     public int maxSpeed = 10;
-    
-    [Header("Battle caracteristics")]
+
+    [Header("Battle characteristics")]
     public int lifePoint = 100;
     public int power = 10;
+    public bool contactUnit = true;
 
     protected void Awake()
     {
         if (!rb) rb = GetComponent<Rigidbody2D>();
     }
-
 
     protected void Movement(Vector2 target, Vector2 offset)
     {
@@ -55,5 +58,36 @@ public class EntityController : MonoBehaviour
             BattleManager.Instance.DeleteEntity(this);
             Destroy(gameObject);
         }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (isTriggerEnabled && contactUnit)
+        {
+            if (other.gameObject.CompareTag("Enemy") && this.gameObject.CompareTag("Ally"))
+            {
+                other.gameObject.GetComponent<EnemyController>().TakeDamage(power);
+                Debug.Log("Enemy take damages");
+            }
+            else if (other.gameObject.CompareTag("Ally") && this.gameObject.CompareTag("Enemy"))
+            {
+                other.gameObject.GetComponent<UnitController>().TakeDamage(power);
+                Debug.Log("Ally take damages");
+            }
+
+            isTriggerEnabled = false;
+            lastTriggerTime = Time.time;
+            StartCoroutine(EnableTriggerAfterDelay());
+        }
+    }
+
+    private IEnumerator EnableTriggerAfterDelay()
+    {
+        while (Time.time - lastTriggerTime < triggerDelay)
+        {
+            yield return null;
+        }
+
+        isTriggerEnabled = true;
     }
 }

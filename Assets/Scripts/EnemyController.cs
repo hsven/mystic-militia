@@ -6,10 +6,6 @@ public class EnemyController : EntityController
 {
     private List<Vector2> unitsPositions = new List<Vector2>();
 
-    private bool isTriggerEnabled = true;
-    private float triggerDelay = 1f;
-    private float lastTriggerTime;
-
     private PlayerController player;
 
     public GameEnums.EnemyTypes enemyType = GameEnums.EnemyTypes.UNIT;
@@ -45,33 +41,6 @@ public class EnemyController : EntityController
             }
         }
         Movement(targetPos, Vector2.zero);
-    }
-
-    private void OnTriggerStay2D(Collider2D other)
-    {
-        if (isTriggerEnabled)
-        {
-            UnitController unit = other.gameObject.GetComponent<UnitController>();
-            if (unit != null)
-            {
-                unit.TakeDamage(power);
-                TakeDamage(unit.power);
-            }
-
-            isTriggerEnabled = false;
-            lastTriggerTime = Time.time;
-            StartCoroutine(EnableTriggerAfterDelay());
-        }
-    }
-
-    private IEnumerator EnableTriggerAfterDelay()
-    {
-        while (Time.time - lastTriggerTime < triggerDelay)
-        {
-            yield return null;
-        }
-
-        isTriggerEnabled = true;
     }
 
 }

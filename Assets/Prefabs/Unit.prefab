@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5562264874773238519}
   m_Layer: 0
   m_Name: Unit
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -76,10 +76,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   useOldMovement: 0
-  movementSpeed: 37
-  maxSpeed: 10
+  movementSpeed: 5
+  maxSpeed: 3
   lifePoint: 100
   power: 10
+  contactUnit: 1
   player: {fileID: 0}
   patrolRadius: 1
   currentCommand: 0
@@ -128,7 +129,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.5}
+  m_Size: {x: 0.5, y: 0.6}
   m_EdgeRadius: 0
 --- !u!1 &7562421514231985561
 GameObject:

@@ -13557,7 +13557,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7341031104628887993, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_RootOrder
@@ -13686,6 +13686,9 @@ MonoBehaviour:
   useOldMovement: 0
   movementSpeed: 3
   maxSpeed: 10
+  lifePoint: 100
+  power: 10
+  contactUnit: 1
   mousePositionInterval: 1
   playerSpeed: 3
   selectedCommand: 0
@@ -16557,7 +16560,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7341031104628887993, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_RootOrder
