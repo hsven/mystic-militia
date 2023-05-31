@@ -6,6 +6,9 @@ public class EnemyController : EntityController
 {
     private List<Vector2> unitsPositions = new List<Vector2>();
 
+    private bool isTriggerReady = true;
+    public float timeToAttack = 1f;
+
     private PlayerController player;
 
     public GameEnums.EnemyTypes enemyType = GameEnums.EnemyTypes.UNIT;
@@ -43,15 +46,32 @@ public class EnemyController : EntityController
         Movement(targetPos, Vector2.zero);
     }
 
-    protected void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D other)
     {
-        UnitController unit = other.gameObject.GetComponent<UnitController>();
-        if (unit != null)
+        StartCoroutine(timeToAttackRoutine());
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    {
+        if (isTriggerReady)
         {
-            Debug.Log(power);
-            unit.TakeDamage(power);
-            TakeDamage(unit.power);
+            UnitController unit = other.gameObject.GetComponent<UnitController>();
+            if (unit != null)
+            {
+                Debug.Log("Damage");
+                unit.TakeDamage(power);
+                TakeDamage(unit.power);
+            }
+
+            StartCoroutine(timeToAttackRoutine());
         }
+    }
+
+    private IEnumerator timeToAttackRoutine()
+    {
+        isTriggerReady = false;
+        yield return new WaitForSeconds(timeToAttack);
+        isTriggerReady = true;
     }
 
 }
