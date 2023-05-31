@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 3157639091882922877}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &6457578094864112184
 Rigidbody2D:
@@ -74,8 +74,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 6457578094864112184}
+  useOldMovement: 0
   movementSpeed: 9
-  player: {fileID: 0}
+  maxSpeed: 10
+  lifePoint: 100
+  power: 10
   enemyType: 1
 --- !u!1 &7444193588210668090
 GameObject:
