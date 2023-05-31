@@ -49,7 +49,6 @@ public class EntityController : MonoBehaviour
     public void TakeDamage(int damage)
     {
         lifePoint -= damage;
-        Debug.Log(damage);
 
         if (lifePoint <= 0)
         {
