@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class EntityController : MonoBehaviour
 {
-
     [SerializeField]
     protected Rigidbody2D rb;
+
+    private float triggerDelay = .1f;
+    float timer;
 
     protected Vector2 targetPos;
 
@@ -18,11 +20,14 @@ public class EntityController : MonoBehaviour
     public int movementSpeed = 50;
     public int maxSpeed = 10;
 
+    [Header("Battle characteristics")]
+    public int lifePoint = 100;
+    public int power = 10;
+
     protected void Awake()
     {
         if (!rb) rb = GetComponent<Rigidbody2D>();
     }
-
 
     protected void Movement(Vector2 target, Vector2 offset)
     {
@@ -40,5 +45,34 @@ public class EntityController : MonoBehaviour
         rb.AddForce((dir.normalized * movementSpeed) / (1 / dir.magnitude));
 
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        lifePoint -= damage;
+
+        if (lifePoint <= 0)
+        {
+            BattleManager.Instance.DeleteEntity(this);
+            Destroy(gameObject);
+        }
+    }
+
+    private void OnTriggerStay2D(Collider2D other)
+    { 
+        timer -= Time.deltaTime;
+        if (timer > 0) return;
+        else timer = triggerDelay;
+
+        if (other.gameObject.CompareTag("Enemy") && this.gameObject.CompareTag("Ally"))
+        {
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(power);
+            Debug.Log("Enemy take damages");
+        }
+        else if (other.gameObject.CompareTag("Ally") && this.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<UnitController>().TakeDamage(power);
+            Debug.Log("Ally take damages");
+        }
     }
 }
