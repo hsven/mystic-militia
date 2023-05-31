@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 5562264874773238519}
   m_Layer: 0
   m_Name: Unit
-  m_TagString: Untagged
+  m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -201,7 +201,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -229,12 +229,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
   useOldMovement: 0
-  movementSpeed: 37
-  maxSpeed: 10
+  movementSpeed: 5
+  maxSpeed: 3
   maxHealth: 100
   power: 10
   healthBarGreen: {fileID: 4276161544753409136}
   healthBarRed: {fileID: 1051671825886227784}
+
+  contactUnit: 1
   player: {fileID: 0}
   patrolRadius: 1
   currentCommand: 0
@@ -283,7 +285,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.4, y: 0.5}
+  m_Size: {x: 0.5, y: 0.6}
   m_EdgeRadius: 0
 --- !u!1 &6501310428920048169
 GameObject:

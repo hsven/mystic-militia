@@ -85,18 +85,28 @@ public class PlayerController : EntityController
 
         if (mousePositions.Count == 0) {
             mousePositions.Add(mousePos);
-            Debug.Log("Added Position in " + mousePos);
+            // Debug.Log("Added Position in " + mousePos);
             return;
         }
 
         if (Vector2.Distance(mousePos, mousePositions[mousePositions.Count - 1]) > mousePositionInterval) {
             mousePositions.Add(mousePos);
-            Debug.Log("Added Position in " + mousePos);
+            // Debug.Log("Added Position in " + mousePos);
             return;
         }
     }
     
     void PlayerControls() {
+        if(Input.GetKeyDown(KeyCode.Escape)) {
+            BattleManager.Instance.ResetGame();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Return)) {
+            BattleManager.Instance.ResumeGame();
+        }
+
+        if (BattleManager.Instance.isPaused) return;
+
         directionMovement = Vector2.ClampMagnitude(new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical")), 1);
 
         if (Input.GetMouseButton(0) && Input.GetKey(KeyCode.LeftAlt)) {
@@ -126,8 +136,8 @@ public class PlayerController : EntityController
         }
         else if(Input.GetKeyDown(KeyCode.E)) {
             selectedSquad++;
-            if (selectedSquad > BattleManager.Instance.squads.Count) {
-                selectedSquad = BattleManager.Instance.squads.Count;
+            if (selectedSquad > BattleManager.Instance.squads.Count - 1) {
+                selectedSquad = BattleManager.Instance.squads.Count - 1;
             }
         }
 

@@ -5,9 +5,11 @@ using UnityEngine.UI;
 
 public class EntityController : MonoBehaviour
 {
-
     [SerializeField]
     protected Rigidbody2D rb;
+
+    private float triggerDelay = .1f;
+    float timer;
 
     protected Vector2 targetPos;
 
@@ -63,6 +65,24 @@ public class EntityController : MonoBehaviour
         }
     }
 
+    private void OnTriggerStay2D(Collider2D other)
+    { 
+        timer -= Time.deltaTime;
+        if (timer > 0) return;
+        else timer = triggerDelay;
+
+        if (other.gameObject.CompareTag("Enemy") && this.gameObject.CompareTag("Ally"))
+        {
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(power);
+            Debug.Log("Enemy take damages");
+        }
+        else if (other.gameObject.CompareTag("Ally") && this.gameObject.CompareTag("Enemy"))
+        {
+            other.gameObject.GetComponent<UnitController>().TakeDamage(power);
+            Debug.Log("Ally take damages");
+        }
+    }
+
     public void UpdateHealthBar()
     {
         float healthRatio = (float)currentHealth / maxHealth;
@@ -72,5 +92,4 @@ public class EntityController : MonoBehaviour
         float xOffset = (0.2f - healthBarRed.rectTransform.sizeDelta.x) * 0.5f;
         healthBarRed.rectTransform.position = new Vector2(healthBarRed.rectTransform.position.x + xOffset, healthBarRed.rectTransform.position.y);
     }
-
 }

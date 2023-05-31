@@ -157,6 +157,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: movementSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -592,6 +596,10 @@ PrefabInstance:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: movementSpeed
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -911,6 +919,10 @@ PrefabInstance:
     - target: {fileID: 2071187374029233707, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: movementSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
@@ -6970,7 +6982,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe7a5e275cce3c4f9caafe5072d5e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isPaused: 0
+  UIObj: {fileID: 0}
   player: {fileID: 1423339043}
+  unitPrefab: {fileID: 0}
   totalPlayerUnits: []
   squads:
   - units:
@@ -7049,6 +7064,10 @@ PrefabInstance:
     - target: {fileID: 2071187374029233707, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: movementSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
@@ -9145,6 +9164,10 @@ PrefabInstance:
     - target: {fileID: 2071187374029233707, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_SortingOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: movementSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: useOldMovement
@@ -11666,6 +11689,10 @@ PrefabInstance:
     - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: player
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 2079947705619391889, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
+      propertyPath: movementSpeed
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 2127693886419896038, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
       propertyPath: m_Mass
