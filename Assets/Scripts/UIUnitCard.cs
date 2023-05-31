@@ -3,22 +3,31 @@ using UnityEngine.UI;
 using TMPro;
 
 public class UIUnitCard : MonoBehaviour {
-    public int unitCount;
-    public TMP_Text counter;
+    public PlayerInventory.UnitEntry entry;
+    public bool isAddUnit;
 
-    void Start() {
-        counter.text = "x" + unitCount.ToString();
+    // public int unitCount;
+    public TMP_Text counterText;
+    public TMP_Text unitNameText;
+    public TMP_Text buttonText;
+
+    public void CreateUICard(PlayerInventory.UnitEntry entryData, bool add) {
+        entry = entryData;
+        isAddUnit = add;
+
+        UpdateCardData();
     }
 
-    public void UpdateCounter(int change) {
-        unitCount += change;
-        counter.text = "x" + unitCount.ToString();
+    public void UpdateCardData() {
+        unitNameText.text = entry.unitData.unitName;
+        counterText.text = "x" + entry.quantity.ToString();
+
+        if(isAddUnit) buttonText.text = "Add";
+        else buttonText.text = "Rmv";
     }
 
     public void OnAddClick() {
-        if(UISquadManager.Instance.RegisterUnitToSquad(this)) {
-            unitCount--;
-            counter.text = "x" + unitCount.ToString();
-        }
+        if(isAddUnit) UISquadManager.Instance.RegisterUnitToSquad(this);
+        else UISquadManager.Instance.RemoveUnitFromSquad(this);
     }
 }

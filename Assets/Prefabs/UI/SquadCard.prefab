@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 7948386164979015065}
   - component: {fileID: 6814322677483809414}
   m_Layer: 5
-  m_Name: Squad
+  m_Name: SquadCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -221,10 +221,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1582675495042657817}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f502c5c2a611904b8c887b92f0d2035, type: 3}
+  m_Script: {fileID: 11500000, guid: 822f0131bb64c3048b81772ba1fbc8ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scrollContent: {fileID: 3750189594695134676}
+  entry:
+    unitEntries: []
+  squadName: {fileID: 4741227707692093099}
+  scrollContent: {fileID: 3250911360226343198}
   registeredUnits: []
 --- !u!1 &3750189594695134676
 GameObject:

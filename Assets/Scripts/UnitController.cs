@@ -17,11 +17,10 @@ public class UnitController : EntityController
     public Vector2Int unitSquadIndex = new Vector2Int(-1, -1);
 
     // Start is called before the first frame update
-    void Start()
+    public void Setup(int totalPosIndex, Vector2Int squadIndex)
     {
-        // unitArmyIndex = BattleManager.Instance.RegisterPlayerUnit(this);   
-        unitSquadIndex = BattleManager.Instance.GetSquadIndex(this);
-
+        unitArmyIndex = totalPosIndex;
+        unitSquadIndex = squadIndex;
         if (!player) player = BattleManager.Instance.player;
         targetPos = player.GetPosition();
     }

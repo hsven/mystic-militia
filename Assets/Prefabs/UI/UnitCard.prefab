@@ -631,5 +631,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7f23ad04d00f69439f14bf2adfef36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitCount: 10
-  counter: {fileID: 5728535582469084200}
+  entry:
+    unitData: {fileID: 0}
+    quantity: 0
+  isAddUnit: 0
+  counterText: {fileID: 1871282866047112908}
+  unitNameText: {fileID: 5728535582469084200}
+  buttonText: {fileID: 1534340058546255149}
