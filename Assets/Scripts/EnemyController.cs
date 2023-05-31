@@ -43,11 +43,12 @@ public class EnemyController : EntityController
         Movement(targetPos, Vector2.zero);
     }
 
-    protected void OnCollisionEnter2D(Collision2D collision)
+    protected void OnTriggerEnter2D(Collider2D other)
     {
-        UnitController unit = collision.gameObject.GetComponent<UnitController>();
+        UnitController unit = other.gameObject.GetComponent<UnitController>();
         if (unit != null)
         {
+            Debug.Log(power);
             unit.TakeDamage(power);
             TakeDamage(unit.power);
         }

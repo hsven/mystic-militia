@@ -13,16 +13,14 @@ public class EntityController : MonoBehaviour
     [Header("Movement related")]
     [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
     public bool useOldMovement = false;
-    
-    [Range(1, 1000)]
-    public int lifePoint = 100;
-
-    [Range(1, 100)]
-    public int power = 10;
 
     [Range(1, 100)]
     public int movementSpeed = 50;
     public int maxSpeed = 10;
+    
+    [Header("Battle caracteristics")]
+    public int lifePoint = 100;
+    public int power = 10;
 
     protected void Awake()
     {
