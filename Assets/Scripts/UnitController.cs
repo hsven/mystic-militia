@@ -65,6 +65,10 @@ public class UnitController : EntityController
                 break;
             case GameEnums.CommandTypes.ATTACK:
                 if (enemyInSight) {
+                    if(!enemyObj) {
+                        enemyInSight = false;
+                        break;
+                    }
                     Movement(enemyObj.transform.position, Vector2.zero);
                 }
                 else {
