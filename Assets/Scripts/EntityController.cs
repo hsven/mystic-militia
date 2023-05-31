@@ -7,9 +7,8 @@ public class EntityController : MonoBehaviour
     [SerializeField]
     protected Rigidbody2D rb;
 
-    private bool isTriggerEnabled = true;
     private float triggerDelay = .1f;
-    private float lastTriggerTime;
+    float timer;
 
     protected Vector2 targetPos;
 
@@ -24,7 +23,6 @@ public class EntityController : MonoBehaviour
     [Header("Battle characteristics")]
     public int lifePoint = 100;
     public int power = 10;
-    public bool contactUnit = true;
 
     protected void Awake()
     {
@@ -61,33 +59,20 @@ public class EntityController : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other)
-    {
-        if (isTriggerEnabled && contactUnit)
+    { 
+        timer -= Time.deltaTime;
+        if (timer > 0) return;
+        else timer = triggerDelay;
+
+        if (other.gameObject.CompareTag("Enemy") && this.gameObject.CompareTag("Ally"))
         {
-            if (other.gameObject.CompareTag("Enemy") && this.gameObject.CompareTag("Ally"))
-            {
-                other.gameObject.GetComponent<EnemyController>().TakeDamage(power);
-                Debug.Log("Enemy take damages");
-            }
-            else if (other.gameObject.CompareTag("Ally") && this.gameObject.CompareTag("Enemy"))
-            {
-                other.gameObject.GetComponent<UnitController>().TakeDamage(power);
-                Debug.Log("Ally take damages");
-            }
-
-            isTriggerEnabled = false;
-            lastTriggerTime = Time.time;
-            StartCoroutine(EnableTriggerAfterDelay());
+            other.gameObject.GetComponent<EnemyController>().TakeDamage(power);
+            Debug.Log("Enemy take damages");
         }
-    }
-
-    private IEnumerator EnableTriggerAfterDelay()
-    {
-        while (Time.time - lastTriggerTime < triggerDelay)
+        else if (other.gameObject.CompareTag("Ally") && this.gameObject.CompareTag("Enemy"))
         {
-            yield return null;
+            other.gameObject.GetComponent<UnitController>().TakeDamage(power);
+            Debug.Log("Ally take damages");
         }
-
-        isTriggerEnabled = true;
     }
 }
