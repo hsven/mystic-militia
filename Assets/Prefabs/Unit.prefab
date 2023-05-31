@@ -32,7 +32,7 @@ Transform:
   m_Children:
   - {fileID: 9114405289702022514}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &2127693886419896038
 Rigidbody2D:
@@ -47,7 +47,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -74,7 +74,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 0}
-  movementSpeed: 37
+  useOldMovement: 0
+  movementSpeed: 5
+  maxSpeed: 3
   player: {fileID: 0}
   patrolRadius: 1
   currentCommand: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Splines;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using Unity.Mathematics;
 using System.Linq;
@@ -11,15 +12,21 @@ public class PlayerSquad
 {
     public List<UnitController> units = new List<UnitController>();
 
-    public Spline formation;
+    public Spline formation = new Spline();
 
 }
 
 public class BattleManager : MonoBehaviour
 {
+    // public List<PlayerArmyInventory> armyInventory = new List<PlayerArmyInventory>();
+
     public static BattleManager Instance = null;
+    public bool isPaused = false;
+    public GameObject UIObj;
 
     public PlayerController player;
+    public GameObject unitPrefab;
+
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
     public List<PlayerSquad> squads = new List<PlayerSquad>();
 
@@ -31,6 +38,47 @@ public class BattleManager : MonoBehaviour
         BattleManager.Instance = this;
 
         if (currentFormation == null) currentFormation = GetComponentInChildren<Spline>();
+    }
+
+    //Currently more of a start game
+    public void ResumeGame() {
+        //TODO: Revisit UI being mentioned here
+        UIObj.SetActive(false);
+
+        int squadCount = 0;
+        foreach (var squad in PlayerInventory.Instance.playerSquads)
+        {
+            if(squad.unitEntries.Count == 0) continue;
+
+            var newPlayerSquad = new PlayerSquad();
+            
+            foreach (var unit in squad.unitEntries)
+            {
+                for (int i = 0; i < unit.quantity; i++)
+                {
+                    var obj = Instantiate(unitPrefab).GetComponent<UnitController>();
+                    obj.transform.position = UnityEngine.Random.insideUnitSphere * 2;
+                    newPlayerSquad.units.Add(obj);
+                    totalPlayerUnits.Add(obj);
+                    obj.Setup(totalPlayerUnits.Count - 1, new Vector2Int(squadCount, i));
+                }
+            }
+
+            squads.Add(newPlayerSquad);
+        }
+
+        Time.timeScale = 1;
+        isPaused = false;
+    }
+    
+    
+    public void PauseGame() {
+        Time.timeScale = 0;
+        isPaused = true;
+    }
+
+    public void ResetGame() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public int RegisterPlayerUnit(UnitController unit) {
@@ -95,6 +143,7 @@ public class BattleManager : MonoBehaviour
         if(selectedSquad == -1) {
             foreach (var sqd in squads)
             {
+                Debug.Log(sqd.formation);
                 sqd.formation.Copy(currentFormation);
             }
         }
