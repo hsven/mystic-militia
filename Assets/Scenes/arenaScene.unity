@@ -10026,6 +10026,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: enemyType
       value: 0
       objectReference: {fileID: 0}
@@ -10044,6 +10048,10 @@ PrefabInstance:
     - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7341031104628887993, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_RootOrder
@@ -10088,6 +10096,10 @@ PrefabInstance:
     - target: {fileID: 7341031104628887993, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444193588210668090, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -11342,7 +11354,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.5546875
+  orthographic size: 2.8229167
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -11386,6 +11398,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: maxSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: movementSpeed
       value: 3
       objectReference: {fileID: 0}
@@ -11400,6 +11416,10 @@ PrefabInstance:
     - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317770796576403110, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 7341031104628887993, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_RootOrder
@@ -11444,6 +11464,10 @@ PrefabInstance:
     - target: {fileID: 7341031104628887993, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7444193588210668090, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
