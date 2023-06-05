@@ -53,7 +53,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10306, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -721,7 +721,7 @@ MonoBehaviour:
   currentCommand: 0
   unitArmyIndex: 0
   unitSquadIndex: {x: -1, y: -1}
-  isBorderActive: 1
+  isBorderActive: 0
   border1Sprite: {fileID: 2071187374029233707}
   border2Sprite: {fileID: 2130422813680362261}
   border3Sprite: {fileID: 8509066095715464744}

@@ -46,7 +46,16 @@ public class UnitController : EntityController
     {
         UnitMovement();
 
-        setBorder(isBorderActive);
+        if (BattleManager.Instance.currentSquadSelection >= 0)
+        {
+            PlayerSquad selectedSquad = BattleManager.Instance.squads[BattleManager.Instance.currentSquadSelection];
+            setBorder(selectedSquad.units.Contains(this));
+        }
+        else
+        {
+            setBorder(true);
+        }
+
     }
 
     void UnitMovement()

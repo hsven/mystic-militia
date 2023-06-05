@@ -74,12 +74,10 @@ public class EntityController : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy") && this.gameObject.CompareTag("Ally"))
         {
             other.gameObject.GetComponent<EnemyController>().TakeDamage(power);
-            Debug.Log("Enemy take damages");
         }
         else if (other.gameObject.CompareTag("Ally") && this.gameObject.CompareTag("Enemy"))
         {
             other.gameObject.GetComponent<UnitController>().TakeDamage(power);
-            Debug.Log("Ally take damages");
         }
     }
 
