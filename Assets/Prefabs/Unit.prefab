@@ -721,6 +721,11 @@ MonoBehaviour:
   currentCommand: 0
   unitArmyIndex: 0
   unitSquadIndex: {x: -1, y: -1}
+  isBorderActive: 1
+  border1Sprite: {fileID: 2071187374029233707}
+  border2Sprite: {fileID: 2130422813680362261}
+  border3Sprite: {fileID: 8509066095715464744}
+  border4Sprite: {fileID: 1558941318744011075}
 --- !u!61 &5562264874773238519
 BoxCollider2D:
   m_ObjectHideFlags: 0
