@@ -35,17 +35,6 @@ public class UnitController : EntityController
         spotRadius.radius = patrolRadius;
     }
 
-    
-    private void Start() {
-        unitArmyIndex = BattleManager.Instance.RegisterPlayerUnit(this);
-        unitSquadIndex = BattleManager.Instance.GetSquadIndex(this);
-        
-        if (!player) player = BattleManager.Instance.player;
-        targetPos = player.GetPosition();
-
-        spotRadius.radius = patrolRadius;
-    }
-
     // Update is called once per frame
     void FixedUpdate()
     {
