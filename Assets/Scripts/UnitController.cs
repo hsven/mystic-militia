@@ -45,17 +45,6 @@ public class UnitController : EntityController
     void FixedUpdate()
     {
         UnitMovement();
-
-        if (BattleManager.Instance.currentSquadSelection >= 0)
-        {
-            PlayerSquad selectedSquad = BattleManager.Instance.squads[BattleManager.Instance.currentSquadSelection];
-            setBorder(selectedSquad.units.Contains(this));
-        }
-        else
-        {
-            setBorder(true);
-        }
-
     }
 
     void UnitMovement()
@@ -105,7 +94,16 @@ public class UnitController : EntityController
         }
     }
 
-    void setBorder(bool border) {
+    public void SetUnitBorders(int squad)
+    {
+        bool border = true;
+
+         if (squad >= 0)
+        {
+            PlayerSquad selectedSquad = BattleManager.Instance.squads[squad];
+            border = selectedSquad.units.Contains(this);
+        }
+
         border1Sprite.gameObject.SetActive(border);
         border2Sprite.gameObject.SetActive(border);
         border3Sprite.gameObject.SetActive(border);
