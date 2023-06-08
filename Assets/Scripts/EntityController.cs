@@ -104,4 +104,8 @@ public class EntityController : MonoBehaviour
         float xOffset = healthBarGreen.rectTransform.sizeDelta.x * 0.5f - 0.2f;
         healthBarGreen.rectTransform.position = new Vector2(healthBarRed.rectTransform.position.x + xOffset, healthBarGreen.rectTransform.position.y);
     }
+
+    public Vector2 GetPosition() {
+        return rb.position;
+    }
 }

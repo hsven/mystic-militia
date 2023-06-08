@@ -142,10 +142,4 @@ public class PlayerController : EntityController
         }
 
     }
-
-
-    public Vector2 GetPosition() {
-        return rb.position;
-    }
-
 }
