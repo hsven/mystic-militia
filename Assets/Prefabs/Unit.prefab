@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 9152366076361469156}
   - component: {fileID: 2127693886419896038}
   - component: {fileID: 2079947705619391889}
+  - component: {fileID: 5723523585606141330}
   - component: {fileID: 5562264874773238519}
   m_Layer: 0
   m_Name: Unit
@@ -227,6 +228,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a1a1243034db4545bafe58191342831, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitbox: {fileID: 5562264874773238519}
+  hurtbox: {fileID: 8878376911113376461}
   rb: {fileID: 0}
   useOldMovement: 0
   movementSpeed: 5
@@ -236,10 +239,48 @@ MonoBehaviour:
   healthBarGreen: {fileID: 4276161544753409136}
   healthBarRed: {fileID: 1051671825886227784}
   player: {fileID: 0}
+  spotRadius: {fileID: 5723523585606141330}
   patrolRadius: 1
   currentCommand: 0
   unitArmyIndex: 0
   unitSquadIndex: {x: -1, y: -1}
+  Enemy1: {fileID: 0}
+  Enemy2: {fileID: 0}
+--- !u!58 &5723523585606141330
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5498187762117813187}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!61 &5562264874773238519
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -272,7 +313,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015, y: 0}
+  m_Offset: {x: -0.015, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -283,7 +324,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.6}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!1 &6501310428920048169
 GameObject:
