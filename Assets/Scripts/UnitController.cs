@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UnitController : EntityController
 {
@@ -8,6 +9,7 @@ public class UnitController : EntityController
     private Vector2 posOffset;
     private bool enemyInSight = false;
     private GameObject enemyObj;
+    public EnemyController targetEnemy;
 
     [Header("Unit specific data")]
 
@@ -36,8 +38,6 @@ public class UnitController : EntityController
 
     [SerializeField]
     private SpriteRenderer border4Sprite;
-    public GameObject Enemy1;
-    public GameObject Enemy2;
 
     // Start is called before the first frame update
     public void Setup(int totalPosIndex, Vector2Int squadIndex)
@@ -98,6 +98,42 @@ public class UnitController : EntityController
 
             default:
                 break;
+        }
+
+        if (entityType == GameEnums.EntityType.DISTANCE)
+        {
+            Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
+
+            if (timerArrow == 0)
+            {
+                targetEnemy = BattleManager.Instance.enemies
+                    .OrderBy(enemy => Vector2.Distance(ownPosition, enemy.GetPosition()))
+                    .FirstOrDefault();
+            }
+
+            if (targetEnemy != null && (Vector2.Distance(targetEnemy.GetPosition(), this.GetPosition()) < shootingRange || timerArrow != 0))
+            {
+                if (timerArrow == 0)
+                {
+                    launchArrow(targetEnemy);
+                }
+                else if (timerArrow < 0)
+                {
+                    flyingArrow();
+                }
+                else
+                {
+                    timerArrow--;
+                }
+            }
+            else if (timerArrow > 0)
+            {
+                timerArrow--;
+            }
+            else
+            {
+                Movement(targetPos, Vector2.zero);
+            }
         }
     }
 

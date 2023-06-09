@@ -14,7 +14,7 @@ public static class GameEnums {
         PLAYER,
         UNIT,
     }
-    public enum EnemyType
+    public enum EntityType
     {
         CONTACT,
         DISTANCE,

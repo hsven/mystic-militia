@@ -152,9 +152,4 @@ public class PlayerController : EntityController
             unit.SetUnitBorders(selectedSquad);
         }
     }
-
-    public Vector2 GetPosition() {
-        return rb.position;
-    }
-
 }

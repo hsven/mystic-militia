@@ -29,6 +29,7 @@ public class BattleManager : MonoBehaviour
 
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
     public List<PlayerSquad> squads = new List<PlayerSquad>();
+    public List<EnemyController> enemies = new List<EnemyController>();
 
     public Spline currentFormation;
     public int currentSquadSelection = -1;
@@ -99,7 +100,19 @@ public class BattleManager : MonoBehaviour
                 PlayerSquad squad = squads[squadIndex.x];
                 squad.units.RemoveAt(squadIndex.y);
             }
-            return;
+        }
+        EnemyController enemy = entity as EnemyController;
+        if (enemy != null)
+        {
+            for (int i=0; i < totalPlayerUnits.Count; i++)
+            {
+                if (enemy == totalPlayerUnits[i].targetEnemy)
+                {
+                    totalPlayerUnits[i].targetEnemy = null;
+                    totalPlayerUnits[i].resetArrow();
+                }
+            }
+            enemies.Remove(enemy);
         }
     }
 

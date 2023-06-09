@@ -4,6 +4,8 @@ using UnityEngine;
 public class UnitData : ScriptableObject {
     public string unitName;
 
-    public int healthPoints;
-    public int damage;
+    public int movementSpeed = 50;
+    public int healthPoints = 100;
+    public int damage = 10;
+    public int shootingRange = 3;
 }

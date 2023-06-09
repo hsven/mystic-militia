@@ -18,6 +18,8 @@ public class EntityController : MonoBehaviour
 
     protected Vector2 targetPos;
 
+    public GameEnums.EntityType entityType = GameEnums.EntityType.DISTANCE;
+
     [Header("Movement related")]
     [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
     public bool useOldMovement = false;
@@ -33,6 +35,12 @@ public class EntityController : MonoBehaviour
 
     public Image healthBarGreen;
     public Image healthBarRed;
+
+    protected Vector3 arrowInitialLocalPosition;
+    protected Quaternion arrowInitialLocalRotation;
+    private EntityController targetEntity;
+    public int timerArrow = 0;
+    protected int shootingRange = 3;
 
     protected void Awake()
     {
@@ -58,6 +66,46 @@ public class EntityController : MonoBehaviour
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
     }
 
+    protected void launchArrow(EntityController target)
+    {
+        timerArrow = -1;
+
+        transform.Find("Arrow").GetComponent<SpriteRenderer>().enabled = true;
+        targetEntity = target;
+    }
+
+    protected void flyingArrow()
+    {
+        if (Vector3.Distance(targetEntity.GetPosition(), transform.Find("Arrow").position) < 0.2)
+        {
+            targetEntity.TakeDamage(power);
+            resetArrow();
+        }
+        else
+        {
+            Vector2 targetArrow = targetEntity.GetPosition();
+            Transform arrowTransform = transform.Find("Arrow");
+            Vector3 arrowPosition = arrowTransform.position;
+            arrowPosition += ((Vector3)targetArrow - arrowPosition).normalized * movementSpeed * Time.deltaTime;
+            arrowTransform.position = arrowPosition;
+
+            Vector3 direction = (Vector3)targetArrow - arrowPosition;
+            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
+            arrowTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        }
+    }
+
+    public void resetArrow()
+    {
+        Transform arrowTransform = transform.Find("Arrow");
+
+        arrowTransform.GetComponent<SpriteRenderer>().enabled = false;
+
+        arrowTransform.localPosition = arrowInitialLocalPosition;
+        arrowTransform.localRotation = arrowInitialLocalRotation;
+        timerArrow = 100;
+    }
+
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -72,6 +120,8 @@ public class EntityController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     { 
+        if (entityType == GameEnums.EntityType.DISTANCE) return;
+
         timer -= Time.deltaTime;
         if (timer > 0) return;
         else timer = triggerDelay;

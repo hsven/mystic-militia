@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f45620221d7f347ac195292f8630e4, type: 3}
-  m_Name: Infantry
+  m_Name: Archery
   m_EditorClassIdentifier: 
-  unitName: Infantry
-  movementSpeed: 40
-  healthPoints: 100
-  damage: 10
+  unitName: Archery
+  movementSpeed: 30
+  healthPoints: 50
+  damage: 25
   shootingRange: 3

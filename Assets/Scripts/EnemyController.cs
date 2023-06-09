@@ -5,21 +5,16 @@ using UnityEngine;
 public class EnemyController : EntityController
 {
     private List<Vector2> unitsPositions = new List<Vector2>();
-    private Vector3 arrowInitialLocalPosition;
-    private Quaternion arrowInitialLocalRotation;
 
     private PlayerController player;
     
-    private int timerArrow = 1;
-    private UnitController targetUnit;
-
     public GameEnums.EnemyTarget enemyTarget = GameEnums.EnemyTarget.UNIT;
-    public GameEnums.EnemyType enemyType = GameEnums.EnemyType.CONTACT;
-    public int shootingRange = 0;
 
     void Start()
     {
         if (!player) player = BattleManager.Instance.player;
+        BattleManager.Instance.enemies.Add(this);
+        
         Transform arrowTransform = transform.Find("Arrow");
         arrowInitialLocalPosition = arrowTransform.localPosition;
         arrowInitialLocalRotation = arrowTransform.localRotation;
@@ -57,38 +52,15 @@ public class EnemyController : EntityController
             }
         }
 
-        if (enemyType == GameEnums.EnemyType.DISTANCE && (Vector2.Distance(targetPos, ownPosition) < 2.5 || timerArrow <= 0))
+        if (entityType == GameEnums.EntityType.DISTANCE && (Vector2.Distance(targetPos, ownPosition) < shootingRange || timerArrow != 0))
         {
             if (timerArrow == 0)
             {
-                timerArrow = -1;
-                
-                transform.Find("Arrow").GetComponent<SpriteRenderer>().enabled = true;
-                targetUnit = BattleManager.Instance.totalPlayerUnits[targetIndex];
-
+               launchArrow(BattleManager.Instance.totalPlayerUnits[targetIndex]);
             }
             else if (timerArrow < 0)
             {
-                Vector2 targetArrow = targetUnit.GetPosition();
-                Transform arrowTransform = transform.Find("Arrow");
-                Vector3 arrowPosition = arrowTransform.position;
-                arrowPosition += ((Vector3)targetArrow - arrowPosition).normalized * movementSpeed * Time.deltaTime;
-                arrowTransform.position = arrowPosition;
-
-                Vector3 direction = targetArrow - ownPosition;
-                float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-                arrowTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-
-                if (Vector3.Distance(targetArrow, arrowPosition) < 0.2)
-                {
-                    targetUnit.TakeDamage(25);
-                    arrowTransform.GetComponent<SpriteRenderer>().enabled = false;
-
-                    arrowTransform.localPosition = arrowInitialLocalPosition;
-                    arrowTransform.localRotation = arrowInitialLocalRotation;
-                    timerArrow = 100;
-                }
-
+                flyingArrow();
             }
             else
             {
