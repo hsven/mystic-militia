@@ -21,6 +21,21 @@ public class UnitController : EntityController
     public int unitArmyIndex = 0;
     public Vector2Int unitSquadIndex = new Vector2Int(-1, -1);
 
+    [Header("Sprite characteristics")]
+
+    public bool isBorderActive = false;
+
+    [SerializeField]
+    private SpriteRenderer border1Sprite;
+
+    [SerializeField]
+    private SpriteRenderer border2Sprite;
+
+    [SerializeField]
+    private SpriteRenderer border3Sprite;
+
+    [SerializeField]
+    private SpriteRenderer border4Sprite;
     public GameObject Enemy1;
     public GameObject Enemy2;
 
@@ -108,5 +123,21 @@ public class UnitController : EntityController
             enemyInSight = true;
             enemyObj = other.gameObject;
         }
+    }
+
+    public void SetUnitBorders(int squad)
+    {
+        bool border = true;
+
+         if (squad >= 0)
+        {
+            PlayerSquad selectedSquad = BattleManager.Instance.squads[squad];
+            border = selectedSquad.units.Contains(this);
+        }
+
+        border1Sprite.gameObject.SetActive(border);
+        border2Sprite.gameObject.SetActive(border);
+        border3Sprite.gameObject.SetActive(border);
+        border4Sprite.gameObject.SetActive(border);
     }
 }
