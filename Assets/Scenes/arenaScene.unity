@@ -597,7 +597,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnits:
   - unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
-    quantity: 15
+    quantity: 10
+  - unitData: {fileID: 11400000, guid: 6c8628a016ae8be48aee324d8eab37f5, type: 2}
+    quantity: 5
   playerSquads:
   - unitEntries: []
 --- !u!4 &321915872
@@ -11577,7 +11579,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.28125
+  orthographic size: 3.0546875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
