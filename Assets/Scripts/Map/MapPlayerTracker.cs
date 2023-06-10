@@ -80,6 +80,7 @@ namespace Map
 
         public void returnToTree(){
             SceneManager.LoadScene("SampleSceneMap");
+            Time.timeScale = 1.0f;
         }
 
         private static void EnterNode(MapNode mapNode)
