@@ -37,6 +37,12 @@ MonoBehaviour:
     name: Light Orange
   - color: {r: 1, g: 0.9490196, b: 0, a: 1}
     name: Yellow
+  - color: {r: 0, g: 1, b: 0.010393143, a: 1}
+    name: Green
+  - color: {r: 0, g: 0.34546423, b: 1, a: 1}
+    name: Blue
+  - color: {r: 0.62617975, g: 0.3066038, b: 1, a: 1}
+    name: Null
   matchOverridesList:
   - color1: 6
     color2: 5
@@ -68,3 +74,6 @@ MonoBehaviour:
   - color1: 7
     color2: 10
     isMatch: 1
+  - color1: 14
+    color2: 14
+    isMatch: 0
