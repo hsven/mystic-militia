@@ -53,6 +53,7 @@ public class UnitController : EntityController
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!isAlive) killEntity();
         UnitMovement();
     }
 

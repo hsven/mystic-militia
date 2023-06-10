@@ -17,3 +17,4 @@ MonoBehaviour:
   healthPoints: 50
   damage: 25
   shootingRange: 3
+  entityType: 1

@@ -41,6 +41,7 @@ public class EntityController : MonoBehaviour
     private EntityController targetEntity;
     public int timerArrow = 0;
     protected int shootingRange = 3;
+    protected bool isAlive = true;
 
     protected void Awake()
     {
@@ -112,6 +113,16 @@ public class EntityController : MonoBehaviour
         UpdateHealthBar();
 
         if (currentHealth <= 0)
+        {
+            Transform entitySprite = transform.Find("Sprite");
+            entitySprite.GetComponent<SpriteRenderer>().enabled = false;
+            killEntity();
+        }
+    }
+
+    protected void killEntity()
+    {
+        if (timerArrow >= 0)
         {
             BattleManager.Instance.DeleteEntity(this);
             Destroy(gameObject);

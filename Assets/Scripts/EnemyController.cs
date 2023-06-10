@@ -27,6 +27,7 @@ public class EnemyController : EntityController
 
     private void FixedUpdate()
     {
+        if (!isAlive) killEntity();
         Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
         int targetIndex = 0;
 
