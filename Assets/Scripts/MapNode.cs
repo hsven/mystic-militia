@@ -170,6 +170,7 @@ namespace Map
             visitedCircleImage.fillAmount = 0;
 
             DOTween.To(() => visitedCircleImage.fillAmount, x => visitedCircleImage.fillAmount = x, 1f, fillDuration);
+            
         }
     }
 }

@@ -1,7 +1,10 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Linq;
+using System.Collections;
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Map
 {
@@ -49,6 +52,7 @@ namespace Map
 
         private void SendPlayerToNode(MapNode mapNode)
         {
+            mapNode.ShowSwirlAnimation();
             Locked = lockAfterSelecting;
             mapManager.CurrentMap.path.Add(mapNode.Node.point);
             mapManager.SaveMap();
@@ -56,13 +60,32 @@ namespace Map
             view.SetLineColors();
             mapNode.ShowSwirlAnimation();
 
+
             DOTween.Sequence().AppendInterval(enterNodeDelay).OnComplete(() => EnterNode(mapNode));
+
+
+            if(mapNode.Node.nodeType == NodeType.MinorEnemy){
+               StartCoroutine(waiter("arenaScene"));
+            }
+        }
+
+        IEnumerator waiter(String arenaName){
+            yield return new WaitForSeconds((float)0.7);
+            OpenScene(arenaName);
+        }
+
+        public void OpenScene(String sceneName){
+            SceneManager.LoadScene(sceneName);
+        }
+
+        public void returnToTree(){
+            SceneManager.LoadScene("SampleSceneMap");
         }
 
         private static void EnterNode(MapNode mapNode)
         {
             // we have access to blueprint name here as well
-            Debug.Log("Entering node: " + mapNode.Node.blueprintName + " of type: " + mapNode.Node.nodeType);
+            UnityEngine.Debug.Log("Entering node: " + mapNode.Node.blueprintName + " of type: " + mapNode.Node.nodeType);
             // load appropriate scene with context based on nodeType:
             // or show appropriate GUI over the map: 
             // if you choose to show GUI in some of these cases, do not forget to set "Locked" in MapPlayerTracker back to false
@@ -89,7 +112,7 @@ namespace Map
 
         private void PlayWarningThatNodeCannotBeAccessed()
         {
-            Debug.Log("Selected node cannot be accessed");
+            UnityEngine.Debug.Log("Selected node cannot be accessed");
         }
     }
 }
