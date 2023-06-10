@@ -204,17 +204,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
---- !u!114 &87489629 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4276161544753409136, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
-  m_PrefabInstance: {fileID: 87489628}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &93492748
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +352,7 @@ GameObject:
   - component: {fileID: 227266815}
   - component: {fileID: 227266818}
   m_Layer: 5
-  m_Name: Button
+  m_Name: BackButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,13 +365,13 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 227266813}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1985884090}
-  m_Father: {fileID: 1967458094}
+  m_Father: {fileID: 316446486}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -430,7 +419,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 87489629}
+  m_TargetGraphic: {fileID: 227266816}
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
@@ -881,6 +870,7 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 227266814}
   - {fileID: 1967458094}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -11845,7 +11835,6 @@ RectTransform:
   m_Children:
   - {fileID: 394732552}
   - {fileID: 1038262597}
-  - {fileID: 227266814}
   m_Father: {fileID: 316446486}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
