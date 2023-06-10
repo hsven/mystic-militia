@@ -1973,7 +1973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &332920988
 Transform:
   m_ObjectHideFlags: 0
@@ -1982,7 +1982,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 332920987}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.639999, y: -4.88, z: 0}
+  m_LocalPosition: {x: 14.17, y: -1.54, z: -2.65}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2223,120 +2223,535 @@ MonoBehaviour:
   m_tesseraSerializationVersion: 1
   palette: {fileID: 11400000, guid: 54f834c0f14882644b9f63cb4cfdf943, type: 2}
   faceDetails:
-  - offset: {x: 0, y: 0, z: 0}
-    faceDir: 0
-    faceDetails:
-      faceType: 4
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 0
-      center: 0
-      right: 0
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 0, y: 0, z: 0}
+  - offset: {x: 1, y: 0, z: 0}
     faceDir: 1
     faceDetails:
       faceType: 4
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 0
-      center: 0
-      right: 0
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
       hexRightAndTopRight: 0
       hexTopLeftAndLeft: 0
       hexLeftAndBottomLeft: 0
       hexBottomRightAndRight: 0
-  - offset: {x: 0, y: 0, z: 0}
-    faceDir: 2
-    faceDetails:
-      faceType: 4
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 0
-      center: 0
-      right: 0
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 0, y: 0, z: 0}
+  - offset: {x: 1, y: 0, z: 0}
     faceDir: 3
     faceDetails:
       faceType: 4
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 0
-      center: 0
-      right: 0
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
       hexRightAndTopRight: 0
       hexTopLeftAndLeft: 0
       hexLeftAndBottomLeft: 0
       hexBottomRightAndRight: 0
-  - offset: {x: 0, y: 0, z: 0}
-    faceDir: 4
-    faceDetails:
-      faceType: 4
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 0
-      center: 0
-      right: 0
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 0, y: 0, z: 0}
+  - offset: {x: 1, y: 0, z: 0}
     faceDir: 5
     faceDetails:
       faceType: 4
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 0
-      center: 0
-      right: 0
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 0}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 1}
+    faceDir: 0
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 1}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 1}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 1}
+    faceDir: 1
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 1}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 1}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 2}
+    faceDir: 0
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 2}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 2}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 2}
+    faceDir: 1
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 2}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 2}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 3}
+    faceDir: 0
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 3}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 3}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 3}
+    faceDir: 1
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 3}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 3}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 3}
+    faceDir: 4
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 4}
+    faceDir: 0
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 4}
+    faceDir: 1
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 4}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 4}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 4}
+    faceDir: 4
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 0}
+    faceDir: 0
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 1}
+    faceDir: 5
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
       hexRightAndTopRight: 0
       hexTopLeftAndLeft: 0
       hexLeftAndBottomLeft: 0
       hexBottomRightAndRight: 0
   offsets:
-  - {x: 0, y: 0, z: 0}
-  center: {x: 2.5, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 0, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
+  - {x: 0, y: 0, z: 2}
+  - {x: 1, y: 0, z: 2}
+  - {x: 0, y: 0, z: 3}
+  - {x: 1, y: 0, z: 3}
+  - {x: 0, y: 0, z: 4}
+  center: {x: 2.5, y: 0, z: -0.5}
   cellSize: {x: 1, y: 1, z: 1}
-  rotatable: 1
-  reflectable: 1
+  rotatable: 0
+  reflectable: 0
   rotationGroupType: 3
-  symmetric: 1
+  symmetric: 0
   instantiateChildrenOnly: 0
   tile: {fileID: 0}
   setOfTiles: {fileID: 332920991}
-  blockOffset: {x: 0, y: 0, z: 0}
+  blockOffset: {x: -3, y: 1, z: 0}
   possibleUnderTiles: []
 --- !u!1 &394732551
 GameObject:
@@ -5509,6 +5924,10 @@ MonoBehaviour:
     weight: 1
   - tile: {fileID: 406962211}
     weight: 0
+  - tile: {fileID: 332920992}
+    weight: 1
+  - tile: {fileID: 1571414660}
+    weight: 1
   samples: []
   overlapSize: {x: 3, y: 3, z: 3}
   m_cellSize: {x: 1, y: 1, z: 1}
@@ -7872,14 +8291,14 @@ GameObject:
   - component: {fileID: 1571414656}
   - component: {fileID: 1571414659}
   - component: {fileID: 1571414658}
-  - component: {fileID: 1571414657}
+  - component: {fileID: 1571414660}
   m_Layer: 0
   m_Name: PathVertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1571414656
 Transform:
   m_ObjectHideFlags: 0
@@ -7888,286 +8307,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571414655}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.948, y: -2.687, z: 0}
+  m_LocalPosition: {x: 18.95, y: -2.687, z: -2.32}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 987642909}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1571414657
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1571414655}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 18210135642d8b24da835ab73cdfdbfd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_tesseraSerializationVersion: 1
-  palette: {fileID: 11400000, guid: 54f834c0f14882644b9f63cb4cfdf943, type: 2}
-  faceDetails:
-  - offset: {x: 0, y: 1, z: 0}
-    faceDir: 6
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 1
-      center: 1
-      right: 1
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 0, y: 1, z: 0}
-    faceDir: 4
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 10
-      center: 10
-      right: 10
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 0, y: 1, z: 0}
-    faceDir: 2
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 10
-      center: 10
-      right: 10
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 1, y: 1, z: 0}
-    faceDir: 6
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 1
-      center: 1
-      right: 1
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 1, y: 2, z: 0}
-    faceDir: 2
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 1
-      center: 1
-      right: 1
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 1, y: 2, z: 0}
-    faceDir: 4
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 10
-      center: 10
-      right: 10
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 2, y: 1, z: 0}
-    faceDir: 6
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 1
-      center: 1
-      right: 1
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 2, y: 2, z: 0}
-    faceDir: 2
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 1
-      center: 1
-      right: 1
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 3, y: 1, z: 0}
-    faceDir: 6
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 1
-      center: 1
-      right: 1
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 3, y: 2, z: 0}
-    faceDir: 2
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 1
-      center: 1
-      right: 1
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 3, y: 1, z: 0}
-    faceDir: 0
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 10
-      center: 10
-      right: 10
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 4, y: 2, z: 0}
-    faceDir: 0
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 10
-      center: 10
-      right: 10
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 4, y: 2, z: 0}
-    faceDir: 6
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 10
-      center: 10
-      right: 10
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  - offset: {x: 4, y: 2, z: 0}
-    faceDir: 2
-    faceDetails:
-      faceType: 2
-      topLeft: 0
-      top: 0
-      topRight: 0
-      left: 1
-      center: 1
-      right: 1
-      bottomLeft: 0
-      bottom: 0
-      bottomRight: 0
-      hexRightAndTopRight: 0
-      hexTopLeftAndLeft: 0
-      hexLeftAndBottomLeft: 0
-      hexBottomRightAndRight: 0
-  offsets:
-  - {x: 0, y: 1, z: 0}
-  - {x: 1, y: 1, z: 0}
-  - {x: 1, y: 2, z: 0}
-  - {x: 2, y: 1, z: 0}
-  - {x: 2, y: 2, z: 0}
-  - {x: 3, y: 1, z: 0}
-  - {x: 3, y: 2, z: 0}
-  - {x: 4, y: 2, z: 0}
-  center: {x: 0, y: 0, z: 0}
-  cellSize: {x: 1, y: 0.5, z: 0}
-  rotatable: 0
-  reflectable: 0
-  rotationGroupType: 1
-  symmetric: 0
-  instantiateChildrenOnly: 0
-  tile: {fileID: 0}
-  setOfTiles: {fileID: 1571414659}
-  blockOffset: {x: 0, y: 0, z: 0}
-  possibleUnderTiles: []
 --- !u!483693784 &1571414658
 TilemapRenderer:
   m_ObjectHideFlags: 0
@@ -8387,6 +8533,551 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1571414660
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571414655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 634685ef2ac8767488093f1fe1fbcc7f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_tesseraSerializationVersion: 1
+  palette: {fileID: 11400000, guid: 54f834c0f14882644b9f63cb4cfdf943, type: 2}
+  faceDetails:
+  - offset: {x: 0, y: 0, z: 0}
+    faceDir: 0
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 0}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 0}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 0}
+    faceDir: 4
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 0, y: 0, z: 0}
+    faceDir: 5
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 0}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 0}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 0}
+    faceDir: 5
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 2, y: 0, z: 0}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 2, y: 0, z: 0}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 2, y: 0, z: 0}
+    faceDir: 5
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 3, y: 0, z: 0}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 3, y: 0, z: 0}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 3, y: 0, z: 0}
+    faceDir: 5
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 4, y: 0, z: 1}
+    faceDir: 1
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 4, y: 0, z: 1}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 4, y: 0, z: 1}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 4, y: 0, z: 1}
+    faceDir: 4
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 3, y: 0, z: 0}
+    faceDir: 1
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 4, y: 0, z: 1}
+    faceDir: 5
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 1}
+    faceDir: 0
+    faceDetails:
+      faceType: 4
+      topLeft: 11
+      top: 11
+      topRight: 11
+      left: 11
+      center: 11
+      right: 11
+      bottomLeft: 11
+      bottom: 11
+      bottomRight: 11
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 1}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 1}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 1, y: 0, z: 1}
+    faceDir: 4
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 2, y: 0, z: 1}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 2, y: 0, z: 1}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 2, y: 0, z: 1}
+    faceDir: 4
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 3, y: 0, z: 1}
+    faceDir: 2
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 3, y: 0, z: 1}
+    faceDir: 3
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  - offset: {x: 3, y: 0, z: 1}
+    faceDir: 4
+    faceDetails:
+      faceType: 4
+      topLeft: 1
+      top: 1
+      topRight: 1
+      left: 1
+      center: 1
+      right: 1
+      bottomLeft: 1
+      bottom: 1
+      bottomRight: 1
+      hexRightAndTopRight: 0
+      hexTopLeftAndLeft: 0
+      hexLeftAndBottomLeft: 0
+      hexBottomRightAndRight: 0
+  offsets:
+  - {x: 0, y: 0, z: 0}
+  - {x: 1, y: 0, z: 0}
+  - {x: 2, y: 0, z: 0}
+  - {x: 3, y: 0, z: 0}
+  - {x: 4, y: 0, z: 1}
+  - {x: 1, y: 0, z: 1}
+  - {x: 2, y: 0, z: 1}
+  - {x: 3, y: 0, z: 1}
+  center: {x: 0.5, y: 0, z: 0.5}
+  cellSize: {x: 1, y: 1, z: 1}
+  rotatable: 0
+  reflectable: 0
+  rotationGroupType: 3
+  symmetric: 0
+  instantiateChildrenOnly: 0
+  tile: {fileID: 0}
+  setOfTiles: {fileID: 1571414659}
+  blockOffset: {x: 0, y: 0, z: 0}
+  possibleUnderTiles: []
 --- !u!1 &1606642803
 GameObject:
   m_ObjectHideFlags: 0
@@ -8607,20 +9298,11 @@ MonoBehaviour:
   - tilemap: {fileID: 1442683251}
     generator: {fileID: 551660815}
     pinnedTiles: []
-  generatorList:
-  - {fileID: 1132336516}
-  - {fileID: 551660815}
-  tesseraPalette: {fileID: 11400000, guid: 54f834c0f14882644b9f63cb4cfdf943, type: 2}
   tileStorage: {fileID: 987642908}
   spawnedPinnedTiles: {fileID: 1292268102}
-  pinnedTiles:
-  - {fileID: 53984368}
   mapSize: {x: 12, y: 12}
   spawnThreshold: 0.299
   ground: {fileID: 1606642806}
-  tilemapList:
-  - {fileID: 1606642806}
-  - {fileID: 1442683251}
   tilePalette:
   - tile: {fileID: 11400000, guid: 2a61982efce3ea34db0fbd8afc6e87e5, type: 2}
     value: 2
@@ -8637,25 +9319,6 @@ MonoBehaviour:
   - tile: {fileID: 11400000, guid: 619a2f2b0cca5b34e8e8f78a8fcc40fd, type: 2}
     value: 1
     adjacencyTiles: 0000000004000000
-  modules:
-  - module: {fileID: 6709858552944447126, guid: ba7b2346388ab0f4f93323ca30d5e03d, type: 3}
-    value: 0
-    adjacencyTiles: 
-  - module: {fileID: 6709858552944447126, guid: 4d44fffa5b011b3409bd3c14510ba9b9, type: 3}
-    value: 0
-    adjacencyTiles: 
-  - module: {fileID: 6709858552944447126, guid: 744a7716c6250e347b2d1f9d0d613425, type: 3}
-    value: 0
-    adjacencyTiles: 
-  - module: {fileID: 6709858552944447126, guid: dacee861e51f5ed47ba9b459a07751aa, type: 3}
-    value: 0
-    adjacencyTiles: 
-  - module: {fileID: 6709858552944447126, guid: c11219e232d119244867177e506f6f7c, type: 3}
-    value: 0
-    adjacencyTiles: 
-  - module: {fileID: 6709858552944447126, guid: 79f9e9d9d20772d42a6a58e6d94bb0b5, type: 3}
-    value: 0
-    adjacencyTiles: 
 --- !u!1 &1628776156
 GameObject:
   m_ObjectHideFlags: 0
