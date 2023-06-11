@@ -9,7 +9,7 @@ public static class GameEnums {
         DEFEND,
         PATROL,
     }
-    public enum EntityRangeType
+    public enum EnemyTarget
     {
         PLAYER,
         UNIT,

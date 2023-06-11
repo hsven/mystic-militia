@@ -13,7 +13,6 @@ public class PlayerSquad
     public List<UnitController> units = new List<UnitController>();
 
     public Spline formation = new Spline();
-
 }
 
 public class BattleManager : MonoBehaviour
@@ -62,6 +61,7 @@ public class BattleManager : MonoBehaviour
                 for (int i = 0; i < unit.quantity; i++)
                 {
                     var obj = Instantiate(unitPrefab).GetComponent<UnitController>();
+                    obj.unitData = unit.unitData;
                     obj.transform.position = UnityEngine.Random.insideUnitSphere * 2;
                     newPlayerSquad.units.Add(obj);
                     totalPlayerUnits.Add(obj);
