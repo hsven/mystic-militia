@@ -30,11 +30,15 @@ public class BattleManager : MonoBehaviour
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
     public List<PlayerSquad> squads = new List<PlayerSquad>();
     public List<EnemyController> enemies = new List<EnemyController>();
+    public List<Arrow> arrows = new List<Arrow>();
 
     public Spline currentFormation;
     public int currentSquadSelection = -1;
     public LineRenderer repr;
-    
+
+    [SerializeField]
+    public GameObject arrowPrefab;    
+
     void Awake() {
         BattleManager.Instance = this;
 
@@ -104,14 +108,6 @@ public class BattleManager : MonoBehaviour
         EnemyController enemy = entity as EnemyController;
         if (enemy != null)
         {
-            for (int i=0; i < totalPlayerUnits.Count; i++)
-            {
-                if (enemy == totalPlayerUnits[i].targetEnemy)
-                {
-                    totalPlayerUnits[i].targetEnemy = null;
-                    totalPlayerUnits[i].resetArrow();
-                }
-            }
             enemies.Remove(enemy);
         }
     }
@@ -147,6 +143,24 @@ public class BattleManager : MonoBehaviour
         else finalPos = formation.EvaluatePosition(interval * squadIndex.y);
 
         return new Vector3(finalPos.x, finalPos.y, 0);
+    }
+
+    public void NewArrow(EntityController archery, EntityController target)
+    {
+        Debug.Log("New arrow");
+
+        GameObject arrowObject = Instantiate(arrowPrefab);
+
+        Arrow arrow = arrowObject.GetComponent<Arrow>();
+
+        if (arrow == null)
+        {
+            arrow = arrowObject.AddComponent<Arrow>();
+        }
+
+        arrow.Initialize(archery, target);
+
+        arrows.Add(arrow);
     }
 
     public void SetFormation(List<Vector3> positions, int selectedSquad) {

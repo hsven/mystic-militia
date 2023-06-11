@@ -14,10 +14,6 @@ public class EnemyController : EntityController
     {
         if (!player) player = BattleManager.Instance.player;
         BattleManager.Instance.enemies.Add(this);
-        
-        Transform arrowTransform = transform.Find("Arrow");
-        arrowInitialLocalPosition = arrowTransform.localPosition;
-        arrowInitialLocalRotation = arrowTransform.localRotation;
     }
 
     private void Update()
@@ -58,10 +54,6 @@ public class EnemyController : EntityController
             if (timerArrow == 0)
             {
                launchArrow(BattleManager.Instance.totalPlayerUnits[targetIndex]);
-            }
-            else if (timerArrow < 0)
-            {
-                flyingArrow();
             }
             else
             {

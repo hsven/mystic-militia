@@ -101,7 +101,7 @@ public class UnitController : EntityController
                 break;
         }
 
-        if (entityType == GameEnums.EntityType.DISTANCE)
+        if (entityType != GameEnums.EntityType.DISTANCE)
         {
             Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
 
@@ -117,10 +117,6 @@ public class UnitController : EntityController
                 if (timerArrow == 0)
                 {
                     launchArrow(targetEnemy);
-                }
-                else if (timerArrow < 0)
-                {
-                    flyingArrow();
                 }
                 else
                 {

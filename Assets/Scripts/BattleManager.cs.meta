@@ -3,7 +3,12 @@ guid: 2fe7a5e275cce3c4f9caafe5072d5e38
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - UIObj: {instanceID: 0}
+  - player: {instanceID: 0}
+  - unitPrefab: {instanceID: 0}
+  - repr: {instanceID: 0}
+  - arrowPrefab: {fileID: 5498187762117813187, guid: 48c125a7df9881749a6d130979a1a230, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

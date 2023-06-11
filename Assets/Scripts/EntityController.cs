@@ -11,7 +11,7 @@ public class EntityController : MonoBehaviour
     private Collider2D hurtbox;
 
     [SerializeField]
-    protected Rigidbody2D rb;
+    public Rigidbody2D rb;
 
     private float triggerDelay = .5f;
     float timer;
@@ -69,42 +69,8 @@ public class EntityController : MonoBehaviour
 
     protected void launchArrow(EntityController target)
     {
-        timerArrow = -1;
-
-        transform.Find("Arrow").GetComponent<SpriteRenderer>().enabled = true;
-        targetEntity = target;
-    }
-
-    protected void flyingArrow()
-    {
-        if (Vector3.Distance(targetEntity.GetPosition(), transform.Find("Arrow").position) < 0.2)
-        {
-            targetEntity.TakeDamage(power);
-            resetArrow();
-        }
-        else
-        {
-            Vector2 targetArrow = targetEntity.GetPosition();
-            Transform arrowTransform = transform.Find("Arrow");
-            Vector3 arrowPosition = arrowTransform.position;
-            arrowPosition += ((Vector3)targetArrow - arrowPosition).normalized * movementSpeed * Time.deltaTime;
-            arrowTransform.position = arrowPosition;
-
-            Vector3 direction = (Vector3)targetArrow - arrowPosition;
-            float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            arrowTransform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        }
-    }
-
-    public void resetArrow()
-    {
-        Transform arrowTransform = transform.Find("Arrow");
-
-        arrowTransform.GetComponent<SpriteRenderer>().enabled = false;
-
-        arrowTransform.localPosition = arrowInitialLocalPosition;
-        arrowTransform.localRotation = arrowInitialLocalRotation;
         timerArrow = 100;
+        BattleManager.Instance.NewArrow(this, target);
     }
 
     public void TakeDamage(int damage)

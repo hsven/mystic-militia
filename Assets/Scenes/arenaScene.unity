@@ -6930,6 +6930,7 @@ MonoBehaviour:
   totalPlayerUnits: []
   squads: []
   enemies: []
+  arrows: []
   currentFormation:
     m_EditModeType: 1
     m_Knots: []
@@ -6945,6 +6946,7 @@ MonoBehaviour:
       m_Data: []
   currentSquadSelection: -1
   repr: {fileID: 1508012627}
+  arrowPrefab: {fileID: 5498187762117813187, guid: 48c125a7df9881749a6d130979a1a230, type: 3}
 --- !u!4 &768855753
 Transform:
   m_ObjectHideFlags: 0
@@ -11902,7 +11904,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 3.9609375
+  orthographic size: 3.0546875
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
