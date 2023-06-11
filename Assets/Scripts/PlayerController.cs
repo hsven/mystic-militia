@@ -133,16 +133,25 @@ public class PlayerController : EntityController
             if (selectedSquad < -1) {
                 selectedSquad = -1;
             }
+            updateUnitBorders();
         }
         else if(Input.GetKeyDown(KeyCode.E)) {
             selectedSquad++;
             if (selectedSquad > BattleManager.Instance.squads.Count - 1) {
                 selectedSquad = BattleManager.Instance.squads.Count - 1;
             }
+            updateUnitBorders();
         }
 
     }
 
+    public void updateUnitBorders()
+    {
+        foreach (UnitController unit in BattleManager.Instance.totalPlayerUnits)
+        {
+            unit.SetUnitBorders(selectedSquad);
+        }
+    }
 
     public Vector2 GetPosition() {
         return rb.position;
