@@ -7,28 +7,36 @@ using Tessera;
 public class ExtendedTesseraTileEditor : TesseraTileBaseEditor {
     SerializedProperty tile;
     SerializedProperty setOfTiles;
+    SerializedProperty isSingleSprite;
     SerializedProperty blockOffset;
     SerializedProperty possibleUnderTiles;
+    SerializedProperty possibleSprites;
 
     void OnEnable()
     {
         tile = serializedObject.FindProperty("tile");
         setOfTiles = serializedObject.FindProperty("setOfTiles");
+        isSingleSprite = serializedObject.FindProperty("isSingleSprite");
         blockOffset = serializedObject.FindProperty("blockOffset");
         possibleUnderTiles = serializedObject.FindProperty("possibleUnderTiles");
+        possibleSprites = serializedObject.FindProperty("possibleSprites");
     }
 
     public override void OnInspectorGUI() {
         serializedObject.Update();
         EditorGUILayout.PropertyField(tile);
-        serializedObject.ApplyModifiedProperties();
         EditorGUILayout.PropertyField(setOfTiles);
-        serializedObject.ApplyModifiedProperties();
-        EditorGUILayout.PropertyField(blockOffset);
-        serializedObject.ApplyModifiedProperties();
-        EditorGUILayout.PropertyField(possibleUnderTiles);
-        serializedObject.ApplyModifiedProperties();
+        EditorGUILayout.PropertyField(isSingleSprite);
+        if(isSingleSprite.boolValue)
+        {
+            EditorGUILayout.PropertyField(possibleSprites);
+        }
 
+        EditorGUILayout.PropertyField(blockOffset);
+        EditorGUILayout.PropertyField(possibleUnderTiles);
+
+
+        serializedObject.ApplyModifiedProperties();
         EditorGUILayout.Separator();
 
         base.OnInspectorGUI();

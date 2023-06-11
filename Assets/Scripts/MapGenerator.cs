@@ -8,20 +8,13 @@ using System;
 using Tessera;
 using System.Runtime.InteropServices;
 using static UnityEditor.Progress;
+using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class MapGenerator : MonoBehaviour
 {
     [Serializable]
     public class TileData {
         public TileBase tile;
-        public int value;
-
-        public List<int> adjacencyTiles;
-    }
-
-    [Serializable]
-    public class TileModule {
-        public GameObject module;
         public int value;
 
         public List<int> adjacencyTiles;
@@ -56,6 +49,10 @@ public class MapGenerator : MonoBehaviour
     GameObject tileStorage;
     [SerializeField]
     Transform spawnedPinnedTiles;
+    [SerializeField]
+    Tilemap mapBorder;
+    [SerializeField]
+    TileBase borderTile;
 
     public Vector2Int mapSize = new Vector2Int(25, 25);
 
@@ -66,11 +63,6 @@ public class MapGenerator : MonoBehaviour
 
     public List<TileData> tilePalette;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        GenerateMap();
-    }
 
     public void GenerateMap() {
         CleanPreviousMap();
@@ -92,6 +84,8 @@ public class MapGenerator : MonoBehaviour
             layer.tilemap.ClearAllTiles();
 
         }
+
+        mapBorder.ClearAllTiles();
 
         for (int i = 0; i < spawnedPinnedTiles.childCount; i++)
         {
@@ -148,19 +142,27 @@ public class MapGenerator : MonoBehaviour
             GenerateTilemap(layer);
         }
 
-        //Deactivate all the pinned objects so they are invisible
+        //Deactivate all the pinned objects so they are invisible and clear the generators
         foreach (var layer in tilemapLayers)
         {
+            layer.generator.Clear();
             layer.pinnedTiles.ForEach(x => x.gameObject.SetActive(false));
         }
+
+        GenerateWalls();
     }
 
     void GenerateTilemap(TilemapLayer layer)
     {
         layer.generator.size = new Vector3Int(mapSize.x, 1, mapSize.y);
+        TesseraCompletion generationResult = layer.generator.Regenerate();
 
-        var generationResult = layer.generator.Regenerate();
-        var tiles = generationResult.tileInstances;
+        if (!generationResult.success)
+        {
+            Debug.LogWarning("Failed");
+        }
+
+        IList<TesseraTileInstance> tiles = generationResult.tileInstances;
 
         PlaceTilesInTilemap(layer.generator, layer.tilemap, tiles);
 
@@ -179,8 +181,6 @@ public class MapGenerator : MonoBehaviour
             //Debug.Log("Target position in world: " + layer.tilemap.CellToWorld(adjustedFirstPos));
             pinCopy.transform.position = layer.tilemap.CellToWorld(adjustedFirstPos);
         }
-
-        layer.generator.Clear();
     }
 
 
@@ -214,11 +214,41 @@ public class MapGenerator : MonoBehaviour
                     }
                 }
             }
-            else
+            else if (tileData.tile != null)
             {
                 var adjustedPos = new Vector3Int(item.Cell.x, item.Cell.z, 0);
                 tileMap.SetTile(adjustedPos, tileData.tile);
             }
+            else if(tileData.isSingleSprite)
+            {
+                var pos = item.Position;
+                var adjustedFirstPos = new Vector3Int(item.Cell.x, item.Cell.z, 0);
+
+                var pinCopy = Instantiate(item.Tile.gameObject, spawnedPinnedTiles);
+                pinCopy.transform.position = tileMap.CellToWorld(adjustedFirstPos);
+                //Set random sprite if the options exist
+                if(tileData.possibleSprites.Count > 0)
+                {
+                    var spriteIndex = UnityEngine.Random.Range(0, tileData.possibleSprites.Count);
+                    pinCopy.GetComponent<SpriteRenderer>().sprite = tileData.possibleSprites[spriteIndex];
+                }
+            }
+        }
+    }
+
+    void GenerateWalls()
+    {
+        var bounds = tilemapLayers[0].tilemap.cellBounds;
+
+        for (int i = 0; i < bounds.xMax; i++)
+        {
+            mapBorder.SetTile(new Vector3Int(i, bounds.yMin + 1, 0), borderTile);
+            mapBorder.SetTile(new Vector3Int(i, bounds.yMax - 1, 0), borderTile);
+        }
+        for (int i = 0; i < bounds.yMax; i++)
+        {
+            mapBorder.SetTile(new Vector3Int(bounds.xMin + 1, i, 0), borderTile);
+            mapBorder.SetTile(new Vector3Int(bounds.xMax - 1, i, 0), borderTile);
         }
     }
 

@@ -12,7 +12,11 @@ public class ExtendedTesseraTile : TesseraTile
     [SerializeField]
     public Tilemap setOfTiles;
 
+
     public Vector3Int blockOffset;
 
     public List<TileBase> possibleUnderTiles = new List<TileBase>();
+
+    public bool isSingleSprite = false;
+    public List<Sprite> possibleSprites = new List<Sprite>();
 }
