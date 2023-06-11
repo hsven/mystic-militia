@@ -8,7 +8,7 @@ public class EnemyController : EntityController
 
     private PlayerController player;
     
-    public GameEnums.EnemyTarget enemyTarget = GameEnums.EnemyTarget.UNIT;
+    public GameEnums.EntityRangeType EntityRangeType = GameEnums.EntityRangeType.UNIT;
 
     void Start()
     {
@@ -27,11 +27,11 @@ public class EnemyController : EntityController
         Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
         int targetIndex = 0;
 
-        if (enemyTarget == GameEnums.EnemyTarget.PLAYER)
+        if (EntityRangeType == GameEnums.EntityRangeType.PLAYER)
         {
             targetPos = player.GetPosition();
         }
-        else if (enemyTarget == GameEnums.EnemyTarget.UNIT)
+        else if (EntityRangeType == GameEnums.EntityRangeType.UNIT)
         {
             if (unitsPositions.Count == 0) return;
 
@@ -49,7 +49,7 @@ public class EnemyController : EntityController
             }
         }
 
-        if (entityType == GameEnums.EntityType.DISTANCE && (Vector2.Distance(targetPos, ownPosition) < shootingRange || timerArrow != 0))
+        if (unitData.shootingRange > 0 && (Vector2.Distance(targetPos, ownPosition) < shootingRange || timerArrow != 0))
         {
             if (timerArrow == 0)
             {

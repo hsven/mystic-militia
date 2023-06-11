@@ -101,7 +101,7 @@ public class UnitController : EntityController
                 break;
         }
 
-        if (entityType != GameEnums.EntityType.DISTANCE)
+        if (unitData.shootingRange > 0)
         {
             Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
 

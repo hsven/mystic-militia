@@ -712,7 +712,7 @@ MonoBehaviour:
   hitbox: {fileID: 5562264874773238519}
   hurtbox: {fileID: 8878376911113376461}
   rb: {fileID: 0}
-  entityType: 0
+  unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   useOldMovement: 0
   movementSpeed: 5
   maxSpeed: 3

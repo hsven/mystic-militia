@@ -10101,6 +10101,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: unitData
+      value: 
+      objectReference: {fileID: 11400000, guid: 6c8628a016ae8be48aee324d8eab37f5, type: 2}
+    - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: enemyType
       value: 0
       objectReference: {fileID: 0}
@@ -10484,7 +10488,7 @@ MonoBehaviour:
   hitbox: {fileID: 0}
   hurtbox: {fileID: 0}
   rb: {fileID: 0}
-  entityType: 1
+  unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   useOldMovement: 0
   movementSpeed: 3
   maxSpeed: 10
@@ -11951,6 +11955,10 @@ PrefabInstance:
       propertyPath: maxSpeed
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
+      propertyPath: unitData
+      value: 
+      objectReference: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: enemyType
       value: 1

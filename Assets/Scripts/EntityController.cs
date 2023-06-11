@@ -18,7 +18,7 @@ public class EntityController : MonoBehaviour
 
     protected Vector2 targetPos;
 
-    public GameEnums.EntityType entityType = GameEnums.EntityType.DISTANCE;
+    public UnitData unitData;
 
     [Header("Movement related")]
     [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
@@ -97,7 +97,7 @@ public class EntityController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     { 
-        if (entityType == GameEnums.EntityType.DISTANCE) return;
+        if (unitData.shootingRange > 0) return;
 
         timer -= Time.deltaTime;
         if (timer > 0) return;

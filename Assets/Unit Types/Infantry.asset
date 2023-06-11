@@ -16,4 +16,4 @@ MonoBehaviour:
   movementSpeed: 40
   healthPoints: 100
   damage: 10
-  shootingRange: 3
+  shootingRange: 0

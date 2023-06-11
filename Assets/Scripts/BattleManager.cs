@@ -147,8 +147,6 @@ public class BattleManager : MonoBehaviour
 
     public void NewArrow(EntityController archery, EntityController target)
     {
-        Debug.Log("New arrow");
-
         GameObject arrowObject = Instantiate(arrowPrefab);
 
         Arrow arrow = arrowObject.GetComponent<Arrow>();

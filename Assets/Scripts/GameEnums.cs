@@ -9,14 +9,9 @@ public static class GameEnums {
         DEFEND,
         PATROL,
     }
-    public enum EnemyTarget
+    public enum EntityRangeType
     {
         PLAYER,
         UNIT,
-    }
-    public enum EntityType
-    {
-        CONTACT,
-        DISTANCE,
     }
 }
