@@ -34,9 +34,7 @@ public class UISquadManager : MonoBehaviour
 
     // Start is called before the first frame update
     void Start()
-    {
-        BattleManager.Instance.PauseGame();
-        
+    {    
         RefreshUnitInventoryPanel();
         RefreshSquadPanel();
     }

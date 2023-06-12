@@ -21,6 +21,7 @@ public class BattleManager : MonoBehaviour
     // public List<PlayerArmyInventory> armyInventory = new List<PlayerArmyInventory>();
 
     public static BattleManager Instance = null;
+    public MapGenerator mapGenerator;
     public bool isPaused = false;
     public GameObject UIObj;
 
@@ -40,6 +41,17 @@ public class BattleManager : MonoBehaviour
         if (currentFormation == null) currentFormation = GetComponentInChildren<Spline>();
     }
 
+    private void Start()
+    {
+        PauseGame();
+        mapGenerator.GenerateMap();
+
+        //TODO: Maybe redo how this initial spawns is configured
+        var respawnLocs = GameObject.FindGameObjectsWithTag("Respawn");
+        player.transform.position = respawnLocs[0].transform.position;
+
+    }
+
     //Currently more of a start game
     public void ResumeGame() {
         //TODO: Revisit UI being mentioned here
@@ -57,7 +69,7 @@ public class BattleManager : MonoBehaviour
                 for (int i = 0; i < unit.quantity; i++)
                 {
                     var obj = Instantiate(unitPrefab).GetComponent<UnitController>();
-                    obj.transform.position = UnityEngine.Random.insideUnitSphere * 2;
+                    obj.transform.position = player.transform.position + UnityEngine.Random.insideUnitSphere * 2;
                     newPlayerSquad.units.Add(obj);
                     totalPlayerUnits.Add(obj);
                     obj.Setup(totalPlayerUnits.Count - 1, new Vector2Int(squadCount, i));
