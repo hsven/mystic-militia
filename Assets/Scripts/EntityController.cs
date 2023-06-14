@@ -39,8 +39,7 @@ public class EntityController : MonoBehaviour
     protected Vector3 arrowInitialLocalPosition;
     protected Quaternion arrowInitialLocalRotation;
     private EntityController targetEntity;
-    public int timerArrow = 0;
-    protected int shootingRange = 3;
+    public int timerRangedWeapon = 0;
     protected bool isAlive = true;
 
     protected void Awake()
@@ -67,10 +66,10 @@ public class EntityController : MonoBehaviour
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
     }
 
-    protected void launchArrow(EntityController target)
+    protected void launchRangedWeapon(EntityController target, UnitData unitData)
     {
-        timerArrow = 100;
-        BattleManager.Instance.NewArrow(this, target);
+        timerRangedWeapon = 100;
+        BattleManager.Instance.NewRangedWeapon(this, target, unitData);
     }
 
     public void TakeDamage(int damage)
@@ -88,7 +87,7 @@ public class EntityController : MonoBehaviour
 
     protected void killEntity()
     {
-        if (timerArrow >= 0)
+        if (timerRangedWeapon >= 0)
         {
             BattleManager.Instance.DeleteEntity(this);
             Destroy(gameObject);

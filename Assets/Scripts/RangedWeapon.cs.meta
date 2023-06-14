@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: f1175913c68dc2a4db7b13088ed70477
+guid: 7f54db6ce67da9a488b74b228dfe1952
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - arrowSprite: {fileID: 21300000, guid: 8cf832eab20147c47850912fbe9801e0, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

@@ -49,15 +49,15 @@ public class EnemyController : EntityController
             }
         }
 
-        if (unitData.shootingRange > 0 && (Vector2.Distance(targetPos, ownPosition) < shootingRange || timerArrow != 0))
+        if (unitData.shootingRange > 0 && (Vector2.Distance(targetPos, ownPosition) < unitData.shootingRange || timerRangedWeapon != 0))
         {
-            if (timerArrow == 0)
+            if (timerRangedWeapon == 0)
             {
-               launchArrow(BattleManager.Instance.totalPlayerUnits[targetIndex]);
+               launchRangedWeapon(BattleManager.Instance.totalPlayerUnits[targetIndex], unitData);
             }
             else
             {
-                timerArrow--;
+                timerRangedWeapon--;
             }
         }
         else

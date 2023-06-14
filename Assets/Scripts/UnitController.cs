@@ -105,27 +105,27 @@ public class UnitController : EntityController
         {
             Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
 
-            if (timerArrow == 0)
+            if (timerRangedWeapon == 0)
             {
                 targetEnemy = BattleManager.Instance.enemies
                     .OrderBy(enemy => Vector2.Distance(ownPosition, enemy.GetPosition()))
                     .FirstOrDefault();
             }
 
-            if (targetEnemy != null && (Vector2.Distance(targetEnemy.GetPosition(), this.GetPosition()) < shootingRange || timerArrow != 0))
+            if (targetEnemy != null && (Vector2.Distance(targetEnemy.GetPosition(), this.GetPosition()) < unitData.shootingRange || timerRangedWeapon != 0))
             {
-                if (timerArrow == 0)
+                if (timerRangedWeapon == 0)
                 {
-                    launchArrow(targetEnemy);
+                    launchRangedWeapon(targetEnemy, unitData);
                 }
                 else
                 {
-                    timerArrow--;
+                    timerRangedWeapon--;
                 }
             }
-            else if (timerArrow > 0)
+            else if (timerRangedWeapon > 0)
             {
-                timerArrow--;
+                timerRangedWeapon--;
             }
             else
             {

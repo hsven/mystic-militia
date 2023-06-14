@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8cf832eab20147c47850912fbe9801e0, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 26dfc7310ed630a4c9ebd54d7837788c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -93,9 +93,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9152366076361469156}
-  - component: {fileID: -7778742263876324769}
+  - component: {fileID: 6303530975802218023}
   m_Layer: 0
-  m_Name: Arrow
+  m_Name: FireBall
   m_TagString: Ally
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -117,7 +117,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-7778742263876324769
+--- !u!114 &6303530975802218023
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -126,7 +126,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 5498187762117813187}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1175913c68dc2a4db7b13088ed70477, type: 3}
+  m_Script: {fileID: 11500000, guid: d93476752eb1c8d4f87fbbbcee808f10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10

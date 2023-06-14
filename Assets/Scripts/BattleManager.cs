@@ -30,6 +30,7 @@ public class BattleManager : MonoBehaviour
     public List<PlayerSquad> squads = new List<PlayerSquad>();
     public List<EnemyController> enemies = new List<EnemyController>();
     public List<Arrow> arrows = new List<Arrow>();
+    public List<FireBall> fireBalls = new List<FireBall>();
 
     public Spline currentFormation;
     public int currentSquadSelection = -1;
@@ -37,6 +38,9 @@ public class BattleManager : MonoBehaviour
 
     [SerializeField]
     public GameObject arrowPrefab;    
+
+    [SerializeField]
+    public GameObject fireBallPrefab;    
 
     void Awake() {
         BattleManager.Instance = this;
@@ -145,20 +149,36 @@ public class BattleManager : MonoBehaviour
         return new Vector3(finalPos.x, finalPos.y, 0);
     }
 
-    public void NewArrow(EntityController archery, EntityController target)
+    public void NewRangedWeapon(EntityController archery, EntityController target, UnitData data)
     {
-        GameObject arrowObject = Instantiate(arrowPrefab);
+        if (data.name == "Archery") {
+            GameObject arrowObject = Instantiate(arrowPrefab);
 
-        Arrow arrow = arrowObject.GetComponent<Arrow>();
+            Arrow arrow = arrowObject.GetComponent<Arrow>();
 
-        if (arrow == null)
-        {
-            arrow = arrowObject.AddComponent<Arrow>();
+            if (arrow == null)
+            {
+                arrow = arrowObject.AddComponent<Arrow>();
+            }
+
+            arrow.Initialize(archery, target);
+
+            arrows.Add(arrow);
         }
+        else {
+            GameObject fireBallObject = Instantiate(fireBallPrefab);
 
-        arrow.Initialize(archery, target);
+            FireBall fireBall = fireBallObject.GetComponent<FireBall>();
 
-        arrows.Add(arrow);
+            if (fireBall == null)
+            {
+                fireBall = fireBallObject.AddComponent<FireBall>();
+            }
+
+            fireBall.Initialize(archery, target);
+
+            fireBalls.Add(fireBall);
+        }
     }
 
     public void SetFormation(List<Vector3> positions, int selectedSquad) {

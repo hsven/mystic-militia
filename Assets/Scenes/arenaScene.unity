@@ -6931,6 +6931,7 @@ MonoBehaviour:
   squads: []
   enemies: []
   arrows: []
+  fireBalls: []
   currentFormation:
     m_EditModeType: 1
     m_Knots: []
@@ -6947,6 +6948,7 @@ MonoBehaviour:
   currentSquadSelection: -1
   repr: {fileID: 1508012627}
   arrowPrefab: {fileID: 5498187762117813187, guid: 48c125a7df9881749a6d130979a1a230, type: 3}
+  fireBallPrefab: {fileID: 5498187762117813187, guid: c527344067a0d094da9cba6e90604eb1, type: 3}
 --- !u!4 &768855753
 Transform:
   m_ObjectHideFlags: 0
@@ -10103,7 +10105,7 @@ PrefabInstance:
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: unitData
       value: 
-      objectReference: {fileID: 11400000, guid: 6c8628a016ae8be48aee324d8eab37f5, type: 2}
+      objectReference: {fileID: 11400000, guid: feff54c8a50dcca478bac0bc246ddbdf, type: 2}
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: enemyType
       value: 0
