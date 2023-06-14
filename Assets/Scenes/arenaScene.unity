@@ -749,9 +749,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnits:
   - unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
-    quantity: 10
+    quantity: 9
   - unitData: {fileID: 11400000, guid: 6c8628a016ae8be48aee324d8eab37f5, type: 2}
-    quantity: 5
+    quantity: 3
+  - unitData: {fileID: 11400000, guid: feff54c8a50dcca478bac0bc246ddbdf, type: 2}
+    quantity: 3
   playerSquads:
   - unitEntries: []
 --- !u!4 &321915872
@@ -10498,7 +10500,7 @@ MonoBehaviour:
   power: 10
   healthBarGreen: {fileID: 0}
   healthBarRed: {fileID: 0}
-  timerArrow: 0
+  timerRangedWeapon: 0
   mousePositionInterval: 1
   playerSpeed: 3
   selectedCommand: 0

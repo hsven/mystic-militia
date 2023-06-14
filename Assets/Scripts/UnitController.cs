@@ -53,7 +53,7 @@ public class UnitController : EntityController
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (!isAlive) killEntity();
+        if (!isAlive) KillEntity();
         UnitMovement();
     }
 
@@ -69,14 +69,17 @@ public class UnitController : EntityController
                 Movement(player.GetPosition(), posOffset);
                 break;
             case GameEnums.CommandTypes.ATTACK:
-                if (enemyInSight) {
-                    if(!enemyObj) {
+                if (enemyInSight)
+                {
+                    if (!enemyObj)
+                    {
                         enemyInSight = false;
                         break;
                     }
                     Movement(enemyObj.transform.position, Vector2.zero);
                 }
-                else {
+                else
+                {
                     // TODO: Make this a variable
                     targetPos += commandDirection * 0.01f;
                     Movement(targetPos, posOffset);
@@ -116,7 +119,7 @@ public class UnitController : EntityController
             {
                 if (timerRangedWeapon == 0)
                 {
-                    launchRangedWeapon(targetEnemy, unitData);
+                    LaunchRangedWeapon(targetEnemy, unitData);
                 }
                 else
                 {
@@ -134,14 +137,16 @@ public class UnitController : EntityController
         }
     }
 
-    public void SetCommand(GameEnums.CommandTypes newCommand, Vector2 newTargetPos) {
+    public void SetCommand(GameEnums.CommandTypes newCommand, Vector2 newTargetPos)
+    {
         currentCommand = newCommand;
         targetPos = newTargetPos;
 
         commandDirection = (targetPos - player.GetPosition()).normalized;
 
         posOffset = BattleManager.Instance.GetUnitOffset(unitArmyIndex, unitSquadIndex);
-        if (newCommand == GameEnums.CommandTypes.FOLLOW) {
+        if (newCommand == GameEnums.CommandTypes.FOLLOW)
+        {
             posOffset -= player.GetPosition() - targetPos;
         }
 
@@ -151,8 +156,10 @@ public class UnitController : EntityController
 
     // TODO: Note that, after a new command is set, the targetting disapears until a reentry
     // I think this is fine (units are not glued to a target on successive attack commands), but may lead to bugs in the future 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.transform.root.CompareTag("Enemy")) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.transform.root.CompareTag("Enemy"))
+        {
             enemyInSight = true;
             enemyObj = other.gameObject;
         }
@@ -162,7 +169,7 @@ public class UnitController : EntityController
     {
         bool border = true;
 
-         if (squad >= 0)
+        if (squad >= 0)
         {
             PlayerSquad selectedSquad = BattleManager.Instance.squads[squad];
             border = selectedSquad.units.Contains(this);

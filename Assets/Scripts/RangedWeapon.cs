@@ -16,7 +16,7 @@ public class RangedWeapon : MonoBehaviour
     {
         archery = archer;
         target = targetEntity;
-        power = archer.power;
+        power = archer.unitData.damage;
         targetPosition = targetEntity.transform.position;
 
         Vector3 arrowSize = transform.lossyScale;
@@ -50,8 +50,9 @@ public class RangedWeapon : MonoBehaviour
         startPosition = transform.position;
     }
 
-    protected void hitingTarget(float distance) {
-
+    protected void HittingTarget(float distance)
+    {
+        float minDistance = 10;
         if (archery is EnemyController)
         {
             foreach (UnitController unit in BattleManager.Instance.totalPlayerUnits)

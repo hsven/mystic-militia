@@ -13,7 +13,7 @@ public class FireBall : RangedWeapon
             return;
         }
 
-        hitingTarget(0.5f);
+        HittingTarget(0.5f);
 
         targetPosition = target.transform.position;
 

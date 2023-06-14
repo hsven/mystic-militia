@@ -24,13 +24,6 @@ public class EntityController : MonoBehaviour
     [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
     public bool useOldMovement = false;
 
-    [Range(1, 100)]
-    public int movementSpeed = 50;
-    public int maxSpeed = 10;
-    
-    [Header("Battle caracteristics")]
-    public int maxHealth = 100;
-    public int power = 10;
     protected int currentHealth;
 
     public Image healthBarGreen;
@@ -45,15 +38,16 @@ public class EntityController : MonoBehaviour
     protected void Awake()
     {
         if (!rb) rb = GetComponent<Rigidbody2D>();
-        currentHealth = maxHealth;
+        currentHealth = unitData.healthPoints;
     }
 
     protected void Movement(Vector2 target, Vector2 offset)
     {
         //Relevant variables: movementSpeed
         Vector2 currentPos = rb.position;
-        if (useOldMovement) {
-            float realSpeed = 100 - movementSpeed;
+        if (useOldMovement)
+        {
+            float realSpeed = 100 - unitData.movementSpeed;
             Vector2 newPos = currentPos + (target + offset - currentPos) / realSpeed;
             rb.MovePosition(newPos);
             return;
@@ -61,12 +55,12 @@ public class EntityController : MonoBehaviour
 
         //Relevant variables: rb.linearDrag, rb.mass, movementSpeed, maxSpeed
         var dir = (target + offset - currentPos);
-        rb.AddForce((dir.normalized * movementSpeed) / (1 / dir.magnitude));
+        rb.AddForce((dir.normalized * unitData.movementSpeed) / (1 / dir.magnitude));
 
-        rb.velocity = Vector2.ClampMagnitude(rb.velocity, maxSpeed);
+        rb.velocity = Vector2.ClampMagnitude(rb.velocity, unitData.movementSpeed);
     }
 
-    protected void launchRangedWeapon(EntityController target, UnitData unitData)
+    protected void LaunchRangedWeapon(EntityController target, UnitData unitData)
     {
         timerRangedWeapon = 100;
         BattleManager.Instance.NewRangedWeapon(this, target, unitData);
@@ -81,11 +75,11 @@ public class EntityController : MonoBehaviour
         {
             Transform entitySprite = transform.Find("Sprite");
             entitySprite.GetComponent<SpriteRenderer>().enabled = false;
-            killEntity();
+            KillEntity();
         }
     }
 
-    protected void killEntity()
+    protected void KillEntity()
     {
         if (timerRangedWeapon >= 0)
         {
@@ -95,7 +89,7 @@ public class EntityController : MonoBehaviour
     }
 
     private void OnTriggerStay2D(Collider2D other)
-    { 
+    {
         if (unitData.shootingRange > 0) return;
 
         timer -= Time.deltaTime;
@@ -107,31 +101,31 @@ public class EntityController : MonoBehaviour
             var controller = other.transform.root.GetComponent<EnemyController>();
             if (!hitbox.IsTouching(controller.hurtbox)) return;
 
-            Debug.Log("Enemy take damages");
-            controller.TakeDamage(power);
+            Debug.Log("Enemy takes damage");
+            controller.TakeDamage(unitData.damage);
         }
         else if (other.transform.root.CompareTag("Ally") && this.transform.root.CompareTag("Enemy"))
         {
-
             var controller = other.transform.root.GetComponent<UnitController>();
             if (!hitbox.IsTouching(controller.hurtbox)) return;
-            
-            Debug.Log("Ally take damages");
-            controller.TakeDamage(power);
+
+            Debug.Log("Ally takes damage");
+            controller.TakeDamage(unitData.damage);
         }
     }
 
     public void UpdateHealthBar()
     {
-        float healthRatio = (float)currentHealth / maxHealth;
+        float healthRatio = (float)currentHealth / unitData.healthPoints;
 
-        healthBarGreen.rectTransform.sizeDelta = new Vector2(healthRatio * healthBarGreen.rectTransform.sizeDelta.x, healthBarGreen.rectTransform.sizeDelta.y);
+        healthBarGreen.rectTransform.sizeDelta = new Vector2(healthRatio * healthBarRed.rectTransform.sizeDelta.x, healthBarRed.rectTransform.sizeDelta.y);
 
         float xOffset = healthBarGreen.rectTransform.sizeDelta.x * 0.5f - 0.2f;
-        healthBarGreen.rectTransform.position = new Vector2(healthBarRed.rectTransform.position.x + xOffset, healthBarGreen.rectTransform.position.y);
+        healthBarGreen.rectTransform.position = new Vector2(healthBarRed.rectTransform.position.x + xOffset, healthBarRed.rectTransform.position.y);
     }
 
-    public Vector2 GetPosition() {
+    public Vector2 GetPosition()
+    {
         return rb.position;
     }
 }

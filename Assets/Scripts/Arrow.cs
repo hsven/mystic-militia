@@ -14,7 +14,7 @@ public class Arrow : RangedWeapon
             return;
         }
 
-        if (arrowConsistance == 100) hitingTarget(0.3f);
+        if (arrowConsistance == 100) HittingTarget(0.3f);
 
         if (Vector3.Distance(targetPosition, transform.position) < 0.1f)
         {

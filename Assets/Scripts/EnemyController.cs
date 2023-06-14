@@ -5,7 +5,6 @@ using UnityEngine;
 public class EnemyController : EntityController
 {
     private List<Vector2> unitsPositions = new List<Vector2>();
-
     private PlayerController player;
     
     public GameEnums.EnemyTarget EnemyTarget = GameEnums.EnemyTarget.UNIT;
@@ -23,7 +22,8 @@ public class EnemyController : EntityController
 
     private void FixedUpdate()
     {
-        if (!isAlive) killEntity();
+        if (!isAlive) KillEntity();
+        
         Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
         int targetIndex = 0;
 
@@ -49,20 +49,31 @@ public class EnemyController : EntityController
             }
         }
 
-        if (unitData.shootingRange > 0 && (Vector2.Distance(targetPos, ownPosition) < unitData.shootingRange || timerRangedWeapon != 0))
+        if (unitData.shootingRange > 0 && IsWithinShootingRange(targetPos, ownPosition))
         {
-            if (timerRangedWeapon == 0)
-            {
-               launchRangedWeapon(BattleManager.Instance.totalPlayerUnits[targetIndex], unitData);
-            }
-            else
-            {
-                timerRangedWeapon--;
-            }
+            HandleRangedAttack(targetIndex);
         }
         else
         {
             Movement(targetPos, Vector2.zero);
+        }
+    }
+
+    private bool IsWithinShootingRange(Vector2 targetPosition, Vector2 ownPosition)
+    {
+        float distance = Vector2.Distance(targetPosition, ownPosition);
+        return distance < unitData.shootingRange;
+    }
+
+    private void HandleRangedAttack(int targetIndex)
+    {
+        if (timerRangedWeapon == 0)
+        {
+            LaunchRangedWeapon(BattleManager.Instance.totalPlayerUnits[targetIndex], unitData);
+        }
+        else
+        {
+            timerRangedWeapon--;
         }
     }
 }
