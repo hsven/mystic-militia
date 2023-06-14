@@ -14,7 +14,9 @@ public class Arrow : RangedWeapon
             return;
         }
 
-        if (arrowConsistance == 100) HittingTarget(0.3f);
+        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
+
+        if (arrowConsistance == 100) HittingTarget();
 
         if (Vector3.Distance(targetPosition, transform.position) < 0.1f)
         {
@@ -22,8 +24,6 @@ public class Arrow : RangedWeapon
             else arrowConsistance--;
             return;
         }
-
-        transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
     }
 
     protected void destroyWeapon()

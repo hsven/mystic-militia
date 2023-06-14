@@ -50,14 +50,16 @@ public class RangedWeapon : MonoBehaviour
         startPosition = transform.position;
     }
 
-    protected void HittingTarget(float distance)
+    protected void HittingTarget()
     {
-        float minDistance = 10;
         if (archery is EnemyController)
         {
             foreach (UnitController unit in BattleManager.Instance.totalPlayerUnits)
             {
-                if (Vector3.Distance(unit.GetPosition(), transform.position) < distance)
+                SpriteRenderer unitSpriteRenderer = unit.transform.Find("Sprite").GetComponent<SpriteRenderer>();
+                SpriteRenderer rangedWeapon = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
+                if (unitSpriteRenderer.bounds.Intersects(rangedWeapon.bounds))
                 {
                     unit.TakeDamage(power);
                     isAlive = false;
@@ -69,7 +71,10 @@ public class RangedWeapon : MonoBehaviour
         {
             foreach (EnemyController enemy in BattleManager.Instance.enemies)
             {
-                if (Vector3.Distance(enemy.GetPosition(), transform.position) < distance)
+                SpriteRenderer enemySpriteRenderer = enemy.transform.Find("Sprite").GetComponent<SpriteRenderer>();
+                SpriteRenderer rangedWeapon = transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
+                if (enemySpriteRenderer.bounds.Intersects(rangedWeapon.bounds))
                 {
                     enemy.TakeDamage(power);
                     isAlive = false;

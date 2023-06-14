@@ -10107,7 +10107,7 @@ PrefabInstance:
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: unitData
       value: 
-      objectReference: {fileID: 11400000, guid: feff54c8a50dcca478bac0bc246ddbdf, type: 2}
+      objectReference: {fileID: 11400000, guid: 6142aa21e3566294c810fa257a74a958, type: 2}
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: enemyType
       value: 0
@@ -10494,10 +10494,6 @@ MonoBehaviour:
   rb: {fileID: 0}
   unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   useOldMovement: 0
-  movementSpeed: 3
-  maxSpeed: 10
-  maxHealth: 100
-  power: 10
   healthBarGreen: {fileID: 0}
   healthBarRed: {fileID: 0}
   timerRangedWeapon: 0
@@ -10505,6 +10501,7 @@ MonoBehaviour:
   playerSpeed: 3
   selectedCommand: 0
   selectedSquad: -1
+  movementSpeed: 3
 --- !u!1 &1508012625
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,13 +13,13 @@ public class FireBall : RangedWeapon
             return;
         }
 
-        HittingTarget(0.5f);
-
         targetPosition = target.transform.position;
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        transform.Rotate(Vector3.forward, 10f * Time.deltaTime);
+        transform.Rotate(Vector3.forward, 100f * Time.deltaTime);
+
+        HittingTarget();
     }
 
     protected void destroyWeapon()

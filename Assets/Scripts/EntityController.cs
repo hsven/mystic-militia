@@ -106,6 +106,7 @@ public class EntityController : MonoBehaviour
         }
         else if (other.transform.root.CompareTag("Ally") && this.transform.root.CompareTag("Enemy"))
         {
+            
             var controller = other.transform.root.GetComponent<UnitController>();
             if (!hitbox.IsTouching(controller.hurtbox)) return;
 

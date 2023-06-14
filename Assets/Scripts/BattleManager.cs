@@ -13,7 +13,7 @@ public class PlayerSquad
     public List<UnitController> units = new List<UnitController>();
 
     public Spline formation = new Spline();
-    
+
 }
 
 public class BattleManager : MonoBehaviour
@@ -32,8 +32,8 @@ public class BattleManager : MonoBehaviour
     public List<EnemyController> enemies = new List<EnemyController>();
     public List<Arrow> arrows = new List<Arrow>();
     public List<FireBall> fireBalls = new List<FireBall>();
-
     public Spline currentFormation;
+
     public int currentSquadSelection = -1;
     public LineRenderer repr;
 
