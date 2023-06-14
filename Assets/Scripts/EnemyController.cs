@@ -5,8 +5,8 @@ using UnityEngine;
 public class EnemyController : EntityController
 {
     private List<Vector2> unitsPositions = new List<Vector2>();
+
     private PlayerController player;
-    
     public GameEnums.EnemyTarget EnemyTarget = GameEnums.EnemyTarget.UNIT;
 
     void Start()
@@ -15,8 +15,7 @@ public class EnemyController : EntityController
         BattleManager.Instance.enemies.Add(this);
     }
 
-    private void Update()
-    {
+    private void Update() {
         unitsPositions = BattleManager.Instance.GetPlayerUnitPositions();
     }
 
@@ -40,8 +39,7 @@ public class EnemyController : EntityController
             for (int i = 0; i < unitsPositions.Count; i++)
             {
                 float newDistance = Vector2.Distance(unitsPositions[i], ownPosition);
-                if (newDistance < minDistance)
-                {
+                if (newDistance < minDistance){
                     minDistance = newDistance;
                     targetIndex = i;
                     targetPos = unitsPositions[i];

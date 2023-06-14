@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Mage
   m_EditorClassIdentifier: 
   unitName: Mage
-  movementSpeed: 30
+  movementSpeed: 1
   healthPoints: 50
-  damage: 25
+  damage: 35
   shootingRange: 5

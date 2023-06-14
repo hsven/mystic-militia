@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f45620221d7f347ac195292f8630e4, type: 3}
-  m_Name: Archery
+  m_Name: Kamikaze
   m_EditorClassIdentifier: 
-  unitName: Archery
-  movementSpeed: 2
-  healthPoints: 50
-  damage: 25
-  shootingRange: 3
+  unitName: Infantry
+  movementSpeed: 5
+  healthPoints: 20
+  damage: 100
+  shootingRange: 0

@@ -13,6 +13,7 @@ public class PlayerSquad
     public List<UnitController> units = new List<UnitController>();
 
     public Spline formation = new Spline();
+    
 }
 
 public class BattleManager : MonoBehaviour
