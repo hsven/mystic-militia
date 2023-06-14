@@ -30,18 +30,23 @@ public class BattleManager : MonoBehaviour
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
     public List<PlayerSquad> squads = new List<PlayerSquad>();
     public List<EnemyController> enemies = new List<EnemyController>();
-    public List<Arrow> arrows = new List<Arrow>();
-    public List<FireBall> fireBalls = new List<FireBall>();
     public Spline currentFormation;
 
     public int currentSquadSelection = -1;
     public LineRenderer repr;
+    
+    public List<Arrow> arrows = new List<Arrow>();
+    public List<FireBall> fireBalls = new List<FireBall>();
+    public List<MagicBall> magicBalls = new List<MagicBall>();
 
     [SerializeField]
     public GameObject arrowPrefab;    
 
     [SerializeField]
-    public GameObject fireBallPrefab;    
+    public GameObject fireBallPrefab;   
+
+    [SerializeField]
+    public GameObject magicBallPrefab;    
 
     void Awake() {
         BattleManager.Instance = this;
@@ -152,34 +157,36 @@ public class BattleManager : MonoBehaviour
 
     public void NewRangedWeapon(EntityController archery, EntityController target, UnitData data)
     {
-        if (data.name == "Archery") {
-            GameObject arrowObject = Instantiate(arrowPrefab);
-
-            Arrow arrow = arrowObject.GetComponent<Arrow>();
-
-            if (arrow == null)
-            {
-                arrow = arrowObject.AddComponent<Arrow>();
-            }
-
-            arrow.Initialize(archery, target);
-
+        if (data.name == "Archery")
+        {
+            Arrow arrow = CreateProjectile<Arrow>(arrowPrefab, archery, target);
             arrows.Add(arrow);
         }
-        else {
-            GameObject fireBallObject = Instantiate(fireBallPrefab);
-
-            FireBall fireBall = fireBallObject.GetComponent<FireBall>();
-
-            if (fireBall == null)
-            {
-                fireBall = fireBallObject.AddComponent<FireBall>();
-            }
-
-            fireBall.Initialize(archery, target);
-
+        else if (data.name == "Pyroman")
+        {
+            FireBall fireBall = CreateProjectile<FireBall>(fireBallPrefab, archery, target);
             fireBalls.Add(fireBall);
         }
+        else
+        {
+            MagicBall magicBall = CreateProjectile<MagicBall>(magicBallPrefab, archery, target);
+            magicBalls.Add(magicBall);
+        }
+    }
+
+    public T CreateProjectile<T>(GameObject projectilePrefab, EntityController archery, EntityController target) where T : RangedWeapon
+    {
+        GameObject projectileObject = Instantiate(projectilePrefab);
+        T projectile = projectileObject.GetComponent<T>();
+
+        if (projectile == null)
+        {
+            projectile = projectileObject.AddComponent<T>();
+        }
+
+        projectile.Initialize(archery, target);
+
+        return projectile;
     }
 
     public void SetFormation(List<Vector3> positions, int selectedSquad) {

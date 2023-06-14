@@ -24,7 +24,7 @@ public class EntityController : MonoBehaviour
     [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
     public bool useOldMovement = false;
 
-    protected int currentHealth;
+    public int currentHealth;
 
     public Image healthBarGreen;
     public Image healthBarRed;

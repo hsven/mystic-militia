@@ -19,7 +19,7 @@ public class FireBall : RangedWeapon
 
         transform.Rotate(Vector3.forward, 100f * Time.deltaTime);
 
-        HittingTarget();
+        HittingEnemy();
     }
 
     protected void destroyWeapon()

@@ -6932,8 +6932,6 @@ MonoBehaviour:
   totalPlayerUnits: []
   squads: []
   enemies: []
-  arrows: []
-  fireBalls: []
   currentFormation:
     m_EditModeType: 1
     m_Knots: []
@@ -6949,8 +6947,12 @@ MonoBehaviour:
       m_Data: []
   currentSquadSelection: -1
   repr: {fileID: 1508012627}
+  arrows: []
+  fireBalls: []
+  magicBalls: []
   arrowPrefab: {fileID: 5498187762117813187, guid: 48c125a7df9881749a6d130979a1a230, type: 3}
   fireBallPrefab: {fileID: 5498187762117813187, guid: c527344067a0d094da9cba6e90604eb1, type: 3}
+  magicBallPrefab: {fileID: 5498187762117813187, guid: 0646edff55cdc6a48ae2ef2ef9cbf68d, type: 3}
 --- !u!4 &768855753
 Transform:
   m_ObjectHideFlags: 0
@@ -10107,7 +10109,7 @@ PrefabInstance:
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: unitData
       value: 
-      objectReference: {fileID: 11400000, guid: 6142aa21e3566294c810fa257a74a958, type: 2}
+      objectReference: {fileID: 11400000, guid: 20219b3dffc6afb44a85ea62d356f0ae, type: 2}
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: enemyType
       value: 0
@@ -10494,6 +10496,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   useOldMovement: 0
+  currentHealth: 0
   healthBarGreen: {fileID: 0}
   healthBarRed: {fileID: 0}
   timerRangedWeapon: 0

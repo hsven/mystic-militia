@@ -50,7 +50,7 @@ public class RangedWeapon : MonoBehaviour
         startPosition = transform.position;
     }
 
-    protected void HittingTarget()
+    protected void HittingEnemy()
     {
         if (archery is EnemyController)
         {

@@ -16,7 +16,7 @@ public class Arrow : RangedWeapon
 
         transform.position = Vector3.MoveTowards(transform.position, targetPosition, speed * Time.deltaTime);
 
-        if (arrowConsistance == 100) HittingTarget();
+        if (arrowConsistance == 100) HittingEnemy();
 
         if (Vector3.Distance(targetPosition, transform.position) < 0.1f)
         {
