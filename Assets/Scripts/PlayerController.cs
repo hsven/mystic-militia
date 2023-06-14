@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class PlayerController : EntityController
@@ -37,23 +38,11 @@ public class PlayerController : EntityController
         rb.MovePosition(newPos);
     }
 
-    void SendCommand() {
+    void SendCommand(List<Vector3> formationPositions) {
         Debug.Log("Command");
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        BattleManager.Instance.SendCommandToUnits(selectedCommand, mousePos);
-        //if (selectedSquad == -1) {
-        //    foreach (UnitController unit in BattleManager.Instance.totalPlayerUnits)
-        //    {
-        //        unit.SetCommand(selectedCommand, new Vector2(mousePos.x, mousePos.y));
-        //    }
-        //}
-        //else {
-        //    foreach (UnitController unit in BattleManager.Instance.squads[selectedSquad].units)
-        //    {
-        //        unit.SetCommand(selectedCommand, new Vector2(mousePos.x, mousePos.y));
-        //    }
-        //}
+        BattleManager.Instance.SendCommandToUnits(selectedCommand, mousePos, formationPositions);
     }
 
     void ChangeCommand(bool isUp) {
@@ -79,11 +68,6 @@ public class PlayerController : EntityController
     }
 
     void DrawFormation() {
-        //if (!isDrawingFormation) {
-        //    mousePositions.Clear();
-        //    isDrawingFormation = true;
-        //}
-
         Vector3 mousePos = new Vector3(Camera.main.ScreenToWorldPoint(Input.mousePosition).x, Camera.main.ScreenToWorldPoint(Input.mousePosition).y, 0) ;
 
         if (mousePositions.Count == 0) {
@@ -128,10 +112,9 @@ public class PlayerController : EntityController
             }
         }
 
-        if (Input.GetMouseButtonDown(0) && !isDrawingFormation)
+        if (Input.GetMouseButtonDown(0) && !isDrawingFormation && !EventSystem.current.IsPointerOverGameObject())
         {
-            BattleManager.Instance.SetFormation(mousePositions, selectedSquad);
-            SendCommand();
+            SendCommand(mousePositions);
             realTimeFormationRenderer.enabled = false;
         }
         else if (Input.GetMouseButton(0) && isDrawingFormation)
@@ -146,12 +129,12 @@ public class PlayerController : EntityController
             ChangeCommand(false);
         }
 
-        if (Input.GetKeyDown(KeyCode.Q)) {
-            selectedSquad = BattleManager.Instance.UpdateSelectedSquad(--selectedSquad);
-        }
-        else if(Input.GetKeyDown(KeyCode.E)) {
-            selectedSquad = BattleManager.Instance.UpdateSelectedSquad(++selectedSquad);
-        }
+        //if (Input.GetKeyDown(KeyCode.Q)) {
+        //    selectedSquad = BattleManager.Instance.UpdateSelectedSquad(--selectedSquad);
+        //}
+        //else if(Input.GetKeyDown(KeyCode.E)) {
+        //    selectedSquad = BattleManager.Instance.UpdateSelectedSquad(++selectedSquad);
+        //}
     }
 
     public Vector2 GetPosition() {

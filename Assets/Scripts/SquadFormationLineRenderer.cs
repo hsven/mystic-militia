@@ -41,4 +41,9 @@ public class SquadFormationLineRenderer : MonoBehaviour
         lineRenderer.SetPosition(index, Vector3.zero);
         originalPositions.Insert(index, position);
     }
+
+    public void SetPositions(List<Vector3> positions)
+    {
+        originalPositions.AddRange(positions);
+    }
 }
