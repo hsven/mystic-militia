@@ -144,7 +144,7 @@ public class EntityController : MonoBehaviour
 
     public void NewRangedWeapon(EntityController target)
     {
-        if (this.unitData.name == "Archery" || this.unitData.name == "Crossbowman")
+        if (this.unitData.name == "Archery" || this.unitData.name == "Crossbow")
         {
             Arrow arrow = CreateProjectile<Arrow>(target);
         }
