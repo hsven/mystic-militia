@@ -16,6 +16,9 @@ public class PlayerController : EntityController
     public int playerSpeed = 1;
     public GameEnums.CommandTypes selectedCommand = GameEnums.CommandTypes.FOLLOW;
     public int selectedSquad = -1;
+    
+    [Range(1, 100)]
+    public int movementSpeed = 50;
 
     // Update is called once per frame
     void Update()
@@ -152,9 +155,4 @@ public class PlayerController : EntityController
             unit.SetUnitBorders(selectedSquad);
         }
     }
-
-    public Vector2 GetPosition() {
-        return rb.position;
-    }
-
 }
