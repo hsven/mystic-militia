@@ -17,3 +17,4 @@ MonoBehaviour:
   healthPoints: 50
   damage: 25
   shootingRange: 3
+  rangedWeaponPrefab: {fileID: 5498187762117813187, guid: 48c125a7df9881749a6d130979a1a230, type: 3}
