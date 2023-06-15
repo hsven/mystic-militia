@@ -44,11 +44,15 @@ public class BattleManager : MonoBehaviour
     private void Start()
     {
         PauseGame();
-        mapGenerator.GenerateMap();
+        if(mapGenerator != null){
+            mapGenerator.GenerateMap();
+             //TODO: Maybe redo how this initial spawns is configured
+            var respawnLocs = GameObject.FindGameObjectsWithTag("Respawn");
+            player.transform.position = respawnLocs[0].transform.position;
+        }
+        
 
-        //TODO: Maybe redo how this initial spawns is configured
-        var respawnLocs = GameObject.FindGameObjectsWithTag("Respawn");
-        player.transform.position = respawnLocs[0].transform.position;
+       
 
     }
 

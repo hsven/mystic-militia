@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5f491b607b1cd948b5bc856850b2616, type: 3}
   m_Name: Mystery
   m_EditorClassIdentifier: 
-  sprite: {fileID: 21300000, guid: cf3bc8bfeb2290f44b80d2ec7c090e92, type: 3}
+  sprite: {fileID: 21300000, guid: 244ddb7d1d4a4934c9009d063909ca25, type: 3}
   nodeType: 6

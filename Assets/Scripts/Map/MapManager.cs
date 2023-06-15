@@ -13,6 +13,11 @@ namespace Map
 
         private void Start()
         {
+            if(PlayerInventory.Instance.newGame){
+                GenerateNewMap();
+                PlayerInventory.Instance.newGame=false;
+                return;
+            }
             if (PlayerPrefs.HasKey("Map"))
             {
                 var mapJson = PlayerPrefs.GetString("Map");

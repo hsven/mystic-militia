@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class PlayerInventory : MonoBehaviour
 {
+    public bool newGame;
+
     [Serializable]
     public class UnitEntry
     {
@@ -28,7 +30,7 @@ public class PlayerInventory : MonoBehaviour
     void Awake() {
         PlayerInventory.Instance = this; 
         //TODO: Make this object permanent regardless of scene, when the overall gameplay loop is in place   
-        // DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void CreateSquad() {

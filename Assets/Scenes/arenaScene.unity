@@ -912,7 +912,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &321915871
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7188,6 +7188,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe7a5e275cce3c4f9caafe5072d5e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapGenerator: {fileID: 0}
   isPaused: 0
   UIObj: {fileID: 1967458093}
   player: {fileID: 1423339043}
@@ -10913,6 +10914,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3b4d3c583c706f40a64078414722863, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitbox: {fileID: 0}
+  hurtbox: {fileID: 0}
   rb: {fileID: 0}
   useOldMovement: 0
   movementSpeed: 3
