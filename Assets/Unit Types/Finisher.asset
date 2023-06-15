@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f45620221d7f347ac195292f8630e4, type: 3}
   m_Name: Finisher
   m_EditorClassIdentifier: 
-  unitName: Mage
+  unitName: Finisher
   movementSpeed: 0
   healthPoints: 50
   damage: 25

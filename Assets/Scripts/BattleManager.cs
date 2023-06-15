@@ -71,7 +71,7 @@ public class BattleManager : MonoBehaviour
                 for (int i = 0; i < unit.quantity; i++)
                 {
                     var obj = Instantiate(unitPrefab).GetComponent<UnitController>();
-                    obj.unitData = unit.unitData;
+                    obj.SetupUnitData(unit.unitData);
                     obj.transform.position = UnityEngine.Random.insideUnitSphere * 2;
                     newPlayerSquad.units.Add(obj);
                     totalPlayerUnits.Add(obj);
@@ -157,7 +157,7 @@ public class BattleManager : MonoBehaviour
 
     public void NewRangedWeapon(EntityController archery, EntityController target, UnitData data)
     {
-        if (data.name == "Archery")
+        if (data.name == "Archery" || data.name == "Crossbowman")
         {
             Arrow arrow = CreateProjectile<Arrow>(arrowPrefab, archery, target);
             arrows.Add(arrow);
@@ -167,7 +167,7 @@ public class BattleManager : MonoBehaviour
             FireBall fireBall = CreateProjectile<FireBall>(fireBallPrefab, archery, target);
             fireBalls.Add(fireBall);
         }
-        else
+        else if (data.name == "Finisher" || data.name == "Mage")
         {
             MagicBall magicBall = CreateProjectile<MagicBall>(magicBallPrefab, archery, target);
             magicBalls.Add(magicBall);

@@ -749,10 +749,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerUnits:
   - unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
-    quantity: 9
+    quantity: 3
   - unitData: {fileID: 11400000, guid: 6c8628a016ae8be48aee324d8eab37f5, type: 2}
     quantity: 3
+  - unitData: {fileID: 11400000, guid: 6142aa21e3566294c810fa257a74a958, type: 2}
+    quantity: 3
   - unitData: {fileID: 11400000, guid: feff54c8a50dcca478bac0bc246ddbdf, type: 2}
+    quantity: 3
+  - unitData: {fileID: 11400000, guid: 08433de23bc63024e8d84394902d8c00, type: 2}
+    quantity: 3
+  - unitData: {fileID: 11400000, guid: 69ef5f42da022e549a5a88cf6d9c748d, type: 2}
+    quantity: 3
+  - unitData: {fileID: 11400000, guid: 96451a40a6ed1cf4c8846ce58b6e191a, type: 2}
+    quantity: 3
+  - unitData: {fileID: 11400000, guid: 20219b3dffc6afb44a85ea62d356f0ae, type: 2}
     quantity: 3
   playerSquads:
   - unitEntries: []
@@ -10109,7 +10119,7 @@ PrefabInstance:
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: unitData
       value: 
-      objectReference: {fileID: 11400000, guid: 20219b3dffc6afb44a85ea62d356f0ae, type: 2}
+      objectReference: {fileID: 11400000, guid: 08433de23bc63024e8d84394902d8c00, type: 2}
     - target: {fileID: 4585341043533504782, guid: 026fcab018e9f164583b24a1ff2eb285, type: 3}
       propertyPath: enemyType
       value: 0

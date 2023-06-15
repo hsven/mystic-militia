@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38f45620221d7f347ac195292f8630e4, type: 3}
   m_Name: Crossbowman
   m_EditorClassIdentifier: 
-  unitName: Archery
+  unitName: Crossbowman
   movementSpeed: 2
   healthPoints: 50
   damage: 50

@@ -47,7 +47,7 @@ public class MagicBall : RangedWeapon
     {
         foreach (UnitController unit in BattleManager.Instance.totalPlayerUnits)
         {
-            if (unit.currentHealth < target.currentHealth)
+            if (unit.currentHealth / unit.unitData.healthPoints < target.currentHealth / target.unitData.healthPoints)
             {
                 target = unit;
             }

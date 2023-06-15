@@ -13,6 +13,7 @@ public class EnemyController : EntityController
     {
         if (!player) player = BattleManager.Instance.player;
         BattleManager.Instance.enemies.Add(this);
+        SetupEnemyUnitData();
     }
 
     private void Update() {

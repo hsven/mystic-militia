@@ -24,8 +24,6 @@ public class EntityController : MonoBehaviour
     [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
     public bool useOldMovement = false;
 
-    public int currentHealth;
-
     public Image healthBarGreen;
     public Image healthBarRed;
 
@@ -35,10 +33,11 @@ public class EntityController : MonoBehaviour
     public int timerRangedWeapon = 0;
     protected bool isAlive = true;
 
+    public int currentHealth;
+
     protected void Awake()
     {
         if (!rb) rb = GetComponent<Rigidbody2D>();
-        currentHealth = unitData.healthPoints;
     }
 
     protected void Movement(Vector2 target, Vector2 offset)
@@ -64,6 +63,17 @@ public class EntityController : MonoBehaviour
     {
         timerRangedWeapon = 100;
         BattleManager.Instance.NewRangedWeapon(this, target, unitData);
+    }
+
+    public void SetupUnitData(UnitData data)
+    {
+        unitData = data;
+        currentHealth = unitData.healthPoints;
+    }
+
+    public void SetupEnemyUnitData()
+    {
+        currentHealth = unitData.healthPoints;
     }
 
     public void TakeDamage(int damage)
