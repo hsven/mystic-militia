@@ -6935,6 +6935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fe7a5e275cce3c4f9caafe5072d5e38, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mapGenerator: {fileID: 0}
   isPaused: 0
   UIObj: {fileID: 1967458093}
   player: {fileID: 1423339043}
@@ -6957,12 +6958,6 @@ MonoBehaviour:
       m_Data: []
   currentSquadSelection: -1
   repr: {fileID: 1508012627}
-  arrows: []
-  fireBalls: []
-  magicBalls: []
-  arrowPrefab: {fileID: 5498187762117813187, guid: 48c125a7df9881749a6d130979a1a230, type: 3}
-  fireBallPrefab: {fileID: 5498187762117813187, guid: c527344067a0d094da9cba6e90604eb1, type: 3}
-  magicBallPrefab: {fileID: 5498187762117813187, guid: 0646edff55cdc6a48ae2ef2ef9cbf68d, type: 3}
 --- !u!4 &768855753
 Transform:
   m_ObjectHideFlags: 0
@@ -10506,10 +10501,10 @@ MonoBehaviour:
   rb: {fileID: 0}
   unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   useOldMovement: 0
-  currentHealth: 0
   healthBarGreen: {fileID: 0}
   healthBarRed: {fileID: 0}
   timerRangedWeapon: 0
+  currentHealth: 0
   mousePositionInterval: 1
   playerSpeed: 3
   selectedCommand: 0
