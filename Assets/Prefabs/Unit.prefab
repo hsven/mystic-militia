@@ -730,6 +730,7 @@ MonoBehaviour:
   border2Sprite: {fileID: 2130422813680362261}
   border3Sprite: {fileID: 8509066095715464744}
   border4Sprite: {fileID: 1558941318744011075}
+  whiteCirclePrefab: {fileID: 5498187762117813187, guid: 1c177d5634fcb4c439120ae3883b9c4c, type: 3}
 --- !u!58 &5723523585606141330
 CircleCollider2D:
   m_ObjectHideFlags: 0

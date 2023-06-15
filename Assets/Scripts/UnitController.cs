@@ -39,6 +39,10 @@ public class UnitController : EntityController
     [SerializeField]
     private SpriteRenderer border4Sprite;
 
+    [SerializeField]
+    public GameObject whiteCirclePrefab;   
+    private GameObject whitePoint = null;   
+
     // Start is called before the first frame update
     public void Setup(int totalPosIndex, Vector2Int squadIndex)
     {
@@ -59,6 +63,29 @@ public class UnitController : EntityController
 
     void UnitMovement()
     {
+        if (IsOffScreenVertically(border1Sprite) && IsOffScreenVertically(border2Sprite) && IsOffScreenVertically(border3Sprite) && IsOffScreenVertically(border4Sprite))
+        {
+            if (whitePoint == null) whitePoint = Instantiate(whiteCirclePrefab);
+
+            SpriteRenderer whiteSprite = whitePoint.transform.Find("Sprite").GetComponent<SpriteRenderer>();
+
+            whitePoint.transform.position = this.transform.position;
+            for(var i = 0; i < 10000; i++)
+            {
+                if (IsOffScreenVertically(whiteSprite)){
+                    whitePoint.transform.position = Vector3.Lerp(this.transform.position, player.transform.position, i * 0.0001f);
+                }
+                else {
+                    break;
+                }
+            }
+            whitePoint.transform.position = Vector3.Lerp(whitePoint.transform.position, player.transform.position, 0.1f);
+        }
+        else
+        {
+            if (whitePoint != null) Destroy(whitePoint);
+        }
+
         if (player == null)
         {
             player = BattleManager.Instance.player;
@@ -179,5 +206,16 @@ public class UnitController : EntityController
         border2Sprite.gameObject.SetActive(border);
         border3Sprite.gameObject.SetActive(border);
         border4Sprite.gameObject.SetActive(border);
+    }
+
+    public bool IsOffScreenVertically(SpriteRenderer sprite) 
+    {
+        Camera camera = Camera.main;
+        var bounds = sprite.bounds;
+
+        var top = camera.WorldToViewportPoint(bounds.max);
+        var bottom = camera.WorldToViewportPoint(bounds.min);
+
+        return top.y < 0 || bottom.y > 1 || bottom.x < 0 || top.x > 1;    
     }
 }

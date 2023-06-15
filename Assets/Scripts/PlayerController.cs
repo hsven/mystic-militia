@@ -145,7 +145,6 @@ public class PlayerController : EntityController
             }
             updateUnitBorders();
         }
-
     }
 
     public void updateUnitBorders()
