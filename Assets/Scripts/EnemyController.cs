@@ -68,7 +68,7 @@ public class EnemyController : EntityController
     {
         if (timerRangedWeapon == 0)
         {
-            LaunchRangedWeapon(BattleManager.Instance.totalPlayerUnits[targetIndex], unitData);
+            LaunchRangedWeapon(BattleManager.Instance.totalPlayerUnits[targetIndex]);
         }
         else
         {

@@ -9,7 +9,7 @@ public class FireBall : RangedWeapon
     {
         if (target == null || !isAlive)
         {
-            destroyWeapon();
+            Destroy(gameObject);
             return;
         }
 
@@ -20,11 +20,5 @@ public class FireBall : RangedWeapon
         transform.Rotate(Vector3.forward, 100f * Time.deltaTime);
 
         HittingEnemy();
-    }
-
-    protected void destroyWeapon()
-    {
-        BattleManager.Instance.fireBalls.Remove((FireBall)this);
-        Destroy(gameObject);
     }
 }

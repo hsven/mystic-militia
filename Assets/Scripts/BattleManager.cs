@@ -34,19 +34,6 @@ public class BattleManager : MonoBehaviour
 
     public int currentSquadSelection = -1;
     public LineRenderer repr;
-    
-    public List<Arrow> arrows = new List<Arrow>();
-    public List<FireBall> fireBalls = new List<FireBall>();
-    public List<MagicBall> magicBalls = new List<MagicBall>();
-
-    [SerializeField]
-    public GameObject arrowPrefab;    
-
-    [SerializeField]
-    public GameObject fireBallPrefab;   
-
-    [SerializeField]
-    public GameObject magicBallPrefab;    
 
     void Awake() {
         BattleManager.Instance = this;
@@ -153,40 +140,6 @@ public class BattleManager : MonoBehaviour
         else finalPos = formation.EvaluatePosition(interval * squadIndex.y);
 
         return new Vector3(finalPos.x, finalPos.y, 0);
-    }
-
-    public void NewRangedWeapon(EntityController archery, EntityController target, UnitData data)
-    {
-        if (data.name == "Archery" || data.name == "Crossbowman")
-        {
-            Arrow arrow = CreateProjectile<Arrow>(arrowPrefab, archery, target);
-            arrows.Add(arrow);
-        }
-        else if (data.name == "Pyroman")
-        {
-            FireBall fireBall = CreateProjectile<FireBall>(fireBallPrefab, archery, target);
-            fireBalls.Add(fireBall);
-        }
-        else if (data.name == "Finisher" || data.name == "Mage")
-        {
-            MagicBall magicBall = CreateProjectile<MagicBall>(magicBallPrefab, archery, target);
-            magicBalls.Add(magicBall);
-        }
-    }
-
-    public T CreateProjectile<T>(GameObject projectilePrefab, EntityController archery, EntityController target) where T : RangedWeapon
-    {
-        GameObject projectileObject = Instantiate(projectilePrefab);
-        T projectile = projectileObject.GetComponent<T>();
-
-        if (projectile == null)
-        {
-            projectile = projectileObject.AddComponent<T>();
-        }
-
-        projectile.Initialize(archery, target);
-
-        return projectile;
     }
 
     public void SetFormation(List<Vector3> positions, int selectedSquad) {

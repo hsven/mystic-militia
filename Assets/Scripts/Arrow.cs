@@ -10,7 +10,7 @@ public class Arrow : RangedWeapon
     private void Update()
     {
         if (!isAlive) {
-            destroyWeapon();
+            Destroy(gameObject);
             return;
         }
 
@@ -20,15 +20,9 @@ public class Arrow : RangedWeapon
 
         if (Vector3.Distance(targetPosition, transform.position) < 0.1f)
         {
-            if (arrowConsistance == 0) destroyWeapon();
+            if (arrowConsistance == 0) Destroy(gameObject);
             else arrowConsistance--;
             return;
         }
-    }
-
-    protected void destroyWeapon()
-    {
-        BattleManager.Instance.arrows.Remove((Arrow)this);
-        Destroy(gameObject);
     }
 }

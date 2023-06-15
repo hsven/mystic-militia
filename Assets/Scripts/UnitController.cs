@@ -119,7 +119,7 @@ public class UnitController : EntityController
             {
                 if (timerRangedWeapon == 0)
                 {
-                    LaunchRangedWeapon(targetEnemy, unitData);
+                    LaunchRangedWeapon(targetEnemy);
                 }
                 else
                 {

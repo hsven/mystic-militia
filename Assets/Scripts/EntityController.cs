@@ -59,10 +59,10 @@ public class EntityController : MonoBehaviour
         rb.velocity = Vector2.ClampMagnitude(rb.velocity, unitData.movementSpeed);
     }
 
-    protected void LaunchRangedWeapon(EntityController target, UnitData unitData)
+    protected void LaunchRangedWeapon(EntityController target)
     {
         timerRangedWeapon = 100;
-        BattleManager.Instance.NewRangedWeapon(this, target, unitData);
+        NewRangedWeapon(target);
     }
 
     public void SetupUnitData(UnitData data)
@@ -138,5 +138,38 @@ public class EntityController : MonoBehaviour
     public Vector2 GetPosition()
     {
         return rb.position;
+    }
+
+    
+
+    public void NewRangedWeapon(EntityController target)
+    {
+        if (this.unitData.name == "Archery" || this.unitData.name == "Crossbowman")
+        {
+            Arrow arrow = CreateProjectile<Arrow>(target);
+        }
+        else if (this.unitData.name == "Pyroman")
+        {
+            FireBall fireBall = CreateProjectile<FireBall>(target);
+        }
+        else if (this.unitData.name == "Finisher" || this.unitData.name == "Mage")
+        {
+            MagicBall magicBall = CreateProjectile<MagicBall>(target);
+        }
+    }
+
+    public T CreateProjectile<T>(EntityController target) where T : RangedWeapon
+    {
+        GameObject projectileObject = Instantiate(this.unitData.rangedWeaponPrefab);
+        T projectile = projectileObject.GetComponent<T>();
+
+        if (projectile == null)
+        {
+            projectile = projectileObject.AddComponent<T>();
+        }
+
+        projectile.Initialize(this, target);
+
+        return projectile;
     }
 }

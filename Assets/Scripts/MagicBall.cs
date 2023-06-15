@@ -11,7 +11,7 @@ public class MagicBall : RangedWeapon
 
         if (target == null || !isAlive)
         {
-            destroyWeapon();
+            Destroy(gameObject);
             return;
         }
 
@@ -22,12 +22,6 @@ public class MagicBall : RangedWeapon
         transform.Rotate(Vector3.forward, 100f * Time.deltaTime);
 
         HittingTarget();
-    }
-
-    protected void destroyWeapon()
-    {
-        BattleManager.Instance.magicBalls.Remove((MagicBall)this);
-        Destroy(gameObject);
     }
 
     protected void HittingTarget()
