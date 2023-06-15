@@ -65,4 +65,17 @@ public class PlayerInventory : MonoBehaviour
         } 
         return true;
     }
+
+    public void AddToInventory(UnitData unit, int quantity){
+        var unitEntryPosInInventory = playerUnits.FindIndex(0, x => x.unitData.unitName == unit.unitName);
+        if (unitEntryPosInInventory != -1) {
+            playerUnits[unitEntryPosInInventory].quantity+=quantity;
+        }
+        else {
+            var newEntry = new UnitEntry();
+            newEntry.unitData = unit;
+            newEntry.quantity+=quantity;
+            playerUnits.Add(newEntry);
+        } 
+    }
 }

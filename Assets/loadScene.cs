@@ -20,4 +20,8 @@ public GameObject playerInventory;
         newInv.SetActive(true);
     }
 
+    public void addUnit(UnitData data){
+        PlayerInventory.Instance.AddToInventory(data, 10);
+    }
+
 }

@@ -677,6 +677,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf2523298efa8a47a278b12efde13fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
 --- !u!1 &791854905
 GameObject:
   m_ObjectHideFlags: 0
@@ -824,6 +825,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf2523298efa8a47a278b12efde13fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
 --- !u!1 &801066382
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,6 +1026,18 @@ MonoBehaviour:
           m_StringArgument: SampleSceneMap
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 1178662786}
+        m_TargetAssemblyTypeName: loadScene, Assembly-CSharp
+        m_MethodName: addUnit
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnitData, Assembly-CSharp
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1178662784
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1074,6 +1088,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dcf2523298efa8a47a278b12efde13fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerInventory: {fileID: 0}
 --- !u!1 &1630862583
 GameObject:
   m_ObjectHideFlags: 0

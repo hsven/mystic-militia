@@ -24,10 +24,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: dfb2651849bbba640970aec1f4b8601f, type: 2}
   numOfPreBossNodes:
     min: 2
-    max: 3
+    max: 2
   numOfStartingNodes:
     min: 2
-    max: 3
+    max: 2
   extraPaths: 0
   layers:
     array:
