@@ -13,7 +13,7 @@ namespace Map
 
         private void Start()
         {
-            if(PlayerInventory.Instance.newGame){
+            if (PlayerInventory.Instance && PlayerInventory.Instance.newGame){
                 GenerateNewMap();
                 PlayerInventory.Instance.newGame=false;
                 return;
