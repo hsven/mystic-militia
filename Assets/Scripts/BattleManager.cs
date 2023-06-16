@@ -36,11 +36,6 @@ public class BattleManager : MonoBehaviour
     public int currentSquadSelection = -1;
     public LineRenderer repr;
 
-    //TODO: UI elements shouldn't be here tbh
-    [SerializeField]
-    Transform UISquadIndicatorManager;
-    [SerializeField]
-    GameObject UISquadIndicator;
 
     void Awake() {
         BattleManager.Instance = this;
@@ -88,9 +83,7 @@ public class BattleManager : MonoBehaviour
 
             squads.Add(newPlayerSquad);
 
-            var squadIndicator = Instantiate(UISquadIndicator, UISquadIndicatorManager).GetComponent<UISquadIndicator>();
-            squadIndicator.gameObject.SetActive(true);
-            squadIndicator.StartIndicator(newPlayerSquad.units[0].transform, ++squadCount);
+            UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
         }
 
         Time.timeScale = 1;

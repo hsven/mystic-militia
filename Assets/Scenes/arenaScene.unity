@@ -907,7 +907,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &626908840
 RectTransform:
   m_ObjectHideFlags: 0
@@ -946,7 +946,7 @@ MonoBehaviour:
   rectTransform: {fileID: 626908840}
   indicatorImage: {fileID: 845671730}
   text: {fileID: 1227707585}
-  targetTransform: {fileID: 0}
+  targetTransforms: []
 --- !u!1 &655259773
 GameObject:
   m_ObjectHideFlags: 0
@@ -7015,8 +7015,6 @@ MonoBehaviour:
       m_Data: []
   currentSquadSelection: -1
   repr: {fileID: 1508012627}
-  UISquadIndicatorManager: {fileID: 1509080993}
-  UISquadIndicator: {fileID: 626908839}
 --- !u!4 &768855753
 Transform:
   m_ObjectHideFlags: 0
@@ -10930,6 +10928,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1509080993}
+  - component: {fileID: 1509080994}
   m_Layer: 5
   m_Name: OffScreenIndicatorManager
   m_TagString: Untagged
@@ -10958,6 +10957,19 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1509080994
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1509080992}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a087197daabbcfe4391af4a384addbea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicator: {fileID: 626908839}
 --- !u!1 &1628776156
 GameObject:
   m_ObjectHideFlags: 0

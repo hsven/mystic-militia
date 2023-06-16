@@ -15,24 +15,37 @@ public class UISquadIndicator : MonoBehaviour
     public TMP_Text text;
 
     [SerializeField]
-    private Transform targetTransform;
+    private List<Transform> targetTransforms;
     
     // Start is called before the first frame update
-    public void StartIndicator(Transform target, int squadNumber)
+    public void StartIndicator(List<Transform> targets, int squadNumber)
     {
-        targetTransform = target;
+        targetTransforms = targets;
         text.text = "#" + squadNumber;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (IsOffScreen(targetTransform.position))
+        if (targetTransforms.Count == 0)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        var centerTransform = targetTransforms[targetTransforms.Count / 2];
+        if(centerTransform == null)
+        {
+            targetTransforms.Remove(centerTransform);
+            return;
+        }
+
+        if (IsOffScreen(centerTransform.position))
         {
             indicatorImage.enabled = true;
             text.enabled = true;
 
-            var screenPos = Camera.main.WorldToScreenPoint(targetTransform.position);
+            var screenPos = Camera.main.WorldToScreenPoint(centerTransform.position);
 
             var croppedMax = canvasRect.rect.max * 0.9f;
             var croppedMin = canvasRect.rect.min * 0.9f;
