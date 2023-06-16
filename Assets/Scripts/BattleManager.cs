@@ -30,11 +30,12 @@ public class BattleManager : MonoBehaviour
 
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
     public List<PlayerSquad> squads = new List<PlayerSquad>();
-
+    public List<EnemyController> enemies = new List<EnemyController>();
     public Spline currentFormation;
+
     public int currentSquadSelection = -1;
     public LineRenderer repr;
-    
+
     void Awake() {
         BattleManager.Instance = this;
 
@@ -73,8 +74,7 @@ public class BattleManager : MonoBehaviour
                 for (int i = 0; i < unit.quantity; i++)
                 {
                     var obj = Instantiate(unitPrefab).GetComponent<UnitController>();
-                    obj.transform.position = player.transform.position + UnityEngine.Random.insideUnitSphere * 2;
-                    newPlayerSquad.units.Add(obj);
+                    obj.SetupUnitData(unit.unitData);
                     totalPlayerUnits.Add(obj);
                     obj.Setup(totalPlayerUnits.Count - 1, new Vector2Int(squadCount, i));
                 }
@@ -115,7 +115,11 @@ public class BattleManager : MonoBehaviour
                 PlayerSquad squad = squads[squadIndex.x];
                 squad.units.RemoveAt(squadIndex.y);
             }
-            return;
+        }
+        EnemyController enemy = entity as EnemyController;
+        if (enemy != null)
+        {
+            enemies.Remove(enemy);
         }
     }
 

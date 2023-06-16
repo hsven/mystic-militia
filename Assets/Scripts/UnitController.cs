@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class UnitController : EntityController
 {
@@ -8,6 +9,7 @@ public class UnitController : EntityController
     private Vector2 posOffset;
     private bool enemyInSight = false;
     private GameObject enemyObj;
+    public EnemyController targetEnemy;
 
     [Header("Unit specific data")]
 
@@ -36,8 +38,6 @@ public class UnitController : EntityController
 
     [SerializeField]
     private SpriteRenderer border4Sprite;
-    public GameObject Enemy1;
-    public GameObject Enemy2;
 
     // Start is called before the first frame update
     public void Setup(int totalPosIndex, Vector2Int squadIndex)
@@ -53,6 +53,7 @@ public class UnitController : EntityController
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (!isAlive) KillEntity();
         UnitMovement();
     }
 
@@ -68,14 +69,17 @@ public class UnitController : EntityController
                 Movement(player.GetPosition(), posOffset);
                 break;
             case GameEnums.CommandTypes.ATTACK:
-                if (enemyInSight) {
-                    if(!enemyObj) {
+                if (enemyInSight)
+                {
+                    if (!enemyObj)
+                    {
                         enemyInSight = false;
                         break;
                     }
                     Movement(enemyObj.transform.position, Vector2.zero);
                 }
-                else {
+                else
+                {
                     // TODO: Make this a variable
                     targetPos += commandDirection * 0.01f;
                     Movement(targetPos, posOffset);
@@ -99,16 +103,50 @@ public class UnitController : EntityController
             default:
                 break;
         }
+
+        if (unitData.shootingRange > 0)
+        {
+            Vector2 ownPosition = new Vector2(transform.position.x, transform.position.y);
+
+            if (timerRangedWeapon == 0)
+            {
+                targetEnemy = BattleManager.Instance.enemies
+                    .OrderBy(enemy => Vector2.Distance(ownPosition, enemy.GetPosition()))
+                    .FirstOrDefault();
+            }
+
+            if (targetEnemy != null && (Vector2.Distance(targetEnemy.GetPosition(), this.GetPosition()) < unitData.shootingRange || timerRangedWeapon != 0))
+            {
+                if (timerRangedWeapon == 0)
+                {
+                    LaunchRangedWeapon(targetEnemy);
+                }
+                else
+                {
+                    timerRangedWeapon--;
+                }
+            }
+            else if (timerRangedWeapon > 0)
+            {
+                timerRangedWeapon--;
+            }
+            else
+            {
+                Movement(targetPos, Vector2.zero);
+            }
+        }
     }
 
-    public void SetCommand(GameEnums.CommandTypes newCommand, Vector2 newTargetPos) {
+    public void SetCommand(GameEnums.CommandTypes newCommand, Vector2 newTargetPos)
+    {
         currentCommand = newCommand;
         targetPos = newTargetPos;
 
         commandDirection = (targetPos - player.GetPosition()).normalized;
 
         posOffset = BattleManager.Instance.GetUnitOffset(unitArmyIndex, unitSquadIndex);
-        if (newCommand == GameEnums.CommandTypes.FOLLOW) {
+        if (newCommand == GameEnums.CommandTypes.FOLLOW)
+        {
             posOffset -= player.GetPosition() - targetPos;
         }
 
@@ -118,8 +156,10 @@ public class UnitController : EntityController
 
     // TODO: Note that, after a new command is set, the targetting disapears until a reentry
     // I think this is fine (units are not glued to a target on successive attack commands), but may lead to bugs in the future 
-    private void OnTriggerEnter2D(Collider2D other) {
-        if(other.transform.root.CompareTag("Enemy")) {
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.transform.root.CompareTag("Enemy"))
+        {
             enemyInSight = true;
             enemyObj = other.gameObject;
         }
@@ -129,7 +169,7 @@ public class UnitController : EntityController
     {
         bool border = true;
 
-         if (squad >= 0)
+        if (squad >= 0)
         {
             PlayerSquad selectedSquad = BattleManager.Instance.squads[squad];
             border = selectedSquad.units.Contains(this);

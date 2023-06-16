@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f45620221d7f347ac195292f8630e4, type: 3}
-  m_Name: Infantry
+  m_Name: Pyroman
   m_EditorClassIdentifier: 
-  unitName: Infantry
-  movementSpeed: 3
-  healthPoints: 100
-  damage: 10
-  shootingRange: 0
+  unitName: Pyroman
+  movementSpeed: 1
+  healthPoints: 50
+  damage: 35
+  shootingRange: 5
+  rangedWeaponPrefab: {fileID: 5498187762117813187, guid: c527344067a0d094da9cba6e90604eb1, type: 3}

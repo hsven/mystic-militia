@@ -10,10 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f45620221d7f347ac195292f8630e4, type: 3}
-  m_Name: Infantry
+  m_Name: Finisher
   m_EditorClassIdentifier: 
-  unitName: Infantry
-  movementSpeed: 3
-  healthPoints: 100
-  damage: 10
-  shootingRange: 0
+  unitName: Finisher
+  movementSpeed: 0
+  healthPoints: 50
+  damage: 25
+  shootingRange: 20
+  rangedWeaponPrefab: {fileID: 5498187762117813187, guid: 0646edff55cdc6a48ae2ef2ef9cbf68d, type: 3}
