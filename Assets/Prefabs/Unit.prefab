@@ -714,13 +714,10 @@ MonoBehaviour:
   rb: {fileID: 0}
   unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   useOldMovement: 0
-  movementSpeed: 5
-  maxSpeed: 3
-  maxHealth: 100
-  power: 10
   healthBarGreen: {fileID: 4276161544753409136}
   healthBarRed: {fileID: 1051671825886227784}
-  timerArrow: 0
+  timerRangedWeapon: 0
+  currentHealth: 0
   targetEnemy: {fileID: 0}
   player: {fileID: 0}
   spotRadius: {fileID: 5723523585606141330}
