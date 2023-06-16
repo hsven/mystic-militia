@@ -9,6 +9,7 @@ namespace Map
     public class MapConfig : ScriptableObject
     {
         public List<NodeBlueprint> nodeBlueprints;
+        public List<NodeBlueprint> randomNodeBlueprints;
         public int GridWidth => Mathf.Max(numOfPreBossNodes.max, numOfStartingNodes.max);
 
         [OneLineWithHeader]

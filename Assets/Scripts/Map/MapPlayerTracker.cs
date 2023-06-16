@@ -14,6 +14,7 @@ namespace Map
         public float enterNodeDelay = 1f;
         public MapManager mapManager;
         public MapView view;
+        
 
         public static MapPlayerTracker Instance;
 
@@ -66,6 +67,10 @@ namespace Map
 
             if(mapNode.Node.nodeType == NodeType.MinorEnemy){
                StartCoroutine(waiter("arenaScene"));
+            }
+
+            if(mapNode.Node.nodeType == NodeType.Mystery){
+                StartCoroutine(waiter("eventScene"));
             }
         }
 

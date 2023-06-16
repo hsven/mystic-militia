@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class PlayerInventory : MonoBehaviour
 {
+    public bool newGame;
+
     [Serializable]
     public class UnitEntry
     {
@@ -28,7 +30,7 @@ public class PlayerInventory : MonoBehaviour
     void Awake() {
         PlayerInventory.Instance = this; 
         //TODO: Make this object permanent regardless of scene, when the overall gameplay loop is in place   
-        // DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void CreateSquad() {
@@ -62,5 +64,18 @@ public class PlayerInventory : MonoBehaviour
             squad.unitEntries[unitEntryPosInSquad].quantity--;
         } 
         return true;
+    }
+
+    public void AddToInventory(UnitData unit, int quantity){
+        var unitEntryPosInInventory = playerUnits.FindIndex(0, x => x.unitData.unitName == unit.unitName);
+        if (unitEntryPosInInventory != -1) {
+            playerUnits[unitEntryPosInInventory].quantity+=quantity;
+        }
+        else {
+            var newEntry = new UnitEntry();
+            newEntry.unitData = unit;
+            newEntry.quantity+=quantity;
+            playerUnits.Add(newEntry);
+        } 
     }
 }
