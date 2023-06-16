@@ -27,6 +27,8 @@ namespace Map
             config = conf;
             nodes.Clear();
 
+            SetRandomNodes(conf.randomNodeBlueprints.Select(x => x.nodeType).ToList());
+
             GenerateLayerDistances();
 
             for (var i = 0; i < conf.layers.Count; i++)
@@ -73,7 +75,14 @@ namespace Map
             for (var i = 0; i < config.GridWidth; i++)
             {
                 var nodeType = Random.Range(0f, 1f) < layer.randomizeNodes ? GetRandomNode() : layer.nodeType;
-                var blueprintName = config.nodeBlueprints.Where(b => b.nodeType == nodeType).ToList().Random().name;
+                var bpNodeTypeList = config.nodeBlueprints.Where(b => b.nodeType == nodeType).ToList();
+
+                if(bpNodeTypeList.Count == 0) 
+                {
+                    nodeType = GetRandomNode();
+                    bpNodeTypeList = config.nodeBlueprints.Where(b => b.nodeType == nodeType).ToList();
+                }
+                var blueprintName = bpNodeTypeList.Random().name;
                 var node = new Node(nodeType, blueprintName, new Point(i, layerIndex))
                 {
                     position = new Vector2(-offset + i * layer.nodesApartDistance, GetDistanceToLayer(layerIndex))
@@ -269,6 +278,12 @@ namespace Map
             path.Add(toPoint);
 
             return path;
+        }
+
+        private static void SetRandomNodes(List<NodeType> randomNodes)
+        {
+            RandomNodes.Clear();
+            RandomNodes.AddRange(randomNodes);
         }
 
         private static NodeType GetRandomNode()
