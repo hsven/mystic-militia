@@ -301,6 +301,7 @@ MonoBehaviour:
   hitbox: {fileID: 2953156807656884423}
   hurtbox: {fileID: 8901483790149473569}
   rb: {fileID: 6457578094864112184}
+  unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   useOldMovement: 0
   movementSpeed: 9
   maxSpeed: 10
@@ -308,7 +309,8 @@ MonoBehaviour:
   power: 10
   healthBarGreen: {fileID: 8682386576368078296}
   healthBarRed: {fileID: 6149338807905591931}
-  enemyType: 1
+  timerArrow: 0
+  enemyTarget: 1
 --- !u!61 &2953156807656884423
 BoxCollider2D:
   m_ObjectHideFlags: 0

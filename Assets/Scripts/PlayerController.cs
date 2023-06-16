@@ -18,6 +18,9 @@ public class PlayerController : EntityController
     public int playerSpeed = 1;
     public GameEnums.CommandTypes selectedCommand = GameEnums.CommandTypes.FOLLOW;
     private int selectedSquad = 0;
+    
+    [Range(1, 100)]
+    public int movementSpeed = 50;
 
     public LineRenderer realTimeFormationRenderer;
     // Update is called once per frame
@@ -136,9 +139,4 @@ public class PlayerController : EntityController
         //    selectedSquad = BattleManager.Instance.UpdateSelectedSquad(++selectedSquad);
         //}
     }
-
-    public Vector2 GetPosition() {
-        return rb.position;
-    }
-
 }

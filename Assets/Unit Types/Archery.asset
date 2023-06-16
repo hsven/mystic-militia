@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38f45620221d7f347ac195292f8630e4, type: 3}
+  m_Name: Archery
+  m_EditorClassIdentifier: 
+  unitName: Archery
+  movementSpeed: 2
+  healthPoints: 50
+  damage: 25
+  shootingRange: 3
+  rangedWeaponPrefab: {fileID: 5498187762117813187, guid: 48c125a7df9881749a6d130979a1a230, type: 3}
