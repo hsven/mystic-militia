@@ -137,16 +137,14 @@ public class UnitController : EntityController
         }
     }
 
-    public void SetCommand(GameEnums.CommandTypes newCommand, Vector2 newTargetPos)
-    {
+    public void SetCommand(GameEnums.CommandTypes newCommand, Vector2 newTargetPos, Vector2 offset) {
         currentCommand = newCommand;
         targetPos = newTargetPos;
 
         commandDirection = (targetPos - player.GetPosition()).normalized;
 
-        posOffset = BattleManager.Instance.GetUnitOffset(unitArmyIndex, unitSquadIndex);
-        if (newCommand == GameEnums.CommandTypes.FOLLOW)
-        {
+        posOffset = offset;
+        if (newCommand == GameEnums.CommandTypes.FOLLOW) {
             posOffset -= player.GetPosition() - targetPos;
         }
 
@@ -165,19 +163,11 @@ public class UnitController : EntityController
         }
     }
 
-    public void SetUnitBorders(int squad)
+    public void SetUnitBorders(bool isActive)
     {
-        bool border = true;
-
-        if (squad >= 0)
-        {
-            PlayerSquad selectedSquad = BattleManager.Instance.squads[squad];
-            border = selectedSquad.units.Contains(this);
-        }
-
-        border1Sprite.gameObject.SetActive(border);
-        border2Sprite.gameObject.SetActive(border);
-        border3Sprite.gameObject.SetActive(border);
-        border4Sprite.gameObject.SetActive(border);
+        border1Sprite.gameObject.SetActive(isActive);
+        border2Sprite.gameObject.SetActive(isActive);
+        border3Sprite.gameObject.SetActive(isActive);
+        border4Sprite.gameObject.SetActive(isActive);
     }
 }
