@@ -146,7 +146,7 @@ public class BattleManager : MonoBehaviour
             newPlayerSquad.formationLineRenderer = Instantiate(squadFormationRender.gameObject, transform).GetComponent<SquadFormationLineRenderer>();
             squads.Add(newPlayerSquad);
 
-            UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
+            if(UIOffScreenIndicatorManager.Instance) UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
         }
 
         UIBattleSquadSelector.Instance.SetupBattleSquadUI();
@@ -254,6 +254,11 @@ public class BattleManager : MonoBehaviour
                 sqd.formationRepr.AttachSquad();
                 sqd.formationRepr.AddActiveSquad();
             }
+        }
+
+        if(UIBattleSquadSelector.Instance != null)
+        {
+            UIBattleSquadSelector.Instance.ApplyCommandType(selectedCommand);
         }
     }
 

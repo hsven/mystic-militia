@@ -13,6 +13,8 @@ public class UIToggleSquadCard : MonoBehaviour
     private TMP_Text squadName;
     [SerializeField]
     private Toggle toggle;
+    [SerializeField]
+    private Image commandImg;
 
     private Vector2 originalSize;
     private int cardIndex;
@@ -60,6 +62,11 @@ public class UIToggleSquadCard : MonoBehaviour
         }
 
         UIBattleSquadSelector.Instance.OnToggleChanges(cardIndex);
+    }
+
+    public void SetCommandTypeImage(Sprite sprite)
+    {
+        commandImg.sprite = sprite;
     }
 
 }

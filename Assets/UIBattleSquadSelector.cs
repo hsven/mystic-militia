@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIBattleSquadSelector : MonoBehaviour
 {
@@ -15,7 +17,14 @@ public class UIBattleSquadSelector : MonoBehaviour
     private GameObject UIToggleCardPrefab;
 
     private List<bool> toggleStates = new List<bool>();
-    bool isPropagationOK = true;
+
+    [SerializeField]
+    private List<Sprite> commandTypeSprites = new List<Sprite>();
+
+    [SerializeField]
+    private Image currentCommandImage;
+    [SerializeField]
+    TMP_Text currentCommandText;
 
     void Awake()
     {
@@ -42,5 +51,23 @@ public class UIBattleSquadSelector : MonoBehaviour
     {
         toggleStates[cardIndex] = squadCards[cardIndex].GetIsOn();
         BattleManager.Instance.UpdateActiveSquad(cardIndex, toggleStates[cardIndex]);
+    }
+
+    public void SelectedCommandType(GameEnums.CommandTypes selectedCommand)
+    {
+        currentCommandImage.sprite = commandTypeSprites[(int)selectedCommand];
+        currentCommandText.text = selectedCommand.ToString();
+    }
+
+    public void ApplyCommandType(GameEnums.CommandTypes selectedCommand)
+    {
+        for (int i = 0; i < toggleStates.Count; i++)
+        {
+            if (toggleStates[i])
+            {
+                var squadCard = squadCards[i];
+                squadCard.SetCommandTypeImage(commandTypeSprites[(int)selectedCommand]);
+            }
+        }
     }
 }

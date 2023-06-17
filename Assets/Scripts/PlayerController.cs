@@ -1,8 +1,10 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerController : EntityController
 {    
@@ -23,6 +25,17 @@ public class PlayerController : EntityController
     public int movementSpeed = 50;
 
     public LineRenderer realTimeFormationRenderer;
+
+    [SerializeField]
+    Volume volume;
+    Vignette vignette = null;
+    private Tween vignetteTween;
+
+    private void Start()
+    {
+        volume.profile.TryGet<Vignette>(out vignette);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -68,6 +81,7 @@ public class PlayerController : EntityController
             }
         }
         Debug.Log("Current Command: " + selectedCommand);
+        UIBattleSquadSelector.Instance.SelectedCommandType(selectedCommand);
     }
 
     void DrawFormation() {
@@ -107,12 +121,25 @@ public class PlayerController : EntityController
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             isDrawingFormation = !isDrawingFormation;
+
             if (isDrawingFormation)
             {
                 mousePositions.Clear();
                 realTimeFormationRenderer.positionCount = 0;
                 realTimeFormationRenderer.enabled = true;
+
+                UpdateVignetteTween(0.5f, 1.5f);
             }
+            else UpdateVignetteTween(0f, 0.75f);
+        }
+
+        if(Input.GetMouseButtonUp(0) && isDrawingFormation)
+        {
+            isDrawingFormation = false;
+            UpdateVignetteTween(0f, 0.75f);
+
+            SendCommand(mousePositions);
+            realTimeFormationRenderer.enabled = false;
         }
 
         if (Input.GetMouseButtonDown(0) && !isDrawingFormation && !EventSystem.current.IsPointerOverGameObject())
@@ -125,18 +152,26 @@ public class PlayerController : EntityController
             DrawFormation();
         }
 
-        if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        //if (Input.GetKeyDown(KeyCode.UpArrow)) {
+        //    ChangeCommand(true);
+        //}
+        //else if(Input.GetKeyDown(KeyCode.DownArrow)) {
+        //    ChangeCommand(false);
+        //}
+
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
             ChangeCommand(true);
         }
-        else if(Input.GetKeyDown(KeyCode.DownArrow)) {
+        else if (Input.GetKeyDown(KeyCode.E))
+        {
             ChangeCommand(false);
         }
+    }
 
-        //if (Input.GetKeyDown(KeyCode.Q)) {
-        //    selectedSquad = BattleManager.Instance.UpdateSelectedSquad(--selectedSquad);
-        //}
-        //else if(Input.GetKeyDown(KeyCode.E)) {
-        //    selectedSquad = BattleManager.Instance.UpdateSelectedSquad(++selectedSquad);
-        //}
+    private void UpdateVignetteTween(float target, float duration)
+    {
+        vignetteTween.Kill();
+        vignetteTween = DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, target, duration);
     }
 }
