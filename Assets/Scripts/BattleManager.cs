@@ -26,6 +26,7 @@ public class BattleManager : MonoBehaviour
     public GameObject UIObj;
 
     public PlayerController player;
+    public EnemyFormationManager enemyFormation;
     public GameObject unitPrefab;
 
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
@@ -49,18 +50,26 @@ public class BattleManager : MonoBehaviour
             mapGenerator.GenerateMap();
              //TODO: Maybe redo how this initial spawns is configured
             var respawnLocs = GameObject.FindGameObjectsWithTag("Respawn");
-            player.transform.position = respawnLocs[0].transform.position;
+            if (respawnLocs.Count() > 0)
+            {
+                player.transform.position = respawnLocs[0].transform.position;
+            }
+
+            var enemyRespawnLocs = GameObject.FindGameObjectsWithTag("EnemyRespawn");
+            if(enemyRespawnLocs.Count() > 0)
+            {
+                enemyFormation.transform.position = enemyRespawnLocs[0].transform.position;
+            }
         }
-        
-
-       
-
     }
 
     //Currently more of a start game
     public void ResumeGame() {
         //TODO: Revisit UI being mentioned here
         UIObj.SetActive(false);
+
+        enemyFormation.SpawnFormation(2);
+
 
         int squadCount = 0;
         foreach (var squad in PlayerInventory.Instance.playerSquads)

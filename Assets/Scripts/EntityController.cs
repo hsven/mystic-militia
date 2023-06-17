@@ -20,20 +20,23 @@ public class EntityController : MonoBehaviour
 
     public UnitData unitData;
 
-    [Header("Movement related")]
-    [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
-    public bool useOldMovement = false;
-
     public Image healthBarGreen;
     public Image healthBarRed;
 
     protected Vector3 arrowInitialLocalPosition;
     protected Quaternion arrowInitialLocalRotation;
+
     private EntityController targetEntity;
     public int timerRangedWeapon = 0;
     protected bool isAlive = true;
 
     public int currentHealth;
+    
+    [Header("Movement related")]
+    [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
+    public bool useOldMovement = false;
+
+
 
     protected void Awake()
     {
