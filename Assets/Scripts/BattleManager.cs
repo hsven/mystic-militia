@@ -94,6 +94,7 @@ public class BattleManager : MonoBehaviour
     //public LineRenderer repr;
     public SquadFormationLineRenderer squadFormationRender;
 
+
     void Awake() {
         BattleManager.Instance = this;
 
@@ -151,11 +152,14 @@ public class BattleManager : MonoBehaviour
                     
                     newPlayerSquad.units.Add(obj);
                     totalPlayerUnits.Add(obj);
+                    newPlayerSquad.units.Add(obj);
                     obj.Setup(totalPlayerUnits.Count - 1, new Vector2Int(squadCount, i));
                 }
             }
             newPlayerSquad.formationLineRenderer = Instantiate(squadFormationRender.gameObject, transform).GetComponent<SquadFormationLineRenderer>();
             squads.Add(newPlayerSquad);
+
+            UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
         }
 
         UIBattleSquadSelector.Instance.SetupBattleSquadUI();
