@@ -6,6 +6,7 @@ using UnityEngine;
 using Unity.Mathematics;
 using System.Linq;
 using System;
+using Map;
 
 [Serializable]
 public class PlayerSquad
@@ -124,11 +125,22 @@ public class BattleManager : MonoBehaviour
                 PlayerSquad squad = squads[squadIndex.x];
                 squad.units.RemoveAt(squadIndex.y);
             }
+
+            if(totalPlayerUnits.Count == 0)
+            {
+                Debug.Log("Defeat");
+            }
+            return;
         }
         EnemyController enemy = entity as EnemyController;
         if (enemy != null)
         {
             enemies.Remove(enemy);
+            if(enemies.Count == 0)
+            {
+                Debug.Log("Victory!");
+                MapPlayerTracker.Instance.returnToTree();
+            }
         }
     }
 

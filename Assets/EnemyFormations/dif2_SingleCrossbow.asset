@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afeaba14c77b99d46bd63c6e3415e363, type: 3}
-  m_Name: SingleMage
+  m_Name: dif2_SingleCrossbow
   m_EditorClassIdentifier: 
   enemyFormations:
-  - unit: {fileID: 11400000, guid: 08433de23bc63024e8d84394902d8c00, type: 2}
-    unitCount: 1
+  - unit: {fileID: 11400000, guid: 6142aa21e3566294c810fa257a74a958, type: 2}
+    unitCount: 3
     formation:
       m_EditModeType: 0
       m_Knots:
@@ -49,4 +49,4 @@ MonoBehaviour:
         m_Data: []
       m_ObjectData:
         m_Data: []
-  difficultyLevel: 1
+  difficultyLevel: 2
