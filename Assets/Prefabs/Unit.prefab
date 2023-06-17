@@ -602,7 +602,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitbox: {fileID: 5562264874773238519}
-  hurtbox: {fileID: 0}
+  hurtbox: {fileID: 2499110370233995564}
   rb: {fileID: 0}
   unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   healthBarGreen: {fileID: 4276161544753409136}

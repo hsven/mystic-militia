@@ -91,7 +91,7 @@ public class BattleManager : MonoBehaviour
     public int currentSquadSelection = -1;
     public int lastSquadCommanded = 0;
 
-    public LineRenderer repr;
+    //public LineRenderer repr;
     public SquadFormationLineRenderer squadFormationRender;
 
     void Awake() {
@@ -125,7 +125,10 @@ public class BattleManager : MonoBehaviour
         //TODO: Revisit UI being mentioned here
         UIObj.SetActive(false);
 
-        enemyFormation.SpawnFormation(2);
+        if(enemyFormation != null)
+        {
+            enemyFormation.SpawnFormation(PlayerInventory.Instance.battlesFought);
+        }
 
 
         int squadCount = 0;
@@ -203,7 +206,7 @@ public class BattleManager : MonoBehaviour
             if(enemies.Count == 0)
             {
                 Debug.Log("Victory!");
-                MapPlayerTracker.Instance.returnToTree();
+                if(MapPlayerTracker.Instance) MapPlayerTracker.Instance.returnToTree();
             }
         }
     }
@@ -254,6 +257,7 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+        if (affectedUnits.Count == 0) return;
 
         int counter = 0;
         foreach (var unit in affectedUnits)
@@ -277,14 +281,12 @@ public class BattleManager : MonoBehaviour
     public void SetFormation(Vector3 mousePos, List<Vector3> positions)
     {
         currentFormation.Clear();
-        repr.SetPositions(new Vector3[] { });
 
         // If no formation was set, the units group up
         if (positions.Count == 0)
         {
             positions.Add(Vector3.zero);
         }
-        repr.positionCount = positions.Count;
 
         var centerPos = positions[positions.Count / 2];
         int i = 0;
@@ -293,8 +295,6 @@ public class BattleManager : MonoBehaviour
             var adjustedPos = pos - centerPos;
             var worldReprPos = adjustedPos + mousePos;
             currentFormation.Add(new BezierKnot(adjustedPos));
-            repr.SetPosition(i, adjustedPos);
-
         }
 
     }

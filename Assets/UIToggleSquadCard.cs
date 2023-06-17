@@ -50,7 +50,6 @@ public class UIToggleSquadCard : MonoBehaviour
     {
         if (change.isOn) 
         {
-            Debug.Log(rectTransform.gameObject.name);
             rectTransform.DOSizeDelta(originalSize + new Vector2(0, 75), 0.5f).SetUpdate(true);
 
         }

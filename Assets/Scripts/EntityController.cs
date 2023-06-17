@@ -103,6 +103,7 @@ public class EntityController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (unitData == null) return;
         if (unitData.shootingRange > 0) return;
 
         timer -= Time.deltaTime;
@@ -114,16 +115,14 @@ public class EntityController : MonoBehaviour
             var controller = other.transform.root.GetComponent<EnemyController>();
             if (!hitbox.IsTouching(controller.hurtbox)) return;
 
-            Debug.Log("Enemy takes damage");
             controller.TakeDamage(unitData.damage);
         }
-        else if (other.transform.root.CompareTag("Ally") && this.transform.root.CompareTag("Enemy"))
+        if (other.transform.root.CompareTag("Ally") && this.transform.root.CompareTag("Enemy"))
         {
             
             var controller = other.transform.root.GetComponent<UnitController>();
             if (!hitbox.IsTouching(controller.hurtbox)) return;
 
-            Debug.Log("Ally takes damage");
             controller.TakeDamage(unitData.damage);
         }
     }

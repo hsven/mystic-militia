@@ -25,6 +25,7 @@ public class EnemyFormationManager : MonoBehaviour
         var enemyOptions = enemyFormationList.FindAll(x => x.difficultyLevel == progressionStage || x.difficultyLevel == (progressionStage - 1)).ToList();
         
         var selectedFormation = enemyOptions.Random();
+        Debug.Log("Battle against: " + selectedFormation.ToString());
 
         int index = 0;
         foreach (var form in selectedFormation.enemyFormations)

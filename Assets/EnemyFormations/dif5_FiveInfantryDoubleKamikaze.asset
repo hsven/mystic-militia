@@ -98,7 +98,7 @@ MonoBehaviour:
       m_Knots:
       - Position:
           x: 0
-          y: 10
+          y: 4
           z: 0
         TangentIn:
           x: 0
@@ -133,7 +133,7 @@ MonoBehaviour:
       m_EditModeType: 0
       m_Knots:
       - Position:
-          x: 10
+          x: 4
           y: 0
           z: 0
         TangentIn:
