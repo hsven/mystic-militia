@@ -13,6 +13,10 @@ public class EnemyFormationManager : MonoBehaviour
 
     public GameObject enemyPrefab;
     public List<EnemyFormationData> enemyFormationList;
+    public List<EnemyFormationData> bossFormationList;
+
+    [SerializeField]
+    bool isBossStage;
 
     public void SpawnFormation(int progressionStage)
     {
@@ -20,12 +24,20 @@ public class EnemyFormationManager : MonoBehaviour
         {
             formationSpline.RemoveSpline(formationSpline.Splines[i]);
         }
-
-        //Either same progression stage or one bellow
-        var enemyOptions = enemyFormationList.FindAll(x => x.difficultyLevel == progressionStage || x.difficultyLevel == (progressionStage - 1)).ToList();
+        EnemyFormationData selectedFormation = null;
+        if (!isBossStage )
+        {
+            //Either same progression stage or one bellow
+            var enemyOptions = enemyFormationList.FindAll(x => x.difficultyLevel == progressionStage || x.difficultyLevel == (progressionStage - 1)).ToList();
         
-        var selectedFormation = enemyOptions.Random();
-        Debug.Log("Battle against: " + selectedFormation.ToString());
+            selectedFormation = enemyOptions.Random();
+            Debug.Log("Battle against: " + selectedFormation.ToString());
+        }
+        else
+        {
+            selectedFormation = bossFormationList[0];
+        }
+        if (selectedFormation == null) return;
 
         int index = 0;
         foreach (var form in selectedFormation.enemyFormations)

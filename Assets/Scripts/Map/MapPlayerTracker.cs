@@ -101,7 +101,7 @@ namespace Map
                 case NodeType.Boss:
                     PlayerInventory.Instance.battlesFought++;
                     PlayerInventory.Instance.finalBoss = true;
-                    OpenScene("sampleEnemyFormations");
+                    OpenScene("boss1_battleArena");
                     break;
                 case NodeType.Mystery:
                     OpenScene("eventScene");

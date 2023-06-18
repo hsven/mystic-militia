@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 
@@ -33,6 +34,8 @@ public class PlayerController : EntityController
     Volume volume;
     Vignette vignette = null;
     private Tween vignetteTween;
+    [SerializeField]
+    PixelPerfectCamera ppCamera;
 
     private void Start()
     {
@@ -178,11 +181,41 @@ public class PlayerController : EntityController
         {
             ChangeCommand(false);
         }
+
+        if(Input.mouseScrollDelta.y > 0)
+        {
+            CameraScroll(true);
+        }
+        else if (Input.mouseScrollDelta.y < 0)
+        {
+            CameraScroll(false);
+        }
     }
 
     private void UpdateVignetteTween(float target, float duration)
     {
         vignetteTween.Kill();
         vignetteTween = DOTween.To(() => vignette.intensity.value, x => vignette.intensity.value = x, target, duration);
+    }
+
+    private void CameraScroll(bool isUp)
+    {
+        int maxPPU = 32;
+        int minPPU = 22;
+
+        if (isUp)
+        {
+            var targetVal = ppCamera.assetsPPU + 2;
+            if (targetVal > maxPPU) targetVal = maxPPU;
+
+            DOTween.To(() => ppCamera.assetsPPU, x => ppCamera.assetsPPU = x, targetVal, 0f);
+        }
+        else
+        {
+            var targetVal = ppCamera.assetsPPU - 2;
+            if(targetVal < minPPU) targetVal = minPPU;
+
+            DOTween.To(() => ppCamera.assetsPPU, x => ppCamera.assetsPPU = x, targetVal, 0f);
+        }
     }
 }
