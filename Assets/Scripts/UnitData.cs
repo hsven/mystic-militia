@@ -8,5 +8,7 @@ public class UnitData : ScriptableObject {
     public int healthPoints = 100;
     public int damage = 10;
     public int shootingRange = 3;
-    public GameObject rangedWeaponPrefab;   
+    public GameObject rangedWeaponPrefab;
+
+    public Sprite unitSprite;
 }

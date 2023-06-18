@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class loadScene : MonoBehaviour
+public class UIButtonMethods : MonoBehaviour
 {
-public GameObject playerInventory;
+    public GameObject playerInventory;
 
     public void LoadScene(string sceneName)
     {
@@ -24,4 +24,8 @@ public GameObject playerInventory;
         PlayerInventory.Instance.AddToInventory(data, 10);
     }
 
+    public void ResetToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
 }
