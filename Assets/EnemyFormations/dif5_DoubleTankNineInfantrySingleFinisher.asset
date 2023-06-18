@@ -10,17 +10,95 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: afeaba14c77b99d46bd63c6e3415e363, type: 3}
-  m_Name: dif3_SingleMageTripleInfantry
+  m_Name: dif5_DoubleTankNineInfantrySingleFinisher
   m_EditorClassIdentifier: 
   enemyFormations:
+  - unit: {fileID: 11400000, guid: 69ef5f42da022e549a5a88cf6d9c748d, type: 2}
+    unitCount: 2
+    formation:
+      m_EditModeType: 0
+      m_Knots:
+      - Position:
+          x: -5.5
+          y: -2
+          z: 0
+        TangentIn:
+          x: 0
+          y: 0
+          z: 0
+        TangentOut:
+          x: 0
+          y: 0
+          z: 0
+        Rotation:
+          value:
+            x: 0
+            y: 0
+            z: 0
+            w: 1
+      - Position:
+          x: -5
+          y: -3
+          z: 0
+        TangentIn:
+          x: 0
+          y: 0
+          z: 0
+        TangentOut:
+          x: 0
+          y: 0
+          z: 0
+        Rotation:
+          value:
+            x: 0
+            y: 0
+            z: 0
+            w: 1
+      - Position:
+          x: -4
+          y: -3
+          z: 0
+        TangentIn:
+          x: 0
+          y: 0
+          z: 0
+        TangentOut:
+          x: 0
+          y: 0
+          z: 0
+        Rotation:
+          value:
+            x: 0
+            y: 0
+            z: 0
+            w: 1
+      m_MetaData:
+      - Mode: 0
+        Tension: 0
+        DistanceToInterpolation: []
+      - Mode: 0
+        Tension: 0
+        DistanceToInterpolation: []
+      - Mode: 0
+        Tension: 0
+        DistanceToInterpolation: []
+      m_Closed: 0
+      m_IntData:
+        m_Data: []
+      m_FloatData:
+        m_Data: []
+      m_Float4Data:
+        m_Data: []
+      m_ObjectData:
+        m_Data: []
   - unit: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
-    unitCount: 3
+    unitCount: 9
     formation:
       m_EditModeType: 0
       m_Knots:
       - Position:
           x: 1
-          y: 0
+          y: 2
           z: 0
         TangentIn:
           x: 0
@@ -37,8 +115,8 @@ MonoBehaviour:
             z: 0
             w: 1
       - Position:
-          x: 0
-          y: 0
+          x: 1
+          y: 1
           z: 0
         TangentIn:
           x: 0
@@ -55,7 +133,7 @@ MonoBehaviour:
             z: 0
             w: 1
       - Position:
-          x: -1
+          x: 2
           y: 1
           z: 0
         TangentIn:
@@ -91,7 +169,7 @@ MonoBehaviour:
         m_Data: []
       m_ObjectData:
         m_Data: []
-  - unit: {fileID: 11400000, guid: 08433de23bc63024e8d84394902d8c00, type: 2}
+  - unit: {fileID: 11400000, guid: 20219b3dffc6afb44a85ea62d356f0ae, type: 2}
     unitCount: 1
     formation:
       m_EditModeType: 0
@@ -127,4 +205,4 @@ MonoBehaviour:
         m_Data: []
       m_ObjectData:
         m_Data: []
-  difficultyLevel: 3
+  difficultyLevel: 5

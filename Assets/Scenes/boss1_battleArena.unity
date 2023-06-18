@@ -1065,7 +1065,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 211183268}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -10, y: 0, z: 0}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4014,7 +4014,7 @@ MonoBehaviour:
   m_Script: {fileID: -65694588, guid: 5ec9deea42ffdf94eae3261973878f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_size: {x: 25, y: 1, z: 25}
+  m_size: {x: 60, y: 1, z: 60}
   m_center: {x: 0, y: 1, z: 0}
   modelType: 0
   tiles:
@@ -5329,6 +5329,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d549a2f9d1234734ea9e3c4953882661, type: 2}
   - {fileID: 11400000, guid: b08bc6a6dda0fcc468fdfd1f011de667, type: 2}
   - {fileID: 11400000, guid: 0858b774c98aa85439c2933fbaf17d71, type: 2}
+  bossFormationList:
+  - {fileID: 11400000, guid: 50d002821cd05ec4f8cbde9910de298a, type: 2}
+  isBossStage: 1
 --- !u!1 &768855751
 GameObject:
   m_ObjectHideFlags: 0
@@ -6210,6 +6213,7 @@ Transform:
   - {fileID: 332920988}
   - {fileID: 1571414656}
   - {fileID: 143077349}
+  - {fileID: 1797260622}
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6472,7 +6476,7 @@ MonoBehaviour:
   m_Script: {fileID: -65694588, guid: 5ec9deea42ffdf94eae3261973878f98, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_size: {x: 25, y: 1, z: 25}
+  m_size: {x: 60, y: 1, z: 60}
   m_center: {x: 0, y: 0, z: 0}
   modelType: 0
   tiles:
@@ -9658,7 +9662,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1571994118}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 15, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11127,7 +11131,7 @@ MonoBehaviour:
   spawnedPinnedTiles: {fileID: 1292268102}
   mapBorder: {fileID: 675550971}
   borderTile: {fileID: 11400000, guid: 128504547c8088e458050faa0a62ddf7, type: 2}
-  mapSize: {x: 40, y: 40}
+  mapSize: {x: 60, y: 60}
   spawnThreshold: 0.299
   ground: {fileID: 1606642806}
   tilePalette:
@@ -11309,6 +11313,90 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1797260621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1797260622}
+  - component: {fileID: 1797260623}
+  m_Layer: 0
+  m_Name: Castle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1797260622
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797260621}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 987642909}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!212 &1797260623
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1797260621}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 1, y: 1}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 0
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1805335890
 GameObject:
   m_ObjectHideFlags: 0
