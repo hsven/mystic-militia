@@ -20,20 +20,23 @@ public class EntityController : MonoBehaviour
 
     public UnitData unitData;
 
-    [Header("Movement related")]
-    [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
-    public bool useOldMovement = false;
-
     public Image healthBarGreen;
     public Image healthBarRed;
 
     protected Vector3 arrowInitialLocalPosition;
     protected Quaternion arrowInitialLocalRotation;
+
     private EntityController targetEntity;
     public int timerRangedWeapon = 0;
     protected bool isAlive = true;
 
     public int currentHealth;
+    
+    [Header("Movement related")]
+    [Tooltip("Sets whether to use MovePosition (old) or AddForce (new). Check the code's comments to know the relevant variables")]
+    public bool useOldMovement = false;
+
+
 
     protected void Awake()
     {
@@ -100,6 +103,7 @@ public class EntityController : MonoBehaviour
 
     private void OnTriggerStay2D(Collider2D other)
     {
+        if (unitData == null) return;
         if (unitData.shootingRange > 0) return;
 
         timer -= Time.deltaTime;
@@ -111,16 +115,14 @@ public class EntityController : MonoBehaviour
             var controller = other.transform.root.GetComponent<EnemyController>();
             if (!hitbox.IsTouching(controller.hurtbox)) return;
 
-            Debug.Log("Enemy takes damage");
             controller.TakeDamage(unitData.damage);
         }
-        else if (other.transform.root.CompareTag("Ally") && this.transform.root.CompareTag("Enemy"))
+        if (other.transform.root.CompareTag("Ally") && this.transform.root.CompareTag("Enemy"))
         {
             
             var controller = other.transform.root.GetComponent<UnitController>();
             if (!hitbox.IsTouching(controller.hurtbox)) return;
 
-            Debug.Log("Ally takes damage");
             controller.TakeDamage(unitData.damage);
         }
     }
