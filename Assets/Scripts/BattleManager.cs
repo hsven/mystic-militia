@@ -6,6 +6,8 @@ using UnityEngine;
 using Unity.Mathematics;
 using System.Linq;
 using System;
+using Map;
+using Map;
 using UnityEditor;
 
 #region Aux Classes
@@ -24,6 +26,9 @@ public class PlayerSquad
 
     public FormationRepr formationRepr = null;
 
+    public Vector3 targetPos = Vector3.zero;
+    public GameEnums.CommandTypes currentCommand;
+
     public PlayerSquad() {}
 
     public PlayerSquad(String name)
@@ -37,12 +42,15 @@ public class FormationRepr
     public Spline formation = new Spline();
 
     public SquadFormationLineRenderer formationLineRenderer = null;
+    public List<PlayerSquad> playerSquads = new List<PlayerSquad>();
+
     public int activeSquadCount = 0;
     private int squadCount = 0;
 
-    public void AttachSquad()
+    public void AttachSquad(PlayerSquad squad)
     {
         squadCount++;
+        playerSquads.Add(squad);
     }
 
     public void AddActiveSquad()
@@ -51,9 +59,10 @@ public class FormationRepr
         formationLineRenderer.lineRenderer.enabled = true;
     }
 
-    public void DetachSquad() 
+    public void DetachSquad(PlayerSquad squad) 
     { 
         squadCount--;
+        playerSquads.Remove(squad);
         if (squadCount <= 0)
         {
             GameObject.Destroy(formationLineRenderer.gameObject);
@@ -64,6 +73,11 @@ public class FormationRepr
     {
         activeSquadCount--;
         if (activeSquadCount == 0) formationLineRenderer.lineRenderer.enabled = false;
+    }
+
+    public void SetNewFollow(Transform newTarget)
+    {
+        formationLineRenderer.SetFollowTarget(newTarget);
     }
 }
 
@@ -79,6 +93,7 @@ public class BattleManager : MonoBehaviour
     public GameObject UIObj;
 
     public PlayerController player;
+    public EnemyFormationManager enemyFormation;
     public GameObject unitPrefab;
 
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
@@ -89,7 +104,7 @@ public class BattleManager : MonoBehaviour
     public int currentSquadSelection = -1;
     public int lastSquadCommanded = 0;
 
-    public LineRenderer repr;
+    //public LineRenderer repr;
     public SquadFormationLineRenderer squadFormationRender;
 
 
@@ -106,18 +121,29 @@ public class BattleManager : MonoBehaviour
             mapGenerator.GenerateMap();
              //TODO: Maybe redo how this initial spawns is configured
             var respawnLocs = GameObject.FindGameObjectsWithTag("Respawn");
-            player.transform.position = respawnLocs[0].transform.position;
+            if (respawnLocs.Count() > 0)
+            {
+                player.transform.position = respawnLocs[0].transform.position;
+            }
+
+            var enemyRespawnLocs = GameObject.FindGameObjectsWithTag("EnemyRespawn");
+            if(enemyRespawnLocs.Count() > 0)
+            {
+                enemyFormation.transform.position = enemyRespawnLocs[0].transform.position;
+            }
         }
-        
-
-       
-
     }
 
     //Currently more of a start game
     public void ResumeGame() {
         //TODO: Revisit UI being mentioned here
         UIObj.SetActive(false);
+
+        if(enemyFormation != null)
+        {
+            enemyFormation.SpawnFormation(PlayerInventory.Instance.battlesFought);
+        }
+
 
         int squadCount = 0;
 
@@ -146,7 +172,7 @@ public class BattleManager : MonoBehaviour
             newPlayerSquad.formationLineRenderer = Instantiate(squadFormationRender.gameObject, transform).GetComponent<SquadFormationLineRenderer>();
             squads.Add(newPlayerSquad);
 
-            UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
+            if(UIOffScreenIndicatorManager.Instance) UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
         }
 
         UIBattleSquadSelector.Instance.SetupBattleSquadUI();
@@ -181,13 +207,27 @@ public class BattleManager : MonoBehaviour
             if (squadIndex.x != -1 && squadIndex.y != -1)
             {
                 PlayerSquad squad = squads[squadIndex.x];
+                //squad.
                 squad.units.RemoveAt(squadIndex.y);
+                DynamicFormationAdjust(squad);
             }
+
+            if(totalPlayerUnits.Count == 0)
+            {
+                Debug.Log("Defeat");
+                if (UIBattleResultManager.Instance) UIBattleResultManager.Instance.OpenResultScreen(false);
+            }
+            return;
         }
         EnemyController enemy = entity as EnemyController;
         if (enemy != null)
         {
             enemies.Remove(enemy);
+            if(enemies.Count == 0)
+            {
+                Debug.Log("Victory!");
+                if (UIBattleResultManager.Instance) UIBattleResultManager.Instance.OpenResultScreen(true);
+            }
         }
     }
 
@@ -206,17 +246,42 @@ public class BattleManager : MonoBehaviour
         return totalPlayerUnits.Select(unit => new Vector2(unit.transform.position.x, unit.transform.position.y)).ToList();
     }
 
-    public Vector2 GetUnitOffset(int unitCount, int unitIndex)
+    public Vector2 GetUnitOffset(int unitCount, int unitIndex, Spline formationToApply)
     {
-        if (currentFormation.Count == 0) return Vector2.zero;
+        if (formationToApply.Count == 0) return Vector2.zero;
 
-        float formationPosStep = currentFormation.Count / unitCount;
-        var length = currentFormation.GetCurveLength(0);
+        float formationPosStep = formationToApply.Count / unitCount;
+        var length = formationToApply.GetCurveLength(0);
         var interval = length / unitCount;
 
-        float3 finalPos = currentFormation.EvaluatePosition(interval * unitIndex);
+        float3 finalPos = formationToApply.EvaluatePosition(interval * unitIndex);
 
         return new Vector3(finalPos.x, finalPos.y, 0);
+    }
+
+    public void DynamicFormationAdjust(PlayerSquad squad)
+    {
+        if (squad.formationRepr == null) return;
+
+        List<UnitController> affectedUnits = new List<UnitController>();
+        foreach (var sqd in squad.formationRepr.playerSquads)
+        {
+            if(sqd == null || sqd.units.Count == 0) continue;
+            affectedUnits.AddRange(sqd.units);
+        }
+
+        //Filter dead units
+        affectedUnits = affectedUnits.FindAll(x => x != null).ToList();
+
+        if (affectedUnits.Count == 0) return;
+
+        int counter = 0;
+        foreach (var unit in affectedUnits)
+        {
+            unit.SetCommand(squad.currentCommand, squad.targetPos, GetUnitOffset(affectedUnits.Count, counter++, squad.formation));
+        }
+
+        squad.formationRepr.SetNewFollow(affectedUnits[affectedUnits.Count / 2].transform);
     }
 
     public void SendCommandToUnits(GameEnums.CommandTypes selectedCommand, Vector3 mousePos, List<Vector3> formationPositions)
@@ -232,16 +297,20 @@ public class BattleManager : MonoBehaviour
                 if(sqd.formationRepr != null)
                 {
                     sqd.formationRepr.RemoveActiveSquad();
-                    sqd.formationRepr.DetachSquad();
+                    sqd.formationRepr.DetachSquad(sqd);
                     sqd.formationRepr = null;
                 }
             }
         }
+        //Filter dead units
+        affectedUnits = affectedUnits.FindAll(x => x != null).ToList();
+
+        if (affectedUnits.Count == 0) return;
 
         int counter = 0;
         foreach (var unit in affectedUnits)
         {
-            unit.SetCommand(selectedCommand, mousePos, GetUnitOffset(affectedUnits.Count, counter++));
+            unit.SetCommand(selectedCommand, mousePos, GetUnitOffset(affectedUnits.Count, counter++, currentFormation));
         }
 
         var repr = SetFormationLineRenderer(mousePos, formationPositions, affectedUnits[affectedUnits.Count / 2].transform);
@@ -250,24 +319,32 @@ public class BattleManager : MonoBehaviour
         {
             if (sqd.isActive)
             {
+                sqd.currentCommand = selectedCommand;
+                sqd.targetPos = mousePos;
+                sqd.formation.Clear();
+                sqd.formation.Copy(currentFormation);
+
                 sqd.formationRepr = repr;
-                sqd.formationRepr.AttachSquad();
+                sqd.formationRepr.AttachSquad(sqd);
                 sqd.formationRepr.AddActiveSquad();
             }
+        }
+
+        if(UIBattleSquadSelector.Instance != null)
+        {
+            UIBattleSquadSelector.Instance.ApplyCommandType(selectedCommand);
         }
     }
 
     public void SetFormation(Vector3 mousePos, List<Vector3> positions)
     {
         currentFormation.Clear();
-        repr.SetPositions(new Vector3[] { });
 
         // If no formation was set, the units group up
         if (positions.Count == 0)
         {
             positions.Add(Vector3.zero);
         }
-        repr.positionCount = positions.Count;
 
         var centerPos = positions[positions.Count / 2];
         int i = 0;
@@ -276,8 +353,6 @@ public class BattleManager : MonoBehaviour
             var adjustedPos = pos - centerPos;
             var worldReprPos = adjustedPos + mousePos;
             currentFormation.Add(new BezierKnot(adjustedPos));
-            repr.SetPosition(i, adjustedPos);
-
         }
 
     }
@@ -356,7 +431,10 @@ public class BattleManager : MonoBehaviour
         {
             foreach (var unit in sqd.units)
             {
-                unit.SetUnitBorders(sqd.isActive);
+                if(unit != null)
+                {
+                    unit.SetUnitBorders(sqd.isActive);
+                }
             }
 
         }

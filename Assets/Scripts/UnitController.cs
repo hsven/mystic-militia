@@ -89,16 +89,17 @@ public class UnitController : EntityController
             case GameEnums.CommandTypes.DEFEND:
                 Movement(targetPos, posOffset);
                 break;
-            case GameEnums.CommandTypes.PATROL:
-                float timeDelta = Time.fixedTime / 1000;
-                float angle = 90 * timeDelta;
+            //Deprecated
+            //case GameEnums.CommandTypes.PATROL:
+            //    float timeDelta = Time.fixedTime / 1000;
+            //    float angle = 90 * timeDelta;
 
-                Vector2 newTarget = new Vector2(
-                    Mathf.Sin(angle * 10) * patrolRadius,
-                    Mathf.Cos(angle * 10) * patrolRadius
-                ) + targetPos;
-                Movement(newTarget, posOffset);
-                break;
+            //    Vector2 newTarget = new Vector2(
+            //        Mathf.Sin(angle * 10) * patrolRadius,
+            //        Mathf.Cos(angle * 10) * patrolRadius
+            //    ) + targetPos;
+            //    Movement(newTarget, posOffset);
+            //    break;
 
             default:
                 break;

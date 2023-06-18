@@ -20,4 +20,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/MainMenuScene.unity
     guid: 2627490e63b8feb4186195d6a433f6af
+  - enabled: 1
+    path: Assets/Scenes/sampleEnemyFormations.unity
+    guid: dc23fcbb27d627949b7c782adbec6600
   m_configObjects: {}
