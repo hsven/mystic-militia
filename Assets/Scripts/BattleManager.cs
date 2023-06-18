@@ -113,6 +113,9 @@ public class BattleManager : MonoBehaviour
     //public LineRenderer repr;
     public SquadFormationLineRenderer squadFormationRender;
 
+    [Separator("Battle Data")]
+    public int commandCount;
+    public int formationCount;
 
     void Awake() {
         BattleManager.Instance = this;
@@ -233,6 +236,7 @@ public class BattleManager : MonoBehaviour
             if(totalPlayerUnits.Count == 0)
             {
                 Debug.Log("Defeat");
+                GameMetrics.Instance.RegisterBattleData(PlayerInventory.Instance.battlesFought, PlayerInventory.Instance.playerSquads.Count, formationCount, commandCount, PlayerInventory.Instance.playerSquads);
                 GameMetrics.Instance.SaveData( GameMetrics.Instance);
                 if (UIBattleResultManager.Instance)
                 {
@@ -250,6 +254,7 @@ public class BattleManager : MonoBehaviour
             {
                 Debug.Log("Victory!");
 
+                GameMetrics.Instance.RegisterBattleData(PlayerInventory.Instance.battlesFought, PlayerInventory.Instance.playerSquads.Count, formationCount, commandCount, PlayerInventory.Instance.playerSquads);
                 if(PlayerInventory.Instance.finalBoss)
                 {
                     GameMetrics.Instance.SaveData( GameMetrics.Instance);

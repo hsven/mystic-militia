@@ -113,7 +113,5 @@ public class UISquadManager : MonoBehaviour
             squadUI.CreateUICard(squad);
             cnt++;
         }
-        
-        GameMetrics.Instance.squadCount=cnt;
-    }
+            }
 }

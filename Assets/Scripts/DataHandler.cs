@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 using System.IO;
+using System.Linq;
 
 public class DataHandler
 {
@@ -16,14 +17,16 @@ public class DataHandler
     }
 
     public void Save(GameMetrics data){
-        string  fullPath= Path.Combine(dataDirPath,dataFileName);
+        string  fullPath= Path.Combine(dataDirPath,dataFileName+"");
         try
         {
           Directory.CreateDirectory(Path.GetDirectoryName(fullPath));
 
+            var numberOffset = Directory.GetFiles(Path.GetDirectoryName(fullPath)).Count();
+
           string dataToStore = JsonUtility.ToJson(data, true);
 
-          using(FileStream stream = new FileStream(fullPath, FileMode.Create)){
+          using(FileStream stream = new FileStream(fullPath+numberOffset, FileMode.Create)){
             using (StreamWriter writer  = new StreamWriter(stream))
             {
                 writer.Write(dataToStore);

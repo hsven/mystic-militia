@@ -62,8 +62,7 @@ public class PlayerController : EntityController
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         BattleManager.Instance.SendCommandToUnits(selectedCommand, mousePos, formationPositions);
-        commandCount+=1;
-        GameMetrics.Instance.commandCount=commandCount;
+        BattleManager.Instance.commandCount++;
     }
 
     void ChangeCommand(bool isUp) {
@@ -131,8 +130,8 @@ public class PlayerController : EntityController
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             isDrawingFormation = !isDrawingFormation;
-            formationCount+=1;
-            GameMetrics.Instance.formationCount=formationCount;
+            //formationCount+=1;
+            BattleManager.Instance.formationCount++;
 
             if (isDrawingFormation)
             {
