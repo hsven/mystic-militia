@@ -106,12 +106,16 @@ public class PlayerController : EntityController
     }
     
     void PlayerControls() {
-        if(Input.GetKeyDown(KeyCode.Escape)) {
-            BattleManager.Instance.ResetGame();
+        if (Input.GetKeyDown(KeyCode.Return))
+        {
+            if (!BattleManager.Instance.isBattleActive) BattleManager.Instance.StartGame();
         }
 
-        if(Input.GetKeyDown(KeyCode.Return)) {
-            BattleManager.Instance.ResumeGame();
+        if (!BattleManager.Instance.isBattleActive) return;
+
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            if(!BattleManager.Instance.isPaused) BattleManager.Instance.PauseGame();
+            else BattleManager.Instance.ResumeGame();
         }
 
         if (BattleManager.Instance.isPaused) return;

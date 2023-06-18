@@ -49,9 +49,9 @@ GameObject:
   - component: {fileID: 6893061657145275256}
   - component: {fileID: 2327625326702719050}
   - component: {fileID: 1726886562632571416}
-  - component: {fileID: 3354343923082719421}
+  - component: {fileID: 6651413977910820439}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,9 +160,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3354343923082719421}
-        m_TargetAssemblyTypeName: Map.MapPlayerTracker, Assembly-CSharp
-        m_MethodName: returnToTree
+      - m_Target: {fileID: 6651413977910820439}
+        m_TargetAssemblyTypeName: UIButtonMethods, Assembly-CSharp
+        m_MethodName: StartBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3354343923082719421
+--- !u!114 &6651413977910820439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,13 +181,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 617759872253036269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41edfa9cd46e12b4389c9a79ec3ae0d7, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf2523298efa8a47a278b12efde13fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockAfterSelecting: 0
-  enterNodeDelay: 1
-  mapManager: {fileID: 0}
-  view: {fileID: 0}
+  playerInventory: {fileID: 0}
 --- !u!1 &800875888292155329
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: back
+  m_text: Start Battle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0707dc1a77aa3284d82b89ef23a224d2, type: 2}
   m_sharedMaterial: {fileID: -358597878722867302, guid: 0707dc1a77aa3284d82b89ef23a224d2, type: 2}
@@ -1565,6 +1562,7 @@ GameObject:
   - component: {fileID: 7085303625252202489}
   - component: {fileID: 1076801383544514350}
   - component: {fileID: 6959748522280542436}
+  - component: {fileID: 1545759584061938693}
   m_Layer: 5
   m_Name: BattleUI
   m_TagString: Untagged
@@ -1660,6 +1658,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1545759584061938693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289092511818364692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41edfa9cd46e12b4389c9a79ec3ae0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockAfterSelecting: 0
+  enterNodeDelay: 1
+  mapManager: {fileID: 0}
+  view: {fileID: 0}
 --- !u!1 &6554877625445787736
 GameObject:
   m_ObjectHideFlags: 0
