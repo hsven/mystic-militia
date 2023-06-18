@@ -7828,6 +7828,7 @@ MonoBehaviour:
   selectedCommand: 0
   movementSpeed: 3
   realTimeFormationRenderer: {fileID: 0}
+  volume: {fileID: 0}
 --- !u!1 &1442683248
 GameObject:
   m_ObjectHideFlags: 0
