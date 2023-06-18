@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
+    path: Assets/Scenes/MainMenuScene.unity
+    guid: 2627490e63b8feb4186195d6a433f6af
+  - enabled: 1
     path: Assets/Scenes/arenaScene.unity
     guid: f1eb85636de0cbd44a3fc05e5cc8840d
   - enabled: 1
@@ -17,9 +20,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/eventScene.unity
     guid: c1c4c5062195f0a418798f16d9130e8a
-  - enabled: 1
-    path: Assets/Scenes/MainMenuScene.unity
-    guid: 2627490e63b8feb4186195d6a433f6af
   - enabled: 1
     path: Assets/Scenes/battleArena.unity
     guid: dc23fcbb27d627949b7c782adbec6600
