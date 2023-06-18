@@ -16,6 +16,9 @@ public class PlayerController : EntityController
     private List<Vector3> mousePositions = new List<Vector3>();
     private bool isDrawingFormation = false;
     public int mousePositionInterval = 100;
+    public int commandCount = 0;
+    public int formationCount = 0;
+
 
     public int playerSpeed = 1;
     public GameEnums.CommandTypes selectedCommand = GameEnums.CommandTypes.FOLLOW;
@@ -59,6 +62,8 @@ public class PlayerController : EntityController
         Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         BattleManager.Instance.SendCommandToUnits(selectedCommand, mousePos, formationPositions);
+        commandCount+=1;
+        GameMetrics.Instance.commandCount=commandCount;
     }
 
     void ChangeCommand(bool isUp) {
@@ -103,6 +108,7 @@ public class PlayerController : EntityController
             // Debug.Log("Added Position in " + mousePos);
             return;
         }
+        
     }
     
     void PlayerControls() {
@@ -121,6 +127,8 @@ public class PlayerController : EntityController
         if (Input.GetKeyDown(KeyCode.LeftAlt))
         {
             isDrawingFormation = !isDrawingFormation;
+            formationCount+=1;
+            GameMetrics.Instance.formationCount=formationCount;
 
             if (isDrawingFormation)
             {

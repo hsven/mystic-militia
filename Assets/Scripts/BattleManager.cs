@@ -103,7 +103,6 @@ public class BattleManager : MonoBehaviour
 
     public int currentSquadSelection = -1;
     public int lastSquadCommanded = 0;
-    public int formationCount = 0;
 
     //public LineRenderer repr;
     public SquadFormationLineRenderer squadFormationRender;
@@ -358,9 +357,6 @@ public class BattleManager : MonoBehaviour
             var worldReprPos = adjustedPos + mousePos;
             currentFormation.Add(new BezierKnot(adjustedPos));
         }
-
-        formationCount+=1;
-        GameMetrics.Instance.formationCount=formationCount;
 
     }
 
