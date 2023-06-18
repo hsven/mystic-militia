@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-public class GameMetrics : MonoBehaviour, IData
+public class GameMetrics : MonoBehaviour
 {
     public static GameMetrics Instance;
     public float playedTime = 0.0f;
@@ -29,8 +29,8 @@ public class GameMetrics : MonoBehaviour, IData
         playedTime += Time.deltaTime;
     }
 
-    public void SaveData(ref GameData data){
-        data.gameDuration = playedTime;
-        dataHandler.Save(data);
+    public void SaveData(GameMetrics data){
+        data.playedTime = playedTime;
+        dataHandler.Save(this);
     }
 }

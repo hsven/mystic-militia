@@ -216,7 +216,7 @@ public class BattleManager : MonoBehaviour
             if(totalPlayerUnits.Count == 0)
             {
                 Debug.Log("Defeat");
-                DataManager.Instance.SaveData();
+                GameMetrics.Instance.SaveData( GameMetrics.Instance);
             }
             return;
         }
@@ -230,7 +230,7 @@ public class BattleManager : MonoBehaviour
 
                 if(PlayerInventory.Instance.finalBoss)
                 {
-                    DataManager.Instance.SaveData();
+                    GameMetrics.Instance.SaveData( GameMetrics.Instance);
                     return;
                 }
                 if(MapPlayerTracker.Instance) MapPlayerTracker.Instance.returnToTree();
