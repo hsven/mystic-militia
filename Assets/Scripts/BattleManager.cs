@@ -226,6 +226,12 @@ public class BattleManager : MonoBehaviour
             if(enemies.Count == 0)
             {
                 Debug.Log("Victory!");
+
+                if(PlayerInventory.Instance.finalBoss)
+                {
+                    DataManager.Instance.SaveData();
+                    return;
+                }
                 if(MapPlayerTracker.Instance) MapPlayerTracker.Instance.returnToTree();
             }
         }

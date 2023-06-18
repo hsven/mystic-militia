@@ -27,6 +27,7 @@ public class PlayerInventory : MonoBehaviour
     public List<SquadEntry> playerSquads = new List<SquadEntry>();
 
     public int battlesFought = 0;
+    public bool finalBoss = false;
 
     void Awake() {
         PlayerInventory.Instance = this; 
