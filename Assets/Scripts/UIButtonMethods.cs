@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class UIButtonMethods : MonoBehaviour
 {
     public GameObject playerInventory;
+public GameObject gameMetrics;
 
     public void LoadScene(string sceneName)
     {
@@ -16,8 +17,13 @@ public class UIButtonMethods : MonoBehaviour
         if(PlayerInventory.Instance != null){
             Destroy(PlayerInventory.Instance.gameObject);
         }
+        if(GameMetrics.Instance != null){
+            Destroy(GameMetrics.Instance.gameObject);
+        }
         var newInv = Instantiate(playerInventory);
+        var metrics = Instantiate(gameMetrics);
         newInv.SetActive(true);
+        metrics.SetActive(true);
     }
 
     public void addUnit(UnitData data){

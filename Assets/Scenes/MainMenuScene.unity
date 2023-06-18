@@ -701,6 +701,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 6712801222575636860, guid: 7f6e619145c4751438e27fbea66dab60, type: 3}
+  gameMetrics: {fileID: 6712801222575636860, guid: f23ec03c5d617ac4f9c8a3039e5fdc0c, type: 3}
 --- !u!1 &744872445
 GameObject:
   m_ObjectHideFlags: 0

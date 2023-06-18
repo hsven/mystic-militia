@@ -554,6 +554,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerInventory: {fileID: 0}
+  gameMetrics: {fileID: 6712801222575636860, guid: f23ec03c5d617ac4f9c8a3039e5fdc0c, type: 3}
 --- !u!1 &1294898512
 GameObject:
   m_ObjectHideFlags: 0

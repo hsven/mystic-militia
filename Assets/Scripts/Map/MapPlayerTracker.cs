@@ -100,6 +100,7 @@ namespace Map
                     break;
                 case NodeType.Boss:
                     PlayerInventory.Instance.battlesFought++;
+                    PlayerInventory.Instance.finalBoss = true;
                     OpenScene("boss1_battleArena");
                     break;
                 case NodeType.Mystery:
@@ -108,6 +109,9 @@ namespace Map
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            
+            int percentage = PlayerInventory.Instance.battlesFought/11;
+            GameMetrics.Instance.mapPercentage=percentage;
         }
 
         private void PlayWarningThatNodeCannotBeAccessed()

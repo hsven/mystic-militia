@@ -89,6 +89,7 @@ public class BattleManager : MonoBehaviour
 
     public static BattleManager Instance = null;
     public MapGenerator mapGenerator;
+    public MapConfig config;
     public bool isPaused = false;
     public bool isBattleActive = false;
 
@@ -112,6 +113,9 @@ public class BattleManager : MonoBehaviour
     //public LineRenderer repr;
     public SquadFormationLineRenderer squadFormationRender;
 
+    [Separator("Battle Data")]
+    public int commandCount;
+    public int formationCount;
 
     void Awake() {
         BattleManager.Instance = this;
@@ -232,6 +236,8 @@ public class BattleManager : MonoBehaviour
             if(totalPlayerUnits.Count == 0)
             {
                 Debug.Log("Defeat");
+                GameMetrics.Instance.RegisterBattleData(PlayerInventory.Instance.battlesFought, PlayerInventory.Instance.playerSquads.Count, formationCount, commandCount, PlayerInventory.Instance.playerSquads);
+                GameMetrics.Instance.SaveData( GameMetrics.Instance);
                 if (UIBattleResultManager.Instance)
                 {
                     squadBattleSelector.SetActive(false);
@@ -247,6 +253,13 @@ public class BattleManager : MonoBehaviour
             if(enemies.Count == 0)
             {
                 Debug.Log("Victory!");
+
+                GameMetrics.Instance.RegisterBattleData(PlayerInventory.Instance.battlesFought, PlayerInventory.Instance.playerSquads.Count, formationCount, commandCount, PlayerInventory.Instance.playerSquads);
+                if(PlayerInventory.Instance.finalBoss)
+                {
+                    GameMetrics.Instance.SaveData( GameMetrics.Instance);
+                    return;
+                }
                 if (UIBattleResultManager.Instance)
                 {
                     squadBattleSelector.SetActive(false);

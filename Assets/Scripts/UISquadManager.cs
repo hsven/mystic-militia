@@ -113,5 +113,5 @@ public class UISquadManager : MonoBehaviour
             squadUI.CreateUICard(squad);
             cnt++;
         }
-    }
+            }
 }
