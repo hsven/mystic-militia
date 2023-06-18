@@ -65,21 +65,10 @@ namespace Map
             DOTween.Sequence().AppendInterval(enterNodeDelay).OnComplete(() => EnterNode(mapNode));
 
 
-            if(mapNode.Node.nodeType == NodeType.MinorEnemy){
-               StartCoroutine(waiter("arenaScene"));
-            }
-
-            if(mapNode.Node.nodeType == NodeType.Mystery){
-                StartCoroutine(waiter("eventScene"));
-            }
         }
 
-        IEnumerator waiter(String arenaName){
-            yield return new WaitForSeconds((float)0.7);
-            OpenScene(arenaName);
-        }
 
-        public void OpenScene(String sceneName){
+        public static void OpenScene(String sceneName){
             SceneManager.LoadScene(sceneName);
         }
 
@@ -98,6 +87,8 @@ namespace Map
             switch (mapNode.Node.nodeType)
             {
                 case NodeType.MinorEnemy:
+                    PlayerInventory.Instance.battlesFought++;
+                    OpenScene("sampleEnemyFormations");
                     break;
                 case NodeType.EliteEnemy:
                     break;
@@ -110,6 +101,7 @@ namespace Map
                 case NodeType.Boss:
                     break;
                 case NodeType.Mystery:
+                    OpenScene("eventScene");
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
