@@ -7,7 +7,6 @@ using Unity.Mathematics;
 using System.Linq;
 using System;
 using Map;
-using Map;
 using UnityEditor;
 
 #region Aux Classes
@@ -207,7 +206,6 @@ public class BattleManager : MonoBehaviour
             if (squadIndex.x != -1 && squadIndex.y != -1)
             {
                 PlayerSquad squad = squads[squadIndex.x];
-                //squad.
                 squad.units.RemoveAt(squadIndex.y);
                 DynamicFormationAdjust(squad);
             }
