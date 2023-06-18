@@ -5,7 +5,6 @@ using System.Linq;
 
 public class DataManager : MonoBehaviour
 {
-    public GameMetrics gameMetrics;
 
     public static DataManager Instance { get; private set; }
 
@@ -17,6 +16,6 @@ public class DataManager : MonoBehaviour
     }
 
     public void SaveData(){
-        Debug.Log("time played: " + gameMetrics.playedTime);
+        Debug.Log("time played: " + GameMetrics.Instance.playedTime);
     }
 }

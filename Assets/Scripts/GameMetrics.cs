@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameMetrics : MonoBehaviour, IData
 {
     public static GameMetrics Instance;
@@ -10,10 +11,17 @@ public class GameMetrics : MonoBehaviour, IData
     public int formationCount;
     public int commandCount;
     public int mapPercentage;
+    public string fileName;
+
+    private DataHandler dataHandler;
 
     void Awake() {
         GameMetrics.Instance = this;    
         DontDestroyOnLoad(this.gameObject);
+    }
+
+    void Start() {
+        this.dataHandler=new DataHandler(Application.persistentDataPath, fileName);
     }
 
     // Update is called once per frame
