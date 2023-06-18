@@ -28,4 +28,9 @@ public class UIButtonMethods : MonoBehaviour
     {
         SceneManager.LoadScene("MainMenuScene");
     }
+
+    public void StartBattle()
+    {
+        if(BattleManager.Instance) BattleManager.Instance.StartGame();
+    }
 }

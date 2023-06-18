@@ -8,6 +8,7 @@ using System.Linq;
 using System;
 using Map;
 using UnityEditor;
+using OneLine;
 
 #region Aux Classes
 
@@ -89,8 +90,13 @@ public class BattleManager : MonoBehaviour
     public static BattleManager Instance = null;
     public MapGenerator mapGenerator;
     public bool isPaused = false;
-    public GameObject UIObj;
+    public bool isBattleActive = false;
 
+    [Separator("UI Related")]
+    public List<GameObject> UIObjToDisable;
+    public GameObject squadBattleSelector;
+
+    [Separator("Entity Related")]
     public PlayerController player;
     public EnemyFormationManager enemyFormation;
     public GameObject unitPrefab;
@@ -134,11 +140,15 @@ public class BattleManager : MonoBehaviour
     }
 
     //Currently more of a start game
-    public void ResumeGame() {
+    public void StartGame() {
         //TODO: Revisit UI being mentioned here
-        UIObj.SetActive(false);
+        foreach (var uiObj in UIObjToDisable)
+        {
+            uiObj.SetActive(false);
+        }
+        if (squadBattleSelector) squadBattleSelector.SetActive(true);
 
-        if(enemyFormation != null)
+        if (enemyFormation != null)
         {
             enemyFormation.SpawnFormation(PlayerInventory.Instance.battlesFought);
         }
@@ -178,12 +188,21 @@ public class BattleManager : MonoBehaviour
 
         Time.timeScale = 1;
         isPaused = false;
+        isBattleActive = true;
     }
     
     
     public void PauseGame() {
         Time.timeScale = 0;
         isPaused = true;
+        if(squadBattleSelector) squadBattleSelector.SetActive(false);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        isPaused = false;
+        if (squadBattleSelector) squadBattleSelector.SetActive(true);
     }
 
     public void ResetGame() {
@@ -213,7 +232,11 @@ public class BattleManager : MonoBehaviour
             if(totalPlayerUnits.Count == 0)
             {
                 Debug.Log("Defeat");
-                if (UIBattleResultManager.Instance) UIBattleResultManager.Instance.OpenResultScreen(false);
+                if (UIBattleResultManager.Instance)
+                {
+                    squadBattleSelector.SetActive(false);
+                    UIBattleResultManager.Instance.OpenResultScreen(false);
+                }
             }
             return;
         }
@@ -224,7 +247,11 @@ public class BattleManager : MonoBehaviour
             if(enemies.Count == 0)
             {
                 Debug.Log("Victory!");
-                if (UIBattleResultManager.Instance) UIBattleResultManager.Instance.OpenResultScreen(true);
+                if (UIBattleResultManager.Instance)
+                {
+                    squadBattleSelector.SetActive(false);
+                    UIBattleResultManager.Instance.OpenResultScreen(true);
+                }
             }
         }
     }

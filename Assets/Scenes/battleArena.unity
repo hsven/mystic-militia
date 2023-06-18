@@ -5356,7 +5356,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mapGenerator: {fileID: 1624158036}
   isPaused: 0
-  UIObj: {fileID: 129175553}
+  isBattleActive: 0
+  UIObjToDisable: []
+  squadBattleSelector: {fileID: 0}
   player: {fileID: 1423339043}
   enemyFormation: {fileID: 713032384}
   unitPrefab: {fileID: 5498187762117813187, guid: 7891081bbe5e6ff40b0e129835f18c75, type: 3}
@@ -5836,6 +5838,16 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2dae39552ac132845ab91134fc99bb50, type: 3}
+--- !u!1 &899095016 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2293593159681244863, guid: 2dae39552ac132845ab91134fc99bb50, type: 3}
+  m_PrefabInstance: {fileID: 899095015}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &899095017 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 617759872253036269, guid: 2dae39552ac132845ab91134fc99bb50, type: 3}
+  m_PrefabInstance: {fileID: 899095015}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &943127220
 GameObject:
   m_ObjectHideFlags: 0
@@ -6081,6 +6093,22 @@ PrefabInstance:
       propertyPath: enemyFormation
       value: 
       objectReference: {fileID: 713032384}
+    - target: {fileID: 5187557883694182595, guid: 8f1d1b3fb6c461d45914bc6d296ce5c2, type: 3}
+      propertyPath: squadBattleSelector
+      value: 
+      objectReference: {fileID: 899095016}
+    - target: {fileID: 5187557883694182595, guid: 8f1d1b3fb6c461d45914bc6d296ce5c2, type: 3}
+      propertyPath: UIObjToDisable.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5187557883694182595, guid: 8f1d1b3fb6c461d45914bc6d296ce5c2, type: 3}
+      propertyPath: UIObjToDisable.Array.data[0]
+      value: 
+      objectReference: {fileID: 129175553}
+    - target: {fileID: 5187557883694182595, guid: 8f1d1b3fb6c461d45914bc6d296ce5c2, type: 3}
+      propertyPath: UIObjToDisable.Array.data[1]
+      value: 
+      objectReference: {fileID: 899095017}
     - target: {fileID: 7995856185613821500, guid: 8f1d1b3fb6c461d45914bc6d296ce5c2, type: 3}
       propertyPath: m_RootOrder
       value: 2
