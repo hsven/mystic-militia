@@ -1,14 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using UnityEditor.Tilemaps;
 using System;
 using Tessera;
-using System.Runtime.InteropServices;
-using static UnityEditor.Progress;
-using static UnityEditor.Experimental.GraphView.GraphView;
+
 
 public class MapGenerator : MonoBehaviour
 {

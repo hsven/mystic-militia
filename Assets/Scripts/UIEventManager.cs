@@ -1,10 +1,7 @@
 using Map;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
-using static UnityEditor.Progress;
 
 public class UIEventManager : MonoBehaviour
 {
