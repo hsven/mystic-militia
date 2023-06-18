@@ -6,6 +6,7 @@ using UnityEngine;
 using Unity.Mathematics;
 using System.Linq;
 using System;
+using Map;
 using UnityEditor;
 
 #region Aux Classes
@@ -79,6 +80,7 @@ public class BattleManager : MonoBehaviour
     public GameObject UIObj;
 
     public PlayerController player;
+    public EnemyFormationManager enemyFormation;
     public GameObject unitPrefab;
 
     public List<UnitController> totalPlayerUnits = new List<UnitController>();
@@ -89,7 +91,7 @@ public class BattleManager : MonoBehaviour
     public int currentSquadSelection = -1;
     public int lastSquadCommanded = 0;
 
-    public LineRenderer repr;
+    //public LineRenderer repr;
     public SquadFormationLineRenderer squadFormationRender;
 
 
@@ -106,18 +108,29 @@ public class BattleManager : MonoBehaviour
             mapGenerator.GenerateMap();
              //TODO: Maybe redo how this initial spawns is configured
             var respawnLocs = GameObject.FindGameObjectsWithTag("Respawn");
-            player.transform.position = respawnLocs[0].transform.position;
+            if (respawnLocs.Count() > 0)
+            {
+                player.transform.position = respawnLocs[0].transform.position;
+            }
+
+            var enemyRespawnLocs = GameObject.FindGameObjectsWithTag("EnemyRespawn");
+            if(enemyRespawnLocs.Count() > 0)
+            {
+                enemyFormation.transform.position = enemyRespawnLocs[0].transform.position;
+            }
         }
-        
-
-       
-
     }
 
     //Currently more of a start game
     public void ResumeGame() {
         //TODO: Revisit UI being mentioned here
         UIObj.SetActive(false);
+
+        if(enemyFormation != null)
+        {
+            enemyFormation.SpawnFormation(PlayerInventory.Instance.battlesFought);
+        }
+
 
         int squadCount = 0;
 
@@ -183,11 +196,22 @@ public class BattleManager : MonoBehaviour
                 PlayerSquad squad = squads[squadIndex.x];
                 squad.units.RemoveAt(squadIndex.y);
             }
+
+            if(totalPlayerUnits.Count == 0)
+            {
+                Debug.Log("Defeat");
+            }
+            return;
         }
         EnemyController enemy = entity as EnemyController;
         if (enemy != null)
         {
             enemies.Remove(enemy);
+            if(enemies.Count == 0)
+            {
+                Debug.Log("Victory!");
+                if(MapPlayerTracker.Instance) MapPlayerTracker.Instance.returnToTree();
+            }
         }
     }
 
@@ -237,6 +261,7 @@ public class BattleManager : MonoBehaviour
                 }
             }
         }
+        if (affectedUnits.Count == 0) return;
 
         int counter = 0;
         foreach (var unit in affectedUnits)
@@ -260,14 +285,12 @@ public class BattleManager : MonoBehaviour
     public void SetFormation(Vector3 mousePos, List<Vector3> positions)
     {
         currentFormation.Clear();
-        repr.SetPositions(new Vector3[] { });
 
         // If no formation was set, the units group up
         if (positions.Count == 0)
         {
             positions.Add(Vector3.zero);
         }
-        repr.positionCount = positions.Count;
 
         var centerPos = positions[positions.Count / 2];
         int i = 0;
@@ -276,8 +299,6 @@ public class BattleManager : MonoBehaviour
             var adjustedPos = pos - centerPos;
             var worldReprPos = adjustedPos + mousePos;
             currentFormation.Add(new BezierKnot(adjustedPos));
-            repr.SetPosition(i, adjustedPos);
-
         }
 
     }

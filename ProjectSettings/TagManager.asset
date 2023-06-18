@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Enemy
   - Ally
+  - EnemyRespawn
   layers:
   - Default
   - TransparentFX
