@@ -215,6 +215,7 @@ public class BattleManager : MonoBehaviour
             if(totalPlayerUnits.Count == 0)
             {
                 Debug.Log("Defeat");
+                DataManager.Instance.SaveData();
             }
             return;
         }

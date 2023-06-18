@@ -7,20 +7,16 @@ public class DataManager : MonoBehaviour
 {
     public GameMetrics gameMetrics;
 
-    public static DataManager instance { get; private set; }
+    public static DataManager Instance { get; private set; }
 
     private void Awake(){
-        if(instance != null){
+        if(Instance != null){
             Debug.LogError("more than one manager");
         }
-        instance = this;
+        Instance = this;
     }
 
     public void SaveData(){
         Debug.Log("time played: " + gameMetrics.playedTime);
-    }
-
-    private void OnApplicationQuit(){
-        SaveData();
     }
 }
