@@ -25,8 +25,8 @@ public class PlayerSquad
 
     public FormationRepr formationRepr = null;
 
-    public Vector3 targetPos = Vector3.zero;
-    public GameEnums.CommandTypes currentCommand;
+    public Vector3 targetPos;
+    public GameEnums.CommandTypes currentCommand = GameEnums.CommandTypes.FOLLOW;
 
     public PlayerSquad() {}
 
@@ -171,7 +171,7 @@ public class BattleManager : MonoBehaviour
             newPlayerSquad.formationLineRenderer = Instantiate(squadFormationRender.gameObject, transform).GetComponent<SquadFormationLineRenderer>();
             squads.Add(newPlayerSquad);
 
-            if(UIOffScreenIndicatorManager.Instance) UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
+            if (UIOffScreenIndicatorManager.Instance) UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
         }
 
         UIBattleSquadSelector.Instance.SetupBattleSquadUI();
