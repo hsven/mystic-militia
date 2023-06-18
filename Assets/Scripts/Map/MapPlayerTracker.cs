@@ -99,6 +99,8 @@ namespace Map
                 case NodeType.Store:
                     break;
                 case NodeType.Boss:
+                    PlayerInventory.Instance.battlesFought++;
+                    OpenScene("boss1_battleArena");
                     break;
                 case NodeType.Mystery:
                     OpenScene("eventScene");

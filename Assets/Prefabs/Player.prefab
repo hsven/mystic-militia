@@ -584,6 +584,7 @@ MonoBehaviour:
   movementSpeed: 3
   realTimeFormationRenderer: {fileID: 8674877094504596275}
   volume: {fileID: 7096306382082457963}
+  ppCamera: {fileID: 6145699579296693972}
 --- !u!1 &6861955567850802237
 GameObject:
   m_ObjectHideFlags: 0

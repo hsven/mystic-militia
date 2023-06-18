@@ -23,4 +23,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/battleArena.unity
     guid: dc23fcbb27d627949b7c782adbec6600
+  - enabled: 1
+    path: Assets/Scenes/boss1_battleArena.unity
+    guid: 8d5d0aca03d067b41b12a2baa503b484
   m_configObjects: {}
