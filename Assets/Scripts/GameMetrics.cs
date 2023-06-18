@@ -31,5 +31,6 @@ public class GameMetrics : MonoBehaviour, IData
 
     public void SaveData(ref GameData data){
         data.gameDuration = playedTime;
+        dataHandler.Save(data);
     }
 }
