@@ -89,6 +89,7 @@ public class BattleManager : MonoBehaviour
 
     public static BattleManager Instance = null;
     public MapGenerator mapGenerator;
+    public MapConfig config;
     public bool isPaused = false;
     public GameObject UIObj;
 

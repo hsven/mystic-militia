@@ -11,7 +11,7 @@ public class GameMetrics : MonoBehaviour, IData
     public int formationCount;
     public int commandCount;
     public int mapPercentage;
-    public string fileName;
+    public string fileNam="data.game";
 
     private DataHandler dataHandler;
 
@@ -21,7 +21,7 @@ public class GameMetrics : MonoBehaviour, IData
     }
 
     void Start() {
-        this.dataHandler=new DataHandler(Application.persistentDataPath, fileName);
+        this.dataHandler=new DataHandler(Application.persistentDataPath, fileNam);
     }
 
     // Update is called once per frame

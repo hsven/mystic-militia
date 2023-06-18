@@ -109,6 +109,9 @@ namespace Map
                 default:
                     throw new ArgumentOutOfRangeException();
             }
+            
+            int percentage = PlayerInventory.Instance.battlesFought/11;
+            GameMetrics.Instance.mapPercentage=percentage;
         }
 
         private void PlayWarningThatNodeCannotBeAccessed()
