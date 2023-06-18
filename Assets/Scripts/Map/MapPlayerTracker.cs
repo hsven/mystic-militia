@@ -88,7 +88,7 @@ namespace Map
             {
                 case NodeType.MinorEnemy:
                     PlayerInventory.Instance.battlesFought++;
-                    OpenScene("sampleEnemyFormations");
+                    OpenScene("battleArena");
                     break;
                 case NodeType.EliteEnemy:
                     break;

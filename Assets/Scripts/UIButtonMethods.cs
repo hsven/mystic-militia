@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class UIButtonMethods : MonoBehaviour
 {
-public GameObject playerInventory;
+    public GameObject playerInventory;
 public GameObject gameMetrics;
 
     public void LoadScene(string sceneName)
@@ -30,4 +30,13 @@ public GameObject gameMetrics;
         PlayerInventory.Instance.AddToInventory(data, 10);
     }
 
+    public void ResetToMainMenu()
+    {
+        SceneManager.LoadScene("MainMenuScene");
+    }
+
+    public void StartBattle()
+    {
+        if(BattleManager.Instance) BattleManager.Instance.StartGame();
+    }
 }

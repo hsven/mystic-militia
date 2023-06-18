@@ -133,7 +133,7 @@ public class UnitController : EntityController
             }
             else
             {
-                Movement(targetPos, Vector2.zero);
+                Movement(targetPos, posOffset);
             }
         }
     }

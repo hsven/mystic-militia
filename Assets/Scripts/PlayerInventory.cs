@@ -65,6 +65,11 @@ public class PlayerInventory : MonoBehaviour
         if (unitEntryPosInInventory != -1) {
             playerUnits[unitEntryPosInInventory].quantity++;
             squad.unitEntries[unitEntryPosInSquad].quantity--;
+
+            if (squad.unitEntries[unitEntryPosInSquad].quantity == 0) 
+            { 
+                squad.unitEntries.RemoveAt(unitEntryPosInSquad);
+            }
         } 
         return true;
     }

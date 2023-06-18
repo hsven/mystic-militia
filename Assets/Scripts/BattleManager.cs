@@ -7,8 +7,8 @@ using Unity.Mathematics;
 using System.Linq;
 using System;
 using Map;
-using Map;
 using UnityEditor;
+using OneLine;
 
 #region Aux Classes
 
@@ -26,8 +26,8 @@ public class PlayerSquad
 
     public FormationRepr formationRepr = null;
 
-    public Vector3 targetPos = Vector3.zero;
-    public GameEnums.CommandTypes currentCommand;
+    public Vector3 targetPos;
+    public GameEnums.CommandTypes currentCommand = GameEnums.CommandTypes.FOLLOW;
 
     public PlayerSquad() {}
 
@@ -91,8 +91,13 @@ public class BattleManager : MonoBehaviour
     public MapGenerator mapGenerator;
     public MapConfig config;
     public bool isPaused = false;
-    public GameObject UIObj;
+    public bool isBattleActive = false;
 
+    [Separator("UI Related")]
+    public List<GameObject> UIObjToDisable;
+    public GameObject squadBattleSelector;
+
+    [Separator("Entity Related")]
     public PlayerController player;
     public EnemyFormationManager enemyFormation;
     public GameObject unitPrefab;
@@ -136,11 +141,15 @@ public class BattleManager : MonoBehaviour
     }
 
     //Currently more of a start game
-    public void ResumeGame() {
+    public void StartGame() {
         //TODO: Revisit UI being mentioned here
-        UIObj.SetActive(false);
+        foreach (var uiObj in UIObjToDisable)
+        {
+            uiObj.SetActive(false);
+        }
+        if (squadBattleSelector) squadBattleSelector.SetActive(true);
 
-        if(enemyFormation != null)
+        if (enemyFormation != null)
         {
             enemyFormation.SpawnFormation(PlayerInventory.Instance.battlesFought);
         }
@@ -173,19 +182,28 @@ public class BattleManager : MonoBehaviour
             newPlayerSquad.formationLineRenderer = Instantiate(squadFormationRender.gameObject, transform).GetComponent<SquadFormationLineRenderer>();
             squads.Add(newPlayerSquad);
 
-            if(UIOffScreenIndicatorManager.Instance) UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
+            if (UIOffScreenIndicatorManager.Instance) UIOffScreenIndicatorManager.Instance.SpawnSquadIndicator(newPlayerSquad.units.Select(x => x.transform).ToList(), ++squadCount);
         }
 
         UIBattleSquadSelector.Instance.SetupBattleSquadUI();
 
         Time.timeScale = 1;
         isPaused = false;
+        isBattleActive = true;
     }
     
     
     public void PauseGame() {
         Time.timeScale = 0;
         isPaused = true;
+        if(squadBattleSelector) squadBattleSelector.SetActive(false);
+    }
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1;
+        isPaused = false;
+        if (squadBattleSelector) squadBattleSelector.SetActive(true);
     }
 
     public void ResetGame() {
@@ -208,7 +226,6 @@ public class BattleManager : MonoBehaviour
             if (squadIndex.x != -1 && squadIndex.y != -1)
             {
                 PlayerSquad squad = squads[squadIndex.x];
-                //squad.
                 squad.units.RemoveAt(squadIndex.y);
                 DynamicFormationAdjust(squad);
             }
@@ -217,6 +234,11 @@ public class BattleManager : MonoBehaviour
             {
                 Debug.Log("Defeat");
                 GameMetrics.Instance.SaveData( GameMetrics.Instance);
+                if (UIBattleResultManager.Instance)
+                {
+                    squadBattleSelector.SetActive(false);
+                    UIBattleResultManager.Instance.OpenResultScreen(false);
+                }
             }
             return;
         }
@@ -233,7 +255,11 @@ public class BattleManager : MonoBehaviour
                     GameMetrics.Instance.SaveData( GameMetrics.Instance);
                     return;
                 }
-                if(MapPlayerTracker.Instance) MapPlayerTracker.Instance.returnToTree();
+                if (UIBattleResultManager.Instance)
+                {
+                    squadBattleSelector.SetActive(false);
+                    UIBattleResultManager.Instance.OpenResultScreen(true);
+                }
             }
         }
     }
@@ -268,9 +294,12 @@ public class BattleManager : MonoBehaviour
 
     public void DynamicFormationAdjust(PlayerSquad squad)
     {
+        if (squad.formationRepr == null) return;
+
         List<UnitController> affectedUnits = new List<UnitController>();
         foreach (var sqd in squad.formationRepr.playerSquads)
         {
+            if(sqd == null || sqd.units.Count == 0) continue;
             affectedUnits.AddRange(sqd.units);
         }
 

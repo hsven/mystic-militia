@@ -49,9 +49,9 @@ GameObject:
   - component: {fileID: 6893061657145275256}
   - component: {fileID: 2327625326702719050}
   - component: {fileID: 1726886562632571416}
-  - component: {fileID: 3354343923082719421}
+  - component: {fileID: 6651413977910820439}
   m_Layer: 5
-  m_Name: BackButton
+  m_Name: StartButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -160,9 +160,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3354343923082719421}
-        m_TargetAssemblyTypeName: Map.MapPlayerTracker, Assembly-CSharp
-        m_MethodName: returnToTree
+      - m_Target: {fileID: 6651413977910820439}
+        m_TargetAssemblyTypeName: UIButtonMethods, Assembly-CSharp
+        m_MethodName: StartBattle
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -172,7 +172,7 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3354343923082719421
+--- !u!114 &6651413977910820439
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -181,13 +181,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 617759872253036269}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41edfa9cd46e12b4389c9a79ec3ae0d7, type: 3}
+  m_Script: {fileID: 11500000, guid: dcf2523298efa8a47a278b12efde13fa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lockAfterSelecting: 0
-  enterNodeDelay: 1
-  mapManager: {fileID: 0}
-  view: {fileID: 0}
+  playerInventory: {fileID: 0}
 --- !u!1 &800875888292155329
 GameObject:
   m_ObjectHideFlags: 0
@@ -254,7 +251,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: back
+  m_text: Start Battle
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0707dc1a77aa3284d82b89ef23a224d2, type: 2}
   m_sharedMaterial: {fileID: -358597878722867302, guid: 0707dc1a77aa3284d82b89ef23a224d2, type: 2}
@@ -360,6 +357,57 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: -20, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1637824779489074899
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2032736209319439142}
+  - component: {fileID: 3875290663018392225}
+  m_Layer: 5
+  m_Name: ResultsManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2032736209319439142
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637824779489074899}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 706476842139986939}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &3875290663018392225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1637824779489074899}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7e049d4933474646b3d82aa2ca801a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  victoryScreen: {fileID: 5183114476836373289, guid: fed801b8564ec7e4f87d40d6cc54b1ce, type: 3}
+  gameOverScreen: {fileID: 4187041449508147295, guid: 8ee1988453f24a744875db105a0b1af0, type: 3}
 --- !u!1 &1651619915608790314
 GameObject:
   m_ObjectHideFlags: 0
@@ -1514,6 +1562,7 @@ GameObject:
   - component: {fileID: 7085303625252202489}
   - component: {fileID: 1076801383544514350}
   - component: {fileID: 6959748522280542436}
+  - component: {fileID: 1545759584061938693}
   m_Layer: 5
   m_Name: BattleUI
   m_TagString: Untagged
@@ -1537,6 +1586,7 @@ RectTransform:
   - {fileID: 1444677271962469700}
   - {fileID: 9085998146817640990}
   - {fileID: 5601458404006686116}
+  - {fileID: 2032736209319439142}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1608,6 +1658,22 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &1545759584061938693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6289092511818364692}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41edfa9cd46e12b4389c9a79ec3ae0d7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockAfterSelecting: 0
+  enterNodeDelay: 1
+  mapManager: {fileID: 0}
+  view: {fileID: 0}
 --- !u!1 &6554877625445787736
 GameObject:
   m_ObjectHideFlags: 0
