@@ -212,7 +212,7 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
+  m_SortingLayerID: 598106329
   m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!222 &6861690440699860532
@@ -272,7 +272,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 4
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -298,15 +298,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d9d46740fa6516498d4c1d6f3e6c181, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitbox: {fileID: 2953156807656884423}
+  hurtbox: {fileID: 8901483790149473569}
   rb: {fileID: 6457578094864112184}
-  useOldMovement: 0
-  movementSpeed: 9
-  maxSpeed: 10
-  maxHealth: 100
-  power: 10
+  unitData: {fileID: 11400000, guid: fbb67a7936c6a2946a5aabf0432a0ba9, type: 2}
   healthBarGreen: {fileID: 8682386576368078296}
   healthBarRed: {fileID: 6149338807905591931}
-  enemyType: 1
+  timerRangedWeapon: 0
+  currentHealth: 0
+  useOldMovement: 0
+  EnemyTarget: 1
 --- !u!61 &2953156807656884423
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -339,7 +340,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015, y: 0}
+  m_Offset: {x: -0.015, y: -0.1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -350,7 +351,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.6}
+  m_Size: {x: 0.6, y: 0.6}
   m_EdgeRadius: 0
 --- !u!1 &7444193588210668090
 GameObject:
@@ -423,8 +424,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2005568655
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: -1633285747, guid: f650b56e2f861cf46bd2e10f3eb9224f, type: 3}
   m_Color: {r: 1, g: 0, b: 0.9478378, a: 1}

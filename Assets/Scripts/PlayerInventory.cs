@@ -5,6 +5,8 @@ using UnityEngine;
 [Serializable]
 public class PlayerInventory : MonoBehaviour
 {
+    public bool newGame;
+
     [Serializable]
     public class UnitEntry
     {
@@ -24,11 +26,14 @@ public class PlayerInventory : MonoBehaviour
 
     public List<SquadEntry> playerSquads = new List<SquadEntry>();
 
+    public int battlesFought = 0;
+    public int battlesTotal = 0;
+    public bool finalBoss = false;
 
     void Awake() {
         PlayerInventory.Instance = this; 
         //TODO: Make this object permanent regardless of scene, when the overall gameplay loop is in place   
-        // DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(this.gameObject);
     }
 
     public void CreateSquad() {
@@ -60,7 +65,25 @@ public class PlayerInventory : MonoBehaviour
         if (unitEntryPosInInventory != -1) {
             playerUnits[unitEntryPosInInventory].quantity++;
             squad.unitEntries[unitEntryPosInSquad].quantity--;
+
+            if (squad.unitEntries[unitEntryPosInSquad].quantity == 0) 
+            { 
+                squad.unitEntries.RemoveAt(unitEntryPosInSquad);
+            }
         } 
         return true;
+    }
+
+    public void AddToInventory(UnitData unit, int quantity){
+        var unitEntryPosInInventory = playerUnits.FindIndex(0, x => x.unitData.unitName == unit.unitName);
+        if (unitEntryPosInInventory != -1) {
+            playerUnits[unitEntryPosInInventory].quantity+=quantity;
+        }
+        else {
+            var newEntry = new UnitEntry();
+            newEntry.unitData = unit;
+            newEntry.quantity+=quantity;
+            playerUnits.Add(newEntry);
+        } 
     }
 }
