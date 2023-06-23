@@ -8,7 +8,7 @@ We created an itchi website where we will add all the things we do: https://guid
 # Gameplay
 [![IMAGE ALT TEXT HERE](https://www.zupimages.net/up/23/25/2r6d.png)](https://youtu.be/MpzN6Hbyd2E)
 
-#How to build
+# How to build
 After opening the project in Unity, File > Build Settings > Build, create/select an empty folder, and press OK.
 
 # Development methodology
